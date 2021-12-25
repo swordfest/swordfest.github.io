@@ -1,0 +1,98 @@
+@import url("https://fonts.google.com/specimen/Outfit");
+
+body {
+    background-color: hsl(217, 54%, 11%);
+    
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nft-card {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    height: 500px;
+    background-color: hsl(216, 50%, 16%);
+    padding: 20px;
+    border-radius: 10px;
+    font-family: 'Outfit', sans-serif;
+    color: white;
+}
+
+.image-thumbnail {
+    width: 280px;
+    height: 280px;
+    background-image: url("../images/image-equilibrium.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    border-radius: 7px;
+    
+}
+
+.price-time {
+    display: flex;
+    justify-content: space-between;
+}
+
+.price {
+    display: flex;
+    align-items: center;
+}
+
+.price-icon {
+    width: 20px;
+    height: 20px;
+    background-image: url("../images/icon-ethereum.svg");
+    background-repeat: no-repeat;
+    }
+
+.time {
+    display: flex;
+    align-items: center;
+}
+
+.time-icon {
+    width: 20px;
+    height: 20px;
+    background-image: url("../images/icon-clock.svg");
+    background-repeat: no-repeat;
+    }
+
+.card-content p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 24px;
+}
+
+.card-content h1 {
+    padding: 10px 0px 10px 0px;
+    font-weight: 600;
+}
+
+.divider {
+    border-top: 1px solid hsl(215, 32%, 27%);
+}
+
+h1 {
+    font-size: 18px ;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+}
+
+.avatar img {
+    width: 28px;
+    border: 2px solid white;
+    border-radius: 100%;
+}
+
+.author-text {
+    padding-left: 18px;
+}

@@ -1,7 +1,8 @@
-@import url("https://fonts.google.com/specimen/Outfit");
+@import url('https://fonts.googleapis.com/css2?family=Outfit');
 
 body {
     background-color: hsl(217, 54%, 11%);
+    font-family: 'Outfit', sans-serif;
     
 }
 
@@ -15,25 +16,22 @@ body {
 .nft-card {
     display: flex;
     flex-direction: column;
-    width: 280px;
-    height: 500px;
+    width: 300px;
+    height: auto;
     background-color: hsl(216, 50%, 16%);
-    padding: 20px;
+    padding: 25px;
     border-radius: 14px;
-    font-family: 'Outfit', sans-serif;
-    
     box-shadow: 0px 25px 5px 15px #0C1628;
+    
 }
 
-.image-thumbnail {
-    width: 280px;
-    height: 280px;
-    background-image: url("../images/image-equilibrium.jpg");
-    background-size: 100%;
-    background-repeat: no-repeat;
+.image-thumbnail img{
+    width: 100%;
+    height: 100%;
     border-radius: 7px;
-    
 }
+
+
 
 .price-time {
     display: flex;
@@ -46,12 +44,21 @@ body {
 }
 
 .price-icon {
+    display: flex;
+    align-items: center;
     width: 20px;
     height: 20px;
-    background-image: url("../images/icon-ethereum.svg");
-    background-repeat: no-repeat;
     color: hsl(178, 100%, 50%);
     }
+
+.price-icon img {
+    width: auto;
+    height: 17px;
+}
+
+p.price-text {
+    padding-left: 2px;
+}
 
 .time {
     display: flex;
@@ -59,34 +66,51 @@ body {
 }
 
 .time-icon {
+    display: flex;
+    align-items: center;
     width: 20px;
     height: 20px;
-    background-image: url("../images/icon-clock.svg");
-    background-repeat: no-repeat;
+    }
+
+p.time-text {
+        font-size: 14px;
+        padding-left: 2px;
     }
 
 .card-content p {
-    
-    font-weight: 300;
     line-height: 24px;
     }
 
 .card-content h1 {
     padding: 10px 0px 10px 0px;
-    font-weight: 600;
+    
 }
 
-.card-desc, .time-text, .author-text span{
+.card-desc, .time-text {
     color: hsl(215, 51%, 70%);
+    letter-spacing: 1px;
 }
 
-.divider {
-    border-top: 1px solid hsl(215, 32%, 27%);
+p.card-desc {
+    font-weight: 200;
+    font-size: 16px;
+}
+
+hr {
+    height: 1px;
+    border: none;
+    background-color: hsl(215, 32%, 27%);
 }
 
 h1 {
     color: white;
-    font-size: 18px ;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+h1:hover {
+    cursor: pointer;
+    color: hsl(178, 100%, 50%);
 }
 
 .author {
@@ -95,18 +119,35 @@ h1 {
 }
 
 .avatar img {
-    width: 28px;
-    border: 1px solid hsl(215, 32%, 27%);
+    width: 30px;
+    height: 30px;
+    border: 1px solid white;
     border-radius: 100%;
 }
 
 .author-text {
-    color: white;
-    padding-left: 18px;
+    color: hsl(215, 51%, 70%);
+    letter-spacing: 1px;
+    font-size: 14px;
+    padding-left: 14px;
 }
 
-.price-text {
-    font-size: 14px;
-    font-weight: 300;
+.author-text span {
+    color: white;
+}
+
+.author-text span:hover {
+    cursor: pointer;
+    color: hsl(178, 100%, 50%)
+}
+
+p.price-text {
+    font-size: 16px;
+    font-weight: 400;
     color: hsl(178, 100%, 50%);
+    letter-spacing: 1px;
+}
+
+@media only screen and (min-width: 375px) {
+        
 }

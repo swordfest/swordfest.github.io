@@ -6,6 +6,7 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" type="text/css" href="styles/styles.css">
+  <link href="https://fonts.google.com/specimen/Outfit" rel="stylesheet" type="text/css">
   <title>Frontend Mentor | NFT preview card component</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
@@ -17,24 +18,27 @@
 <body>
   <div class="container">
   <div class="nft-card">
-    <div class="image-thumbnail"></div>
+    <div class="image-thumbnail">
+      <div class="view-hover"><img src="images/icon-view.svg" alt="icon-view"></div>
+      <img src="images/image-equilibrium.jpg" alt="">
+    </div>
     <div class="card-content">
       <h1>Equilibrium #3429</h1>
       <p class="card-desc">Our Equilibrium collection promotes balance and calm.</p>
       <div class="price-time">
         <div class="price">
-          <div class="price-icon"></div>
+          <div class="price-icon"><img src="images/icon-ethereum.svg" alt="icon-ethereum"></div>
           <p class="price-text">0.041 ETH</p>
         </div>
         <div class="time">
-          <div class="time-icon"></div>
+          <div class="time-icon"><img src="images/icon-clock.svg" alt="icon-clock"></div>
           <p class="time-text">3 days left</p>
         </div>
       </div>
-      <hr class="divider">
+      <hr>
       <div class="author">
         <div class="avatar"><img src="images/image-avatar.png" alt="Avatar"></div>
-        <p class="author-text"><span>Creation of </span> Jules Wyvern</p>
+        <p class="author-text">Creation of <span>Jules Wyvern</span></p>
       </div>
     </div>
   </div>

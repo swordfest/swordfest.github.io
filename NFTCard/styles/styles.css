@@ -27,7 +27,7 @@ body {
     border-radius: 14px;
     background-color: hsl(216, 50%, 16%);
     padding: 24px;
-    box-shadow: 0px 40px 20px 10px #0C1729;
+    box-shadow: 0px 40px 20px 20px #0C1729;
 }
 
 .image-thumbnail {

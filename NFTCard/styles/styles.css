@@ -191,7 +191,7 @@ span:hover {
     }
 
     .nft-card {
-        width: 328px;
+        width: 318px;
         height: auto;
         display: flex;
         flex-direction: column;
@@ -206,8 +206,13 @@ span:hover {
         background-image: url(../images/image-equilibrium.jpg);
         background-repeat: no-repeat;
         background-size: contain;
-        width: 284px;
-        height: 284px;
+        width: 274px;
+        height: 274px;
         border-radius: 8px;
+    }
+
+    .card-desc {
+        font-size: 16px;
+        padding-top: 20px;
     }
 }

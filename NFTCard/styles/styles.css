@@ -66,12 +66,12 @@ body {
     opacity: 0;
 }
 
-.nft-card:hover .overlay {
+.image-thumbnail:hover .overlay {
     cursor: pointer;
     opacity: 0.4;
 }
 
-.nft-card:hover .icon-view {
+.image-thumbnail:hover .icon-view {
     opacity: 1;
 }
 

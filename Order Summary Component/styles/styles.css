@@ -14,7 +14,7 @@ body {
     background-size: cover;
 }
 
-.container {
+main {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -102,6 +102,6 @@ body {
 }
 
 .button-cancel {
-    margin-top: 30px;
+    margin-top: 20px;
     font-weight: 700;
 }

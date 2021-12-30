@@ -11,7 +11,7 @@ body {
     background-color: hsl(225, 100%, 94%);
     background-image: url('../images/pattern-background-desktop.svg');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
 }
 
 main {
@@ -54,9 +54,13 @@ main {
 }
 
 .content .description {
+    color: hsla(232, 12%, 54%, 1);
+    ;
     margin-top: 12px;
-    font-size: 16px;
-    font-weight: 300;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 28px;
 }
 
 .item-plan {
@@ -68,7 +72,7 @@ main {
     margin: 20px 0px 30px 0px;
     padding: 0px 24px 0px 24px;
     background-color: hsl(225, 100%, 98%);
-    border-radius: 14px;    
+    border-radius: 14px;
 }
 
 .plan-icon {
@@ -88,6 +92,25 @@ main {
     height: auto;
 }
 
+.subheading-text, .price-plan, .button-change {
+    font-weight: 900;
+}
+
+.price-plan {
+    color: hsla(232, 12%, 54%, 1);
+}
+
+.button-change {
+    color: hsla(245, 44%, 45%, 1);
+    text-decoration: underline;
+}
+
+.button-change:hover {
+    cursor: pointer;
+    opacity: 0.7;
+    text-decoration: none;
+}
+
 .button-proceed {
     display: flex;
     align-items: center;
@@ -101,7 +124,105 @@ main {
     font-weight: 700;
 }
 
+.button-proceed:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
 .button-cancel {
-    margin-top: 20px;
-    font-weight: 700;
+    margin-top: 28px;
+    font-weight: 900;
+    color: hsla(232, 12%, 54%, 1);
+}
+
+.button-cancel:hover {
+    cursor: pointer;
+    color: hsl(223, 47%, 23%);
+}
+
+@media (max-width: 375px) {
+
+    body {
+        background-image: url('../images/pattern-background-mobile.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .card-summary {
+        width: 327px;
+        height: 567px;
+    }
+
+    .image-thumbnail {
+        background-image: url('../images/illustration-hero.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 327px;
+        height: 160px;
+    }
+
+    .content {
+        padding: 32px 26px 34px 26px;
+    }
+
+    .content .heading-text {
+        font-size: 22px;
+    }
+
+    .content .description {
+        color: hsla(232, 12%, 54%, 1);
+        ;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .item-plan {
+        height: 80px;
+        margin: 24px 0px 24px 0px;
+        padding: 0px 16px 0px 16px;
+    }
+
+    .plan-icon {
+        background-image: url('../images/icon-music.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 48px;
+        height: 48px;
+        margin-right: 16px;
+    }
+
+    .icon-and-text {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        height: auto;
+    }
+
+    .subheading-text, .price-plan, .button-change {
+        font-size: 14px;
+        font-weight: 900;
+    }
+
+    .price-plan {
+        color: hsla(232, 12%, 54%, 1);
+    }
+
+    .button-change {
+        color: hsla(245, 44%, 45%, 1);
+        text-decoration: underline;
+    }
+
+    .button-proceed {
+        font-size: 14px;
+        height: 50px;
+    }
+
+    .button-cancel {
+        margin-top: 20px;
+        font-weight: 900;
+        font-size: 14px;
+        color: hsla(232, 12%, 54%, 1);
+    }
+
 }

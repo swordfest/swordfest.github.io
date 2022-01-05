@@ -33,15 +33,15 @@ main {
 }
 
 .card-item-sedans {
-    background-color: hsl(31, 77%, 52%);
+    background-color: var(--main-bg-sedan);
 }
 
 .card-item-suvs {
-    background-color: hsl(184, 100%, 22%);
+    background-color: var(--main-bg-suvs);
 }
 
 .card-item-luxury {
-    background-color: hsl(179, 100%, 13%);
+    background-color: var(--main-bg-luxury);
 }
 
 .container-content { 
@@ -64,8 +64,6 @@ main {
     background-size: contain;
     width: 64px;
     height: 40px;
-    display: flex;
-    justify-content: space-between;
 }
 
 .card-item-suvs .container-content .container-icon {

@@ -57,14 +57,12 @@ main {
     flex-direction: column;
     justify-content: space-between;
     margin: 48px;
+    width: 210.67px;
+    height: 404px;
 }
 
-.container-content * { 
+.content-group * { 
     margin-bottom: 32px;
-}
-
-.card-item-sedans {
-    justify-content: space-between;
 }
 
 .card-item-sedans .container-content .container-icon {
@@ -114,18 +112,29 @@ p {
     font-size: 15px;
 }
 
+.button-more:hover {
+    cursor: pointer;
+    background-color: transparent;
+    border: solid 3px white;
+    color: white;
+}
+
 @media screen and (max-width: 375px) {
 
     .card-container{
         flex-direction: column;
         width: 328px;
-        height: auto;
+        height: 1326px;
     }
 
     .card-item-sedans, .card-item-suvs, .card-item-luxury {
-        width: 100%;
+        width: 328px;
         height: 442px;
     }
-    
+
+    .container-content { 
+        width: auto;
+        height: auto;
+    }
     
 }

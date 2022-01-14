@@ -1,3 +1,131 @@
-main {
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
     background-color: hsl(185, 75%, 39%);
+    background-image: url(images/bg-pattern-top.svg), url(images/bg-pattern-top.svg);
+    background-repeat: no-repeat;
+    background-position: right 50vw bottom 40vh, left 50vw top 50vh;
+    font-size: 18px;
+}
+
+/* Utility rules */
+
+/* Reglas fuentes */
+
+.font-kumbh-400 {
+    font-family: 'Kumbh Sans', sans-serif;
+    font-weight: 400;
+    color: hsl(185, 75%, 39%);
+}
+
+.font-kumbh-700 {
+    font-family: 'Kumbh Sans', sans-serif;
+    font-weight: 700;
+}
+
+.font-space-letters {
+    letter-spacing: 0.15em;
+}
+
+.size-10px {
+    font-size: 10px;
+}
+
+.size-15px {
+    font-size: 15px;
+}
+
+main {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-card {
+    width: 350px;
+    height: 374px;
+    border-radius: 14px;
+    background-color: white;
+    box-shadow: 0px 59px 94px #138091;
+    overflow: hidden;
+}
+
+.bg-pattern-card {
+    width: 100%;
+    height: 140px;
+    background-image: url(images/bg-pattern-card.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+
+.avatar {
+    width: 96px;
+    height: 96px;
+    background-image: url(images/image-victor.jpg);
+    border-radius: 50%;
+    border: 5px solid #FFFFFF;
+    position: relative;
+    top: 62%;
+}
+
+.card-content-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.name-age {
+    display: flex;
+    align-items: center;
+    padding-top: 72px;
+    margin-bottom: 8px;
+}
+
+.name {
+    margin-right: 8px;
+}
+
+.place {
+    line-height: 160%;
+}
+
+hr {
+    height: 1px;
+    width: 100%;
+    margin-top: 18px;
+    background-color: hsl(227, 33%, 89%); 
+}
+
+.user-stats {
+    width: 100%;
+    display: flex;
+    justify-content: space-;
+    margin-top: 21px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-name {
+    margin-top: 2px;
 }

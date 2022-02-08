@@ -1,5 +1,134 @@
 * {
     margin: 0px;
     padding: 0px;
-    box
+    box-sizing: border-box;
+}
+
+.-color--blue {
+    background-color: cyan;
+}
+
+.-color--red {
+    background-color: white;
+}
+
+.navbar {
+    width: 100%;
+    height: 90px;
+    position: fixed;
+    box-shadow: 0px 5px 20px 5px rgba(0, 0, 0, 0.2);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.news-format {
+    border-radius: 20px;
+}
+
+.container {
+    display: grid;
+    width: 1200px;
+    height: auto;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, auto);
+    grid-column-gap: 24px;
+    grid-row-gap: 24px;
+    padding-top: 90px;
+
+}
+
+.hero {
+    height: 640px;
+    grid-column-start: 1;
+    grid-column-end: 13;
+    padding: 16px;
+}
+
+.content {
+    width: 3fr;
+    height: auto;
+    padding: 16px;
+}
+
+.news-1 {
+    height: 400px;
+    grid-column: 1/5;
+}
+
+.news-2 {
+    height: 400px;
+    grid-column: 5/9;
+}
+
+.news-3 {
+    height: 400px;
+    grid-column: 9/13;
+}
+
+.section-2 {
+    height: 340px;
+    grid-column-start: 1;
+    grid-column-end: 13;
+}
+
+.section-3 {
+    height: 480px;
+    grid-column-start: 1;
+    grid-column-end: 13;
+}
+
+@media screen and (max-width: 720px) {
+
+    .navbar {
+        width: 100vw;
+        height: 40px;
+    }
+
+    .container {
+        width: 720px;
+        height: fit-content;
+        grid-template-columns: repeat(4, auto);
+        grid-template-rows: repeat(4, auto);
+        padding-top: 40px;
+    }
+
+    .hero {
+        width: 100%;
+        height: 360px;
+        grid-column: 4/9;
+        padding: 16px;
+    }
+
+    .news-1 {
+        height: 200px;
+        grid-column: 5/9;
+    }
+
+    .news-2 {
+        height: 200px;
+        grid-column-start: 1;
+        grid-column-end: 5;
+    }
+
+    .news-3 {
+        height: 200px;
+        grid-column-start: 1;
+        grid-column-end: 5;
+    }
+
+    .section-2 {
+        height: 170px;
+        grid-column-start: 1;
+        grid-column-end: 13;
+    }
+
+    .section-3 {
+        height: 240px;
+        grid-column-start: 1;
+        grid-column-end: 13;
+    }
 }

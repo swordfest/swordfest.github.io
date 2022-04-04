@@ -472,36 +472,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 100%;
 }
 
-@media (min-width: 640px) {
-  .container {
-    max-width: 640px;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1024px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px;
-  }
-}
-
-@media (min-width: 1536px) {
-  .container {
-    max-width: 1536px;
-  }
-}
-
 .fixed {
   position: fixed;
 }
@@ -518,6 +488,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-column: span 3 / span 3;
 }
 
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -526,11 +501,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .my-24 {
   margin-top: 6rem;
   margin-bottom: 6rem;
-}
-
-.mx-4 {
-  margin-left: 1rem;
-  margin-right: 1rem;
 }
 
 .mt-6 {
@@ -557,32 +527,36 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: none;
 }
 
-.h-24 {
-  height: 6rem;
+.h-14 {
+  height: 3.5rem;
 }
 
 .h-full {
   height: 100%;
 }
 
-.h-\[58px\] {
-  height: 58px;
+.h-\[34px\] {
+  height: 34px;
 }
 
-.h-14 {
-  height: 3.5rem;
+.h-auto {
+  height: auto;
 }
 
 .h-11 {
   height: 2.75rem;
 }
 
-.h-screen {
-  height: 100vh;
+.h-24 {
+  height: 6rem;
 }
 
-.h-auto {
-  height: auto;
+.h-\[58px\] {
+  height: 58px;
+}
+
+.h-screen {
+  height: 100vh;
 }
 
 .h-6 {
@@ -627,12 +601,26 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 3rem;
 }
 
-.h-\[34px\] {
-  height: 34px;
-}
-
 .w-full {
   width: 100%;
+}
+
+.w-\[100px\] {
+  width: 100px;
+}
+
+.w-fit {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.w-auto {
+  width: auto;
+}
+
+.w-44 {
+  width: 11rem;
 }
 
 .w-\[1280px\] {
@@ -645,10 +633,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-6\/12 {
   width: 50%;
-}
-
-.w-44 {
-  width: 11rem;
 }
 
 .w-6 {
@@ -673,20 +657,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-\[280px\] {
   width: 280px;
-}
-
-.w-auto {
-  width: auto;
-}
-
-.w-\[100px\] {
-  width: 100px;
-}
-
-.w-fit {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .transform {
@@ -846,16 +816,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-repeat: no-repeat;
 }
 
+.fill-white {
+  fill: #fff;
+}
+
 .fill-\[\#078BD6\] {
   fill: #078BD6;
 }
 
 .fill-\[\#303030\] {
   fill: #303030;
-}
-
-.fill-white {
-  fill: #fff;
 }
 
 .px-4 {
@@ -1049,59 +1019,26 @@ Ensure the default browser behavior of the `hidden` attribute.
   fill: #105b86;
 }
 
-@media (min-width: 640px) {
-  .sm\:mx-4 {
+@media (max-width: 767px) {
+  .md\:absolute {
+    position: absolute;
+  }
+
+  .md\:right-0 {
+    right: 0px;
+  }
+
+  .md\:z-10 {
+    z-index: 10;
+  }
+
+  .md\:mx-4 {
     margin-left: 1rem;
     margin-right: 1rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .md\:container {
-    width: 100%;
-  }
-
-  @media (min-width: 640px) {
-    .md\:container {
-      max-width: 640px;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .md\:container {
-      max-width: 768px;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .md\:container {
-      max-width: 1024px;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    .md\:container {
-      max-width: 1280px;
-    }
-  }
-
-  @media (min-width: 1536px) {
-    .md\:container {
-      max-width: 1536px;
-    }
-  }
-
-  .md\:mx-auto {
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .md\:flex {
     display: flex;
-  }
-
-  .md\:contents {
-    display: contents;
   }
 
   .md\:hidden {
@@ -1112,56 +1049,64 @@ Ensure the default browser behavior of the `hidden` attribute.
     height: 6rem;
   }
 
+  .md\:h-\[58px\] {
+    height: 58px;
+  }
+
   .md\:h-14 {
     height: 3.5rem;
+  }
+
+  .md\:h-full {
+    height: 100%;
+  }
+
+  .md\:h-56 {
+    height: 14rem;
   }
 
   .md\:h-\[34px\] {
     height: 34px;
   }
 
-  .md\:h-\[56px\] {
-    height: 56px;
-  }
-
-  .md\:h-\[58px\] {
-    height: 58px;
+  .md\:h-fit {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
   }
 
   .md\:w-\[1280px\] {
     width: 1280px;
   }
 
-  .md\:w-full {
-    width: 100%;
-  }
-
-  .md\:w-6\/12 {
-    width: 50%;
-  }
-
-  .md\:w-3\/12 {
-    width: 25%;
-  }
-
-  .md\:w-1\/12 {
-    width: 8.333333%;
+  .md\:w-\[174px\] {
+    width: 174px;
   }
 
   .md\:w-2\/12 {
     width: 16.666667%;
   }
 
+  .md\:w-full {
+    width: 100%;
+  }
+
   .md\:w-\[\] {
     width: ;
   }
 
-  .md\:w-\[174\] {
-    width: 174;
+  .md\:w-\[100px\] {
+    width: 100px;
   }
 
-  .md\:w-\[174px\] {
-    width: 174px;
+  .md\:w-\[34px\] {
+    width: 34px;
+  }
+
+  .md\:w-fit {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
   }
 
   .md\:items-center {
@@ -1172,68 +1117,27 @@ Ensure the default browser behavior of the `hidden` attribute.
     justify-content: space-between;
   }
 
-  .md\:rounded-lg {
-    border-radius: 0.5rem;
+  .md\:fill-\[\#078BD6\] {
+    fill: #078BD6;
   }
 
-  .md\:px-4 {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  .md\:fill-white {
+    fill: #fff;
   }
 
   .md\:outline-1 {
     outline-width: 1px;
   }
-
-  .md\:outline-\[\#226285\] {
-    outline-color: #226285;
-  }
 }
 
-@media (min-width: 1024px) {
-  .lg\:mx-auto {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .lg\:contents {
-    display: contents;
-  }
-
-  .lg\:w-6\/12 {
-    width: 50%;
-  }
-
+@media (max-width: 1023px) {
   .lg\:w-4\/12 {
     width: 33.333333%;
   }
 }
 
-@media (min-width: 1280px) {
-  .xl\:mx-auto {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .xl\:contents {
-    display: contents;
-  }
-
-  .xl\:h-24 {
-    height: 6rem;
-  }
-
+@media (max-width: 1279px) {
   .xl\:w-6\/12 {
     width: 50%;
-  }
-}
-
-@media (min-width: 1536px) {
-  .\32xl\:h-auto {
-    height: auto;
-  }
-
-  .\32xl\:w-auto {
-    width: auto;
   }
 }

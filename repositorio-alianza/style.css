@@ -488,6 +488,30 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-column: span 3 / span 3;
 }
 
+.col-span-4 {
+  grid-column: span 4 / span 4;
+}
+
+.col-span-1 {
+  grid-column: span 1 / span 1;
+}
+
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+
+.col-span-12 {
+  grid-column: span 12 / span 12;
+}
+
+.row-span-3 {
+  grid-row: span 3 / span 3;
+}
+
+.row-auto {
+  grid-row: auto;
+}
+
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -513,6 +537,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .mb-4 {
   margin-bottom: 1rem;
+}
+
+.mr-4 {
+  margin-right: 1rem;
 }
 
 .flex {
@@ -599,6 +627,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .h-12 {
   height: 3rem;
+}
+
+.h-\[100px\] {
+  height: 100px;
 }
 
 .w-full {
@@ -751,6 +783,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(2 104 161 / var(--tw-bg-opacity));
 }
 
+.bg-\[rgb\(7\2c 139\2c 214\)\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(7 139 214 / var(--tw-bg-opacity));
+}
+
 .bg-\[url\(\'\.\/images\/logo-repo\.svg\'\)\] {
   background-image: url('./images/logo-repo.svg');
 }
@@ -841,6 +878,16 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+
+.py-24 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .pt-5 {
@@ -1032,13 +1079,34 @@ Ensure the default browser behavior of the `hidden` attribute.
     z-index: 10;
   }
 
+  .md\:col-span-4 {
+    grid-column: span 4 / span 4;
+  }
+
+  .md\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+
   .md\:mx-4 {
     margin-left: 1rem;
     margin-right: 1rem;
   }
 
+  .md\:mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .md\:ml-4 {
+    margin-left: 1rem;
+  }
+
   .md\:flex {
     display: flex;
+  }
+
+  .md\:grid {
+    display: grid;
   }
 
   .md\:hidden {
@@ -1075,6 +1143,18 @@ Ensure the default browser behavior of the `hidden` attribute.
     height: fit-content;
   }
 
+  .md\:h-\[\] {
+    height: ;
+  }
+
+  .md\:h-auto {
+    height: auto;
+  }
+
+  .md\:h-\[104px\] {
+    height: 104px;
+  }
+
   .md\:w-\[1280px\] {
     width: 1280px;
   }
@@ -1109,12 +1189,36 @@ Ensure the default browser behavior of the `hidden` attribute.
     width: fit-content;
   }
 
+  .md\:w-\[360\] {
+    width: 360;
+  }
+
+  .md\:w-\[360px\] {
+    width: 360px;
+  }
+
+  .md\:w-\[156px\] {
+    width: 156px;
+  }
+
+  .md\:w-\[296px\] {
+    width: 296px;
+  }
+
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
   .md\:items-center {
     align-items: center;
   }
 
   .md\:justify-between {
     justify-content: space-between;
+  }
+
+  .md\:gap-4 {
+    gap: 1rem;
   }
 
   .md\:fill-\[\#078BD6\] {
@@ -1125,14 +1229,27 @@ Ensure the default browser behavior of the `hidden` attribute.
     fill: #fff;
   }
 
+  .md\:px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .md\:outline-1 {
     outline-width: 1px;
   }
 }
 
 @media (max-width: 1023px) {
+  .lg\:container {
+    width: 100%;
+  }
+
   .lg\:w-4\/12 {
     width: 33.333333%;
+  }
+
+  .lg\:w-full {
+    width: 100%;
   }
 }
 

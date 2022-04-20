@@ -925,6 +925,14 @@ select {
   height: 0.75rem;
 }
 
+.h-\[440px\] {
+  height: 440px;
+}
+
+.h-\[450px\] {
+  height: 450px;
+}
+
 .w-full {
   width: 100%;
 }

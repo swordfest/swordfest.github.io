@@ -161,7 +161,7 @@ a:visited {
 }
 
 .hero-header .rocket {
-    background-image: url('/img/morro-lineas.svg');
+    background-image: url('../img/morro-lineas.svg');
     background-repeat: no-repeat;
     background-size: contain;
     width: 100vw;
@@ -171,7 +171,7 @@ a:visited {
 }
 
 .rocket:hover {
-    background-image: url('/img/morro-lineas-2.svg');
+    background-image: url('../img/morro-lineas-2.svg');
     background-repeat: no-repeat;
     background-size: contain;
     width: 100vw;

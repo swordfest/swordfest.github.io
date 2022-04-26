@@ -6,13 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
-    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <!-- <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script> -->
+    <!-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> -->
+    <!-- <script src="script.js" defer></script> -->
+    <script>
+        function getFlagEmoji(countryCode) {
+            const codePoints = countryCode
+                .toUpperCase()
+                .split('')
+                .map(char => 127397 + char.charCodeAt());
+            return String.fromCodePoint(...codePoints);
+        }
+    </script>
     <title>Shadowmere</title>
 </head>
 
-<body>
-    <nav class="w-full h-24 bg-slate-500 top-0 shadow-lg fixed">
+<body class="bg-[#F8F8F8]">
+    <nav class="w-full h-24 bg-white top-0 shadow-lg fixed">
         <div class="nav-wrapper container mx-auto bg-white w-full h-full flex items-center justify-between">
             <svg width="260" height="50" viewBox="0 0 260 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20.9424 4.88982L23.7489 0.941338L28.491 1.11554L34.5105 1.3478L25.607 4.46401L20.9424 4.88982Z" fill="black"/>
@@ -49,20 +60,21 @@
                         
                     Fork me on GitHub
                 </span></button>
-                <div class="toggle-dark-light w-auto h-auto ">
+                <div class="toggle-dark-light w-auto h-auto rounded-md flex items-center justify-center cursor-pointer ">
                     <svg class="w-6 h-6 hover:rotate-[-15deg] transition-transform fill-[#303030] cursor-pointer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M13.2756 24C16.977 24 20.3575 22.316 22.5971 19.5566C22.9284 19.1484 22.5671 18.5521 22.0551 18.6496C16.2331 19.7584 10.8866 15.2945 10.8866 9.41738C10.8866 6.03197 12.6988 2.91886 15.6443 1.24266C16.0983 0.984281 15.9841 0.295922 15.4682 0.200625C14.745 0.0672624 14.0111 0.000109516 13.2756 0C6.65178 0 1.27563 5.3677 1.27563 12C1.27563 18.6239 6.64334 24 13.2756 24Z"/>
                         </svg>
                 </div>
+
                 <div class="menu flex flex-row-reverse gap-2 items-center">
-                    <span class="text-base font-medium w-auto h-12 flex items-center justify-center px-5 rounded-md hover:bg-[#EBEBEB] active:bg-[#D7D7D7] cursor-pointer transition-colors">Why Shadowmere?</span>
-                    <span class="text-base font-medium w-auto h-12 flex items-center justify-center px-5 rounded-md hover:bg-[#EBEBEB] active:bg-[#D7D7D7] cursor-pointer transition-colors">About</span>
+                    <button class="text-base font-medium w-auto h-12 flex items-center justify-center px-5 rounded-md hover:bg-[#EBEBEB] active:bg-[#D7D7D7] cursor-pointer transition-colors transition-transform active:scale-[99%]">Why Shadowmere?</button>
+                    <button class="text-base font-medium w-auto h-12 flex items-center justify-center px-5 rounded-md hover:bg-[#EBEBEB] active:bg-[#D7D7D7] cursor-pointer transition-colors transition-transform active:scale-[99%]">About</button>
                 </div>
             </div>
         </div>
     </nav>
-    <main class="wrapper container mx-auto bg-slate-300 w-full h-screen grid grid-cols-12 grid-flow-row mt-24 pt-8 gap-[30px]">
-        <div class="col-span-3 w-full h-full bg-slate-200 flex flex-col gap-8">
+    <main class="wrapper container mx-auto w-full h-screen grid grid-cols-12 grid-flow-row mt-24 pt-8 gap-[30px]">
+        <div class="col-span-3 w-full h-full bg-white shadow-lg flex flex-col gap-8 p-4 rounded-lg">
             <div class="online-vpns-filter flex flex-col gap-4">
                 <div class="w-full h-6 flex items-center font-semibold gap-2">
                     <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -99,24 +111,396 @@
                         </svg> Countries
 
                 </div>
-                <select name="countries" id="countries-selection" class="rounded-md border-gray-300">
-                    <option value="twemoji:flag-united-nations" data-icon="twemoji:flag-united-nations" class="gap-1 before:content-[''] before:bg-[url('./imgs/flag-worldwide.svg')] before:bg-no-repeat before:bg-contain before:w-6 before:h-6 before:absolute before:z-10">      
-                        Worldwide
-                        
+                <select name="countries" id="countries-selection" class="rounded-md border-gray-300 mx-2">
+                    <option value="twemoji:flag-united-nations" class="rounded-none w-full h-14"> 
+                        <img src="https://img.geonames.org/flags/x/az.gif" alt="" class="w-6 h-4">     
+                        Worldwide 
                     </option>
                     <option value="volvo">Volvo</option>
                     <option value="volvo">Volvo</option>
                     <option value="volvo">Volvo</option>
                 </select>
-                <div class="w-full h-6 flex items-center font-semibold gap-2 pl-4">
-                    <span class="font-normal">April 21, 2022, 6:40 p.m. UTC</span>
-                </div>
             </div>
 
         </div>
-        <div class="col-span-9 w-full h-full bg-slate-400 flex flex-col gap-4">
-        </div>
-        <div class="hidden col-span-12 w-full h-10">Made with ❤️ in Europe 🇪🇺 by Akiel</div>
+        <div id="cuerpo" class="col-span-9 w-full h-full  flex flex-col gap-4">
+            
+            <div class="item-server-vpn w-full h-24 bg-white rounded-lg flex items-center justify-between px-8 py-2 shadow-lg">
+                <div class="data-country-ip gap-4 flex">
+                    <div class="country-flag w-6 h-6 bg-slate-700"> </div>
+                    <span class="country-flag w-12 h-6 flex items-center justify-center bg-[#303030] px-2 text-white text-sm rounded">100%</span>
+                    <span class="font-semibold text-base">172.96.186.40</span>
+                </div>
+                <div class="data-operations gap-4 flex flex-row-reverse">
+                    <div class="opt-copiar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 3.75V0H10.625C9.58945 0 8.75 0.839453 8.75 1.875V13.125C8.75 14.1605 9.58945 15 10.625 15H18.125C19.1605 15 20 14.1605 20 13.125V5H16.2852C15.5625 5 15 4.4375 15 3.75ZM16.25 0V3.75H20L16.25 0ZM7.5 13.75V5H1.875C0.839453 5 0 5.83945 0 6.875V18.125C0 19.1605 0.839453 20 1.875 20H9.375C10.4105 20 11.25 19.1605 11.25 18.125V16.25H10C8.62109 16.25 7.5 15.1289 7.5 13.75Z" fill="#303030"/>
+                            </svg>
+                    </div>
+
+                    <div class="opt-codigo-qr w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_522_872)">
+                            <path d="M0.25 8.75H7.75V1.25H0.25V8.75ZM2.75 3.75H5.25V6.25H2.75V3.75ZM10.25 1.25V8.75H17.75V1.25H10.25ZM15.25 6.25H12.75V3.75H15.25V6.25ZM0.25 18.75H7.75V11.25H0.25V18.75ZM2.75 13.75H5.25V16.25H2.75V13.75ZM16.5 11.25H17.75V16.25H14V15H12.75V18.75H10.25V11.25H14V12.5H16.5V11.25ZM16.5 17.5H17.75V18.75H16.5V17.5ZM14 17.5H15.25V18.75H14V17.5Z" fill="#303030"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_522_872">
+                            <rect width="17.5" height="20" fill="white" transform="translate(0.25)"/>
+                            </clipPath>
+                            </defs>
+                            </svg>
+                    </div>
+
+                    <div class="opt-descargar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.75 13.75H13.5352L11.7676 15.5176C11.2969 15.9883 10.668 16.25 10 16.25C9.33203 16.25 8.70469 15.99 8.23242 15.5176L6.46484 13.75H1.25C0.559766 13.75 0 14.3098 0 15V18.75C0 19.4402 0.559766 20 1.25 20H18.75C19.4402 20 20 19.4402 20 18.75V15C20 14.3086 19.4414 13.75 18.75 13.75ZM16.875 17.8125C16.3594 17.8125 15.9375 17.3906 15.9375 16.875C15.9375 16.3594 16.3594 15.9375 16.875 15.9375C17.3906 15.9375 17.8125 16.3594 17.8125 16.875C17.8125 17.3906 17.3906 17.8125 16.875 17.8125ZM9.11719 14.6328C9.35938 14.8789 9.67969 15 10 15C10.3203 15 10.6398 14.8779 10.8836 14.6338L15.8836 9.63379C16.3715 9.14551 16.3715 8.35449 15.8836 7.86621C15.3953 7.37793 14.6039 7.37793 14.116 7.86621L11.25 10.7344V1.25C11.25 0.559766 10.6902 0 10 0C9.30859 0 8.75 0.559766 8.75 1.25V10.7344L5.88281 7.86719C5.39492 7.37891 4.60352 7.37891 4.11523 7.86719C3.62734 8.35547 3.62734 9.14648 4.11523 9.63477L9.11719 14.6328Z" fill="#303030"/>
+                            </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-server-vpn w-full h-24 bg-white rounded-lg flex items-center justify-between px-8 py-2 shadow-lg">
+                <div class="data-country-ip gap-4 flex">
+                    <div class="country-flag w-6 h-6 bg-slate-700"> </div>
+                    <span class="country-flag w-12 h-6 flex items-center justify-center bg-[#303030] text-white text-sm rounded">99%</span>
+                    <span class="font-semibold text-base">134.195.196.51</span>
+                </div>
+                <div class="data-operations gap-4 flex flex-row-reverse">
+                    <div class="opt-copiar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 3.75V0H10.625C9.58945 0 8.75 0.839453 8.75 1.875V13.125C8.75 14.1605 9.58945 15 10.625 15H18.125C19.1605 15 20 14.1605 20 13.125V5H16.2852C15.5625 5 15 4.4375 15 3.75ZM16.25 0V3.75H20L16.25 0ZM7.5 13.75V5H1.875C0.839453 5 0 5.83945 0 6.875V18.125C0 19.1605 0.839453 20 1.875 20H9.375C10.4105 20 11.25 19.1605 11.25 18.125V16.25H10C8.62109 16.25 7.5 15.1289 7.5 13.75Z" fill="#303030"/>
+                            </svg>
+                    </div>
+
+                    <div class="opt-codigo-qr w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_522_872)">
+                            <path d="M0.25 8.75H7.75V1.25H0.25V8.75ZM2.75 3.75H5.25V6.25H2.75V3.75ZM10.25 1.25V8.75H17.75V1.25H10.25ZM15.25 6.25H12.75V3.75H15.25V6.25ZM0.25 18.75H7.75V11.25H0.25V18.75ZM2.75 13.75H5.25V16.25H2.75V13.75ZM16.5 11.25H17.75V16.25H14V15H12.75V18.75H10.25V11.25H14V12.5H16.5V11.25ZM16.5 17.5H17.75V18.75H16.5V17.5ZM14 17.5H15.25V18.75H14V17.5Z" fill="#303030"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_522_872">
+                            <rect width="17.5" height="20" fill="white" transform="translate(0.25)"/>
+                            </clipPath>
+                            </defs>
+                            </svg>
+                    </div>
+
+                    <div class="opt-descargar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.75 13.75H13.5352L11.7676 15.5176C11.2969 15.9883 10.668 16.25 10 16.25C9.33203 16.25 8.70469 15.99 8.23242 15.5176L6.46484 13.75H1.25C0.559766 13.75 0 14.3098 0 15V18.75C0 19.4402 0.559766 20 1.25 20H18.75C19.4402 20 20 19.4402 20 18.75V15C20 14.3086 19.4414 13.75 18.75 13.75ZM16.875 17.8125C16.3594 17.8125 15.9375 17.3906 15.9375 16.875C15.9375 16.3594 16.3594 15.9375 16.875 15.9375C17.3906 15.9375 17.8125 16.3594 17.8125 16.875C17.8125 17.3906 17.3906 17.8125 16.875 17.8125ZM9.11719 14.6328C9.35938 14.8789 9.67969 15 10 15C10.3203 15 10.6398 14.8779 10.8836 14.6338L15.8836 9.63379C16.3715 9.14551 16.3715 8.35449 15.8836 7.86621C15.3953 7.37793 14.6039 7.37793 14.116 7.86621L11.25 10.7344V1.25C11.25 0.559766 10.6902 0 10 0C9.30859 0 8.75 0.559766 8.75 1.25V10.7344L5.88281 7.86719C5.39492 7.37891 4.60352 7.37891 4.11523 7.86719C3.62734 8.35547 3.62734 9.14648 4.11523 9.63477L9.11719 14.6328Z" fill="#303030"/>
+                            </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-server-vpn w-full h-24 bg-white rounded-lg flex items-center justify-between px-8 py-2 shadow-lg">
+                <div class="data-country-ip gap-4 flex">
+                    <div class="country-flag w-6 h-6 bg-slate-700"> </div>
+                    <span class="country-flag w-12 h-6 flex items-center justify-center bg-[#303030] text-white text-sm rounded">99%</span>
+                    <span class="font-semibold text-base">134.195.196.193</span>
+                </div>
+                <div class="data-operations gap-4 flex flex-row-reverse">
+                    <div class="opt-copiar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 3.75V0H10.625C9.58945 0 8.75 0.839453 8.75 1.875V13.125C8.75 14.1605 9.58945 15 10.625 15H18.125C19.1605 15 20 14.1605 20 13.125V5H16.2852C15.5625 5 15 4.4375 15 3.75ZM16.25 0V3.75H20L16.25 0ZM7.5 13.75V5H1.875C0.839453 5 0 5.83945 0 6.875V18.125C0 19.1605 0.839453 20 1.875 20H9.375C10.4105 20 11.25 19.1605 11.25 18.125V16.25H10C8.62109 16.25 7.5 15.1289 7.5 13.75Z" fill="#303030"/>
+                            </svg>
+                    </div>
+
+                    <div class="opt-codigo-qr w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_522_872)">
+                            <path d="M0.25 8.75H7.75V1.25H0.25V8.75ZM2.75 3.75H5.25V6.25H2.75V3.75ZM10.25 1.25V8.75H17.75V1.25H10.25ZM15.25 6.25H12.75V3.75H15.25V6.25ZM0.25 18.75H7.75V11.25H0.25V18.75ZM2.75 13.75H5.25V16.25H2.75V13.75ZM16.5 11.25H17.75V16.25H14V15H12.75V18.75H10.25V11.25H14V12.5H16.5V11.25ZM16.5 17.5H17.75V18.75H16.5V17.5ZM14 17.5H15.25V18.75H14V17.5Z" fill="#303030"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_522_872">
+                            <rect width="17.5" height="20" fill="white" transform="translate(0.25)"/>
+                            </clipPath>
+                            </defs>
+                            </svg>
+                    </div>
+
+                    <div class="opt-descargar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.75 13.75H13.5352L11.7676 15.5176C11.2969 15.9883 10.668 16.25 10 16.25C9.33203 16.25 8.70469 15.99 8.23242 15.5176L6.46484 13.75H1.25C0.559766 13.75 0 14.3098 0 15V18.75C0 19.4402 0.559766 20 1.25 20H18.75C19.4402 20 20 19.4402 20 18.75V15C20 14.3086 19.4414 13.75 18.75 13.75ZM16.875 17.8125C16.3594 17.8125 15.9375 17.3906 15.9375 16.875C15.9375 16.3594 16.3594 15.9375 16.875 15.9375C17.3906 15.9375 17.8125 16.3594 17.8125 16.875C17.8125 17.3906 17.3906 17.8125 16.875 17.8125ZM9.11719 14.6328C9.35938 14.8789 9.67969 15 10 15C10.3203 15 10.6398 14.8779 10.8836 14.6338L15.8836 9.63379C16.3715 9.14551 16.3715 8.35449 15.8836 7.86621C15.3953 7.37793 14.6039 7.37793 14.116 7.86621L11.25 10.7344V1.25C11.25 0.559766 10.6902 0 10 0C9.30859 0 8.75 0.559766 8.75 1.25V10.7344L5.88281 7.86719C5.39492 7.37891 4.60352 7.37891 4.11523 7.86719C3.62734 8.35547 3.62734 9.14648 4.11523 9.63477L9.11719 14.6328Z" fill="#303030"/>
+                            </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-server-vpn w-full h-24 bg-white rounded-lg flex items-center justify-between px-8 py-2 shadow-lg">
+                <div class="data-country-ip gap-4 flex">
+                    <div class="country-flag w-6 h-6 bg-slate-700"> </div>
+                    <span class="country-flag w-12 h-6 flex items-center justify-center bg-[#303030] text-white text-sm rounded">99%</span>
+                    <span class="font-semibold text-base">172.105.232.147</span>
+                </div>
+                <div class="data-operations gap-4 flex flex-row-reverse">
+                    <div class="opt-copiar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 3.75V0H10.625C9.58945 0 8.75 0.839453 8.75 1.875V13.125C8.75 14.1605 9.58945 15 10.625 15H18.125C19.1605 15 20 14.1605 20 13.125V5H16.2852C15.5625 5 15 4.4375 15 3.75ZM16.25 0V3.75H20L16.25 0ZM7.5 13.75V5H1.875C0.839453 5 0 5.83945 0 6.875V18.125C0 19.1605 0.839453 20 1.875 20H9.375C10.4105 20 11.25 19.1605 11.25 18.125V16.25H10C8.62109 16.25 7.5 15.1289 7.5 13.75Z" fill="#303030"/>
+                            </svg>
+                    </div>
+
+                    <div class="opt-codigo-qr w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_522_872)">
+                            <path d="M0.25 8.75H7.75V1.25H0.25V8.75ZM2.75 3.75H5.25V6.25H2.75V3.75ZM10.25 1.25V8.75H17.75V1.25H10.25ZM15.25 6.25H12.75V3.75H15.25V6.25ZM0.25 18.75H7.75V11.25H0.25V18.75ZM2.75 13.75H5.25V16.25H2.75V13.75ZM16.5 11.25H17.75V16.25H14V15H12.75V18.75H10.25V11.25H14V12.5H16.5V11.25ZM16.5 17.5H17.75V18.75H16.5V17.5ZM14 17.5H15.25V18.75H14V17.5Z" fill="#303030"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_522_872">
+                            <rect width="17.5" height="20" fill="white" transform="translate(0.25)"/>
+                            </clipPath>
+                            </defs>
+                            </svg>
+                    </div>
+
+                    <div class="opt-descargar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.75 13.75H13.5352L11.7676 15.5176C11.2969 15.9883 10.668 16.25 10 16.25C9.33203 16.25 8.70469 15.99 8.23242 15.5176L6.46484 13.75H1.25C0.559766 13.75 0 14.3098 0 15V18.75C0 19.4402 0.559766 20 1.25 20H18.75C19.4402 20 20 19.4402 20 18.75V15C20 14.3086 19.4414 13.75 18.75 13.75ZM16.875 17.8125C16.3594 17.8125 15.9375 17.3906 15.9375 16.875C15.9375 16.3594 16.3594 15.9375 16.875 15.9375C17.3906 15.9375 17.8125 16.3594 17.8125 16.875C17.8125 17.3906 17.3906 17.8125 16.875 17.8125ZM9.11719 14.6328C9.35938 14.8789 9.67969 15 10 15C10.3203 15 10.6398 14.8779 10.8836 14.6338L15.8836 9.63379C16.3715 9.14551 16.3715 8.35449 15.8836 7.86621C15.3953 7.37793 14.6039 7.37793 14.116 7.86621L11.25 10.7344V1.25C11.25 0.559766 10.6902 0 10 0C9.30859 0 8.75 0.559766 8.75 1.25V10.7344L5.88281 7.86719C5.39492 7.37891 4.60352 7.37891 4.11523 7.86719C3.62734 8.35547 3.62734 9.14648 4.11523 9.63477L9.11719 14.6328Z" fill="#303030"/>
+                            </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-server-vpn w-full h-24 bg-white rounded-lg flex items-center justify-between px-8 py-2 shadow-lg">
+                <div class="data-country-ip gap-4 flex">
+                    <div class="country-flag w-6 h-6 bg-slate-700"> </div>
+                    <span class="country-flag w-12 h-6 flex items-center justify-center bg-[#303030] text-white text-sm rounded">99%</span>
+                    <span class="font-semibold text-base">38.143.66.87</span>
+                </div>
+                <div class="data-operations gap-4 flex flex-row-reverse">
+                    <div class="opt-copiar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 3.75V0H10.625C9.58945 0 8.75 0.839453 8.75 1.875V13.125C8.75 14.1605 9.58945 15 10.625 15H18.125C19.1605 15 20 14.1605 20 13.125V5H16.2852C15.5625 5 15 4.4375 15 3.75ZM16.25 0V3.75H20L16.25 0ZM7.5 13.75V5H1.875C0.839453 5 0 5.83945 0 6.875V18.125C0 19.1605 0.839453 20 1.875 20H9.375C10.4105 20 11.25 19.1605 11.25 18.125V16.25H10C8.62109 16.25 7.5 15.1289 7.5 13.75Z" fill="#303030"/>
+                            </svg>
+                    </div>
+
+                    <div class="opt-codigo-qr w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_522_872)">
+                            <path d="M0.25 8.75H7.75V1.25H0.25V8.75ZM2.75 3.75H5.25V6.25H2.75V3.75ZM10.25 1.25V8.75H17.75V1.25H10.25ZM15.25 6.25H12.75V3.75H15.25V6.25ZM0.25 18.75H7.75V11.25H0.25V18.75ZM2.75 13.75H5.25V16.25H2.75V13.75ZM16.5 11.25H17.75V16.25H14V15H12.75V18.75H10.25V11.25H14V12.5H16.5V11.25ZM16.5 17.5H17.75V18.75H16.5V17.5ZM14 17.5H15.25V18.75H14V17.5Z" fill="#303030"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_522_872">
+                            <rect width="17.5" height="20" fill="white" transform="translate(0.25)"/>
+                            </clipPath>
+                            </defs>
+                            </svg>
+                    </div>
+
+                    <div class="opt-descargar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.75 13.75H13.5352L11.7676 15.5176C11.2969 15.9883 10.668 16.25 10 16.25C9.33203 16.25 8.70469 15.99 8.23242 15.5176L6.46484 13.75H1.25C0.559766 13.75 0 14.3098 0 15V18.75C0 19.4402 0.559766 20 1.25 20H18.75C19.4402 20 20 19.4402 20 18.75V15C20 14.3086 19.4414 13.75 18.75 13.75ZM16.875 17.8125C16.3594 17.8125 15.9375 17.3906 15.9375 16.875C15.9375 16.3594 16.3594 15.9375 16.875 15.9375C17.3906 15.9375 17.8125 16.3594 17.8125 16.875C17.8125 17.3906 17.3906 17.8125 16.875 17.8125ZM9.11719 14.6328C9.35938 14.8789 9.67969 15 10 15C10.3203 15 10.6398 14.8779 10.8836 14.6338L15.8836 9.63379C16.3715 9.14551 16.3715 8.35449 15.8836 7.86621C15.3953 7.37793 14.6039 7.37793 14.116 7.86621L11.25 10.7344V1.25C11.25 0.559766 10.6902 0 10 0C9.30859 0 8.75 0.559766 8.75 1.25V10.7344L5.88281 7.86719C5.39492 7.37891 4.60352 7.37891 4.11523 7.86719C3.62734 8.35547 3.62734 9.14648 4.11523 9.63477L9.11719 14.6328Z" fill="#303030"/>
+                            </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-server-vpn w-full h-24 bg-white rounded-lg flex items-center justify-between px-8 py-2 shadow-lg">
+                <div class="data-country-ip gap-4 flex">
+                    <div class="country-flag w-6 h-6 bg-slate-700"> </div>
+                    <span class="country-flag w-12 h-6 flex items-center justify-center bg-[#303030] text-white text-sm rounded">99%</span>
+                    <span class="font-semibold text-base">5.39.70.138</span>
+                </div>
+                <div class="data-operations gap-4 flex flex-row-reverse">
+                    <div class="opt-copiar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 3.75V0H10.625C9.58945 0 8.75 0.839453 8.75 1.875V13.125C8.75 14.1605 9.58945 15 10.625 15H18.125C19.1605 15 20 14.1605 20 13.125V5H16.2852C15.5625 5 15 4.4375 15 3.75ZM16.25 0V3.75H20L16.25 0ZM7.5 13.75V5H1.875C0.839453 5 0 5.83945 0 6.875V18.125C0 19.1605 0.839453 20 1.875 20H9.375C10.4105 20 11.25 19.1605 11.25 18.125V16.25H10C8.62109 16.25 7.5 15.1289 7.5 13.75Z" fill="#303030"/>
+                            </svg>
+                    </div>
+
+                    <div class="opt-codigo-qr w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_522_872)">
+                            <path d="M0.25 8.75H7.75V1.25H0.25V8.75ZM2.75 3.75H5.25V6.25H2.75V3.75ZM10.25 1.25V8.75H17.75V1.25H10.25ZM15.25 6.25H12.75V3.75H15.25V6.25ZM0.25 18.75H7.75V11.25H0.25V18.75ZM2.75 13.75H5.25V16.25H2.75V13.75ZM16.5 11.25H17.75V16.25H14V15H12.75V18.75H10.25V11.25H14V12.5H16.5V11.25ZM16.5 17.5H17.75V18.75H16.5V17.5ZM14 17.5H15.25V18.75H14V17.5Z" fill="#303030"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_522_872">
+                            <rect width="17.5" height="20" fill="white" transform="translate(0.25)"/>
+                            </clipPath>
+                            </defs>
+                            </svg>
+                    </div>
+
+                    <div class="opt-descargar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.75 13.75H13.5352L11.7676 15.5176C11.2969 15.9883 10.668 16.25 10 16.25C9.33203 16.25 8.70469 15.99 8.23242 15.5176L6.46484 13.75H1.25C0.559766 13.75 0 14.3098 0 15V18.75C0 19.4402 0.559766 20 1.25 20H18.75C19.4402 20 20 19.4402 20 18.75V15C20 14.3086 19.4414 13.75 18.75 13.75ZM16.875 17.8125C16.3594 17.8125 15.9375 17.3906 15.9375 16.875C15.9375 16.3594 16.3594 15.9375 16.875 15.9375C17.3906 15.9375 17.8125 16.3594 17.8125 16.875C17.8125 17.3906 17.3906 17.8125 16.875 17.8125ZM9.11719 14.6328C9.35938 14.8789 9.67969 15 10 15C10.3203 15 10.6398 14.8779 10.8836 14.6338L15.8836 9.63379C16.3715 9.14551 16.3715 8.35449 15.8836 7.86621C15.3953 7.37793 14.6039 7.37793 14.116 7.86621L11.25 10.7344V1.25C11.25 0.559766 10.6902 0 10 0C9.30859 0 8.75 0.559766 8.75 1.25V10.7344L5.88281 7.86719C5.39492 7.37891 4.60352 7.37891 4.11523 7.86719C3.62734 8.35547 3.62734 9.14648 4.11523 9.63477L9.11719 14.6328Z" fill="#303030"/>
+                            </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-server-vpn w-full h-24 bg-white rounded-lg flex items-center justify-between px-8 py-2 shadow-lg">
+                <div class="data-country-ip gap-4 flex">
+                    <div class="country-flag w-6 h-6 bg-slate-700"> </div>
+                    <span class="country-flag w-12 h-6 flex items-center justify-center bg-[#303030] text-white text-sm rounded">99%</span>
+                    <span class="font-semibold text-base">172.105.35.151</span>
+                </div>
+                <div class="data-operations gap-4 flex flex-row-reverse">
+                    <div class="opt-copiar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 3.75V0H10.625C9.58945 0 8.75 0.839453 8.75 1.875V13.125C8.75 14.1605 9.58945 15 10.625 15H18.125C19.1605 15 20 14.1605 20 13.125V5H16.2852C15.5625 5 15 4.4375 15 3.75ZM16.25 0V3.75H20L16.25 0ZM7.5 13.75V5H1.875C0.839453 5 0 5.83945 0 6.875V18.125C0 19.1605 0.839453 20 1.875 20H9.375C10.4105 20 11.25 19.1605 11.25 18.125V16.25H10C8.62109 16.25 7.5 15.1289 7.5 13.75Z" fill="#303030"/>
+                            </svg>
+                    </div>
+
+                    <div class="opt-codigo-qr w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_522_872)">
+                            <path d="M0.25 8.75H7.75V1.25H0.25V8.75ZM2.75 3.75H5.25V6.25H2.75V3.75ZM10.25 1.25V8.75H17.75V1.25H10.25ZM15.25 6.25H12.75V3.75H15.25V6.25ZM0.25 18.75H7.75V11.25H0.25V18.75ZM2.75 13.75H5.25V16.25H2.75V13.75ZM16.5 11.25H17.75V16.25H14V15H12.75V18.75H10.25V11.25H14V12.5H16.5V11.25ZM16.5 17.5H17.75V18.75H16.5V17.5ZM14 17.5H15.25V18.75H14V17.5Z" fill="#303030"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_522_872">
+                            <rect width="17.5" height="20" fill="white" transform="translate(0.25)"/>
+                            </clipPath>
+                            </defs>
+                            </svg>
+                    </div>
+
+                    <div class="opt-descargar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.75 13.75H13.5352L11.7676 15.5176C11.2969 15.9883 10.668 16.25 10 16.25C9.33203 16.25 8.70469 15.99 8.23242 15.5176L6.46484 13.75H1.25C0.559766 13.75 0 14.3098 0 15V18.75C0 19.4402 0.559766 20 1.25 20H18.75C19.4402 20 20 19.4402 20 18.75V15C20 14.3086 19.4414 13.75 18.75 13.75ZM16.875 17.8125C16.3594 17.8125 15.9375 17.3906 15.9375 16.875C15.9375 16.3594 16.3594 15.9375 16.875 15.9375C17.3906 15.9375 17.8125 16.3594 17.8125 16.875C17.8125 17.3906 17.3906 17.8125 16.875 17.8125ZM9.11719 14.6328C9.35938 14.8789 9.67969 15 10 15C10.3203 15 10.6398 14.8779 10.8836 14.6338L15.8836 9.63379C16.3715 9.14551 16.3715 8.35449 15.8836 7.86621C15.3953 7.37793 14.6039 7.37793 14.116 7.86621L11.25 10.7344V1.25C11.25 0.559766 10.6902 0 10 0C9.30859 0 8.75 0.559766 8.75 1.25V10.7344L5.88281 7.86719C5.39492 7.37891 4.60352 7.37891 4.11523 7.86719C3.62734 8.35547 3.62734 9.14648 4.11523 9.63477L9.11719 14.6328Z" fill="#303030"/>
+                            </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-server-vpn w-full h-24 bg-white rounded-lg flex items-center justify-between px-8 py-2 shadow-lg">
+                <div class="data-country-ip gap-4 flex">
+                    <div class="country-flag w-6 h-6 bg-slate-700"> </div>
+                    <span class="country-flag w-12 h-6 flex items-center justify-center bg-[#303030] text-white text-sm rounded">99%</span>
+                    <span class="font-semibold text-base">141.164.57.134</span>
+                </div>
+                <div class="data-operations gap-4 flex flex-row-reverse">
+                    <div class="opt-copiar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 3.75V0H10.625C9.58945 0 8.75 0.839453 8.75 1.875V13.125C8.75 14.1605 9.58945 15 10.625 15H18.125C19.1605 15 20 14.1605 20 13.125V5H16.2852C15.5625 5 15 4.4375 15 3.75ZM16.25 0V3.75H20L16.25 0ZM7.5 13.75V5H1.875C0.839453 5 0 5.83945 0 6.875V18.125C0 19.1605 0.839453 20 1.875 20H9.375C10.4105 20 11.25 19.1605 11.25 18.125V16.25H10C8.62109 16.25 7.5 15.1289 7.5 13.75Z" fill="#303030"/>
+                            </svg>
+                    </div>
+
+                    <div class="opt-codigo-qr w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_522_872)">
+                            <path d="M0.25 8.75H7.75V1.25H0.25V8.75ZM2.75 3.75H5.25V6.25H2.75V3.75ZM10.25 1.25V8.75H17.75V1.25H10.25ZM15.25 6.25H12.75V3.75H15.25V6.25ZM0.25 18.75H7.75V11.25H0.25V18.75ZM2.75 13.75H5.25V16.25H2.75V13.75ZM16.5 11.25H17.75V16.25H14V15H12.75V18.75H10.25V11.25H14V12.5H16.5V11.25ZM16.5 17.5H17.75V18.75H16.5V17.5ZM14 17.5H15.25V18.75H14V17.5Z" fill="#303030"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_522_872">
+                            <rect width="17.5" height="20" fill="white" transform="translate(0.25)"/>
+                            </clipPath>
+                            </defs>
+                            </svg>
+                    </div>
+
+                    <div class="opt-descargar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.75 13.75H13.5352L11.7676 15.5176C11.2969 15.9883 10.668 16.25 10 16.25C9.33203 16.25 8.70469 15.99 8.23242 15.5176L6.46484 13.75H1.25C0.559766 13.75 0 14.3098 0 15V18.75C0 19.4402 0.559766 20 1.25 20H18.75C19.4402 20 20 19.4402 20 18.75V15C20 14.3086 19.4414 13.75 18.75 13.75ZM16.875 17.8125C16.3594 17.8125 15.9375 17.3906 15.9375 16.875C15.9375 16.3594 16.3594 15.9375 16.875 15.9375C17.3906 15.9375 17.8125 16.3594 17.8125 16.875C17.8125 17.3906 17.3906 17.8125 16.875 17.8125ZM9.11719 14.6328C9.35938 14.8789 9.67969 15 10 15C10.3203 15 10.6398 14.8779 10.8836 14.6338L15.8836 9.63379C16.3715 9.14551 16.3715 8.35449 15.8836 7.86621C15.3953 7.37793 14.6039 7.37793 14.116 7.86621L11.25 10.7344V1.25C11.25 0.559766 10.6902 0 10 0C9.30859 0 8.75 0.559766 8.75 1.25V10.7344L5.88281 7.86719C5.39492 7.37891 4.60352 7.37891 4.11523 7.86719C3.62734 8.35547 3.62734 9.14648 4.11523 9.63477L9.11719 14.6328Z" fill="#303030"/>
+                            </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-server-vpn w-full h-24 bg-white rounded-lg flex items-center justify-between px-8 py-2 shadow-lg">
+                <div class="data-country-ip gap-4 flex">
+                    <div class="country-flag w-6 h-6 bg-slate-700"> </div>
+                    <span class="country-flag w-12 h-6 flex items-center justify-center bg-[#303030] text-white text-sm rounded">99%</span>
+                    <span class="font-semibold text-base">172.104.50.106</span>
+                </div>
+                <div class="data-operations gap-4 flex flex-row-reverse">
+                    <div class="opt-copiar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 3.75V0H10.625C9.58945 0 8.75 0.839453 8.75 1.875V13.125C8.75 14.1605 9.58945 15 10.625 15H18.125C19.1605 15 20 14.1605 20 13.125V5H16.2852C15.5625 5 15 4.4375 15 3.75ZM16.25 0V3.75H20L16.25 0ZM7.5 13.75V5H1.875C0.839453 5 0 5.83945 0 6.875V18.125C0 19.1605 0.839453 20 1.875 20H9.375C10.4105 20 11.25 19.1605 11.25 18.125V16.25H10C8.62109 16.25 7.5 15.1289 7.5 13.75Z" fill="#303030"/>
+                            </svg>
+                    </div>
+
+                    <div class="opt-codigo-qr w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_522_872)">
+                            <path d="M0.25 8.75H7.75V1.25H0.25V8.75ZM2.75 3.75H5.25V6.25H2.75V3.75ZM10.25 1.25V8.75H17.75V1.25H10.25ZM15.25 6.25H12.75V3.75H15.25V6.25ZM0.25 18.75H7.75V11.25H0.25V18.75ZM2.75 13.75H5.25V16.25H2.75V13.75ZM16.5 11.25H17.75V16.25H14V15H12.75V18.75H10.25V11.25H14V12.5H16.5V11.25ZM16.5 17.5H17.75V18.75H16.5V17.5ZM14 17.5H15.25V18.75H14V17.5Z" fill="#303030"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_522_872">
+                            <rect width="17.5" height="20" fill="white" transform="translate(0.25)"/>
+                            </clipPath>
+                            </defs>
+                            </svg>
+                    </div>
+
+                    <div class="opt-descargar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.75 13.75H13.5352L11.7676 15.5176C11.2969 15.9883 10.668 16.25 10 16.25C9.33203 16.25 8.70469 15.99 8.23242 15.5176L6.46484 13.75H1.25C0.559766 13.75 0 14.3098 0 15V18.75C0 19.4402 0.559766 20 1.25 20H18.75C19.4402 20 20 19.4402 20 18.75V15C20 14.3086 19.4414 13.75 18.75 13.75ZM16.875 17.8125C16.3594 17.8125 15.9375 17.3906 15.9375 16.875C15.9375 16.3594 16.3594 15.9375 16.875 15.9375C17.3906 15.9375 17.8125 16.3594 17.8125 16.875C17.8125 17.3906 17.3906 17.8125 16.875 17.8125ZM9.11719 14.6328C9.35938 14.8789 9.67969 15 10 15C10.3203 15 10.6398 14.8779 10.8836 14.6338L15.8836 9.63379C16.3715 9.14551 16.3715 8.35449 15.8836 7.86621C15.3953 7.37793 14.6039 7.37793 14.116 7.86621L11.25 10.7344V1.25C11.25 0.559766 10.6902 0 10 0C9.30859 0 8.75 0.559766 8.75 1.25V10.7344L5.88281 7.86719C5.39492 7.37891 4.60352 7.37891 4.11523 7.86719C3.62734 8.35547 3.62734 9.14648 4.11523 9.63477L9.11719 14.6328Z" fill="#303030"/>
+                            </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-server-vpn w-full h-24 bg-white rounded-lg flex items-center justify-between px-8 py-2 shadow-lg">
+                <div class="data-country-ip gap-4 flex">
+                    <div class="country-flag w-6 h-6 bg-slate-700"> </div>
+                    <span class="country-flag w-12 h-6 flex items-center justify-center bg-[#303030] text-white text-sm rounded">99%</span>
+                    <span class="font-semibold text-base">172.99.190.153</span>
+                </div>
+                <div class="data-operations gap-4 flex flex-row-reverse">
+                    <div class="opt-copiar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 3.75V0H10.625C9.58945 0 8.75 0.839453 8.75 1.875V13.125C8.75 14.1605 9.58945 15 10.625 15H18.125C19.1605 15 20 14.1605 20 13.125V5H16.2852C15.5625 5 15 4.4375 15 3.75ZM16.25 0V3.75H20L16.25 0ZM7.5 13.75V5H1.875C0.839453 5 0 5.83945 0 6.875V18.125C0 19.1605 0.839453 20 1.875 20H9.375C10.4105 20 11.25 19.1605 11.25 18.125V16.25H10C8.62109 16.25 7.5 15.1289 7.5 13.75Z" fill="#303030"/>
+                            </svg>
+                    </div>
+
+                    <div class="opt-codigo-qr w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_522_872)">
+                            <path d="M0.25 8.75H7.75V1.25H0.25V8.75ZM2.75 3.75H5.25V6.25H2.75V3.75ZM10.25 1.25V8.75H17.75V1.25H10.25ZM15.25 6.25H12.75V3.75H15.25V6.25ZM0.25 18.75H7.75V11.25H0.25V18.75ZM2.75 13.75H5.25V16.25H2.75V13.75ZM16.5 11.25H17.75V16.25H14V15H12.75V18.75H10.25V11.25H14V12.5H16.5V11.25ZM16.5 17.5H17.75V18.75H16.5V17.5ZM14 17.5H15.25V18.75H14V17.5Z" fill="#303030"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_522_872">
+                            <rect width="17.5" height="20" fill="white" transform="translate(0.25)"/>
+                            </clipPath>
+                            </defs>
+                            </svg>
+                    </div>
+
+                    <div class="opt-descargar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.75 13.75H13.5352L11.7676 15.5176C11.2969 15.9883 10.668 16.25 10 16.25C9.33203 16.25 8.70469 15.99 8.23242 15.5176L6.46484 13.75H1.25C0.559766 13.75 0 14.3098 0 15V18.75C0 19.4402 0.559766 20 1.25 20H18.75C19.4402 20 20 19.4402 20 18.75V15C20 14.3086 19.4414 13.75 18.75 13.75ZM16.875 17.8125C16.3594 17.8125 15.9375 17.3906 15.9375 16.875C15.9375 16.3594 16.3594 15.9375 16.875 15.9375C17.3906 15.9375 17.8125 16.3594 17.8125 16.875C17.8125 17.3906 17.3906 17.8125 16.875 17.8125ZM9.11719 14.6328C9.35938 14.8789 9.67969 15 10 15C10.3203 15 10.6398 14.8779 10.8836 14.6338L15.8836 9.63379C16.3715 9.14551 16.3715 8.35449 15.8836 7.86621C15.3953 7.37793 14.6039 7.37793 14.116 7.86621L11.25 10.7344V1.25C11.25 0.559766 10.6902 0 10 0C9.30859 0 8.75 0.559766 8.75 1.25V10.7344L5.88281 7.86719C5.39492 7.37891 4.60352 7.37891 4.11523 7.86719C3.62734 8.35547 3.62734 9.14648 4.11523 9.63477L9.11719 14.6328Z" fill="#303030"/>
+                            </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-server-vpn w-full h-24 bg-white rounded-lg flex items-center justify-between px-8 py-2 shadow-lg">
+                <div class="data-country-ip gap-4 flex">
+                    <div class="country-flag w-6 h-6 bg-slate-700"> </div>
+                    <span class="country-flag w-12 h-6 flex items-center justify-center bg-[#303030] text-white text-sm rounded">99%</span>
+                    <span class="font-semibold text-base">172.99.190.153</span>
+                </div>
+                <div class="data-operations gap-4 flex flex-row-reverse">
+                    <div class="opt-copiar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 3.75V0H10.625C9.58945 0 8.75 0.839453 8.75 1.875V13.125C8.75 14.1605 9.58945 15 10.625 15H18.125C19.1605 15 20 14.1605 20 13.125V5H16.2852C15.5625 5 15 4.4375 15 3.75ZM16.25 0V3.75H20L16.25 0ZM7.5 13.75V5H1.875C0.839453 5 0 5.83945 0 6.875V18.125C0 19.1605 0.839453 20 1.875 20H9.375C10.4105 20 11.25 19.1605 11.25 18.125V16.25H10C8.62109 16.25 7.5 15.1289 7.5 13.75Z" fill="#303030"/>
+                            </svg>
+                    </div>
+
+                    <div class="opt-codigo-qr w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_522_872)">
+                            <path d="M0.25 8.75H7.75V1.25H0.25V8.75ZM2.75 3.75H5.25V6.25H2.75V3.75ZM10.25 1.25V8.75H17.75V1.25H10.25ZM15.25 6.25H12.75V3.75H15.25V6.25ZM0.25 18.75H7.75V11.25H0.25V18.75ZM2.75 13.75H5.25V16.25H2.75V13.75ZM16.5 11.25H17.75V16.25H14V15H12.75V18.75H10.25V11.25H14V12.5H16.5V11.25ZM16.5 17.5H17.75V18.75H16.5V17.5ZM14 17.5H15.25V18.75H14V17.5Z" fill="#303030"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_522_872">
+                            <rect width="17.5" height="20" fill="white" transform="translate(0.25)"/>
+                            </clipPath>
+                            </defs>
+                            </svg>
+                    </div>
+
+                    <div class="opt-descargar w-10 h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] active:bg-[#D7D7D7] transition-colors transition-transform active:scale-[95%]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.75 13.75H13.5352L11.7676 15.5176C11.2969 15.9883 10.668 16.25 10 16.25C9.33203 16.25 8.70469 15.99 8.23242 15.5176L6.46484 13.75H1.25C0.559766 13.75 0 14.3098 0 15V18.75C0 19.4402 0.559766 20 1.25 20H18.75C19.4402 20 20 19.4402 20 18.75V15C20 14.3086 19.4414 13.75 18.75 13.75ZM16.875 17.8125C16.3594 17.8125 15.9375 17.3906 15.9375 16.875C15.9375 16.3594 16.3594 15.9375 16.875 15.9375C17.3906 15.9375 17.8125 16.3594 17.8125 16.875C17.8125 17.3906 17.3906 17.8125 16.875 17.8125ZM9.11719 14.6328C9.35938 14.8789 9.67969 15 10 15C10.3203 15 10.6398 14.8779 10.8836 14.6338L15.8836 9.63379C16.3715 9.14551 16.3715 8.35449 15.8836 7.86621C15.3953 7.37793 14.6039 7.37793 14.116 7.86621L11.25 10.7344V1.25C11.25 0.559766 10.6902 0 10 0C9.30859 0 8.75 0.559766 8.75 1.25V10.7344L5.88281 7.86719C5.39492 7.37891 4.60352 7.37891 4.11523 7.86719C3.62734 8.35547 3.62734 9.14648 4.11523 9.63477L9.11719 14.6328Z" fill="#303030"/>
+                            </svg>
+                    </div>
+                </div>
+            </div>
+                
+               
+            <div class="hidden col-span-12 w-full h-10">Made with ❤️ in Europe 🇪🇺 by Akiel</div>
     </main>
 </body>
 

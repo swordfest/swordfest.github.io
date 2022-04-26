@@ -25,6 +25,9 @@ module.exports = {
                 // => @media (min-width: 1536px) { ... }
             },
         },
+        fontFamily: {
+            twemoji: ['Twemoji'],
+        },
     },
     plugins: [
         require('@tailwindcss/line-clamp'),

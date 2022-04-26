@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer base {
+    @font-face {
+        font-family: "Twemoji";
+        src: url("./fonts/twemoji.woff2") format("woff2");
+    }
+}

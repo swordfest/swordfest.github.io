@@ -53,13 +53,12 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
             <div class="nav-content flex w-auto h-full items-center flex-row-reverse gap-6 mx-0">
 
                 <button class="mobile-menu w-6 h-6 flex items-center justify-center lg:hidden" x-on:click="open = ! open">
-                    <svg class="icon-menu fill-[#303030] dark:fill-[#cfcfcf]" :class="!open ? '' : 'contents'" x-transition  width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="icon-menu fill-[#303030] dark:fill-[#cfcfcf]" :class="!open ? '' : 'hidden'" x-transition  width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 18.667H21V16.667H3V18.667ZM3 13.667H21V11.667H3V13.667ZM3 6.66699V8.66699H21V6.66699H3Z"/>
                         </svg>
                         <svg class="icon-close fill-[#303030] dark:fill-[#cfcfcf]" :class="open ? '' : 'contents'" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41L17.59 5Z"/>
                             </svg>
-                            
                 </button>
 
                 <div class="menu-mobile absolute w-full h-screen bg-white dark:bg-[#212121] top-24 right-0 z-20 lg:hidden flex flex-col items-center justify-between" x-show="open" x-transition.duration.150ms>

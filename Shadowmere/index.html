@@ -245,7 +245,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
     <main class="wrapper container mx-auto w-full h-auto xl:h-screen grid grid-cols-12 grid-flow-row mt-24 py-8 gap-[30px] px-4" x-data="
     {proxies: null}
     " x-init="
-    #proxies = await(await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json')).json()
+    proxies = await(await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json')).json()
     console.log(proxies)
     ">
         <div class="sidebar hidden xl:col-span-3 w-full h-full bg-white dark:bg-[#212121] dark:text-[#cfcfcf] shadow-lg xl:flex flex-col-reverse xl:flex-col gap-8 p-4 rounded-lg">

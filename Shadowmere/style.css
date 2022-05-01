@@ -723,12 +723,20 @@ select,
   right: 0px;
 }
 
+.bottom-0 {
+  bottom: 0px;
+}
+
 .z-20 {
   z-index: 20;
 }
 
 .col-span-12 {
   grid-column: span 12 / span 12;
+}
+
+.col-span-3 {
+  grid-column: span 3 / span 3;
 }
 
 .mx-auto {
@@ -744,6 +752,11 @@ select,
 .mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+}
+
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .mt-24 {
@@ -806,6 +819,14 @@ select,
   height: 2.5rem;
 }
 
+.h-1 {
+  height: 0.25rem;
+}
+
+.h-2 {
+  height: 0.5rem;
+}
+
 .w-fit {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -842,6 +863,14 @@ select,
 
 .w-14 {
   width: 3.5rem;
+}
+
+.w-8 {
+  width: 2rem;
+}
+
+.w-10 {
+  width: 2.5rem;
 }
 
 .transform {
@@ -924,6 +953,10 @@ select,
   border-width: 1px;
 }
 
+.border-2 {
+  border-width: 2px;
+}
+
 .border-gray-300 {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
@@ -959,6 +992,16 @@ select,
   background-color: rgb(235 235 235 / var(--tw-bg-opacity));
 }
 
+.bg-slate-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
+}
+
+.bg-slate-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
+}
+
 .fill-\[\#303030\] {
   fill: #303030;
 }
@@ -969,6 +1012,18 @@ select,
 
 .fill-\[\] {
   fill: ;
+}
+
+.stroke-\[\#303030\] {
+  stroke: #303030;
+}
+
+.stroke-2 {
+  stroke-width: 2;
+}
+
+.stroke-1 {
+  stroke-width: 1;
 }
 
 .p-4 {
@@ -1317,11 +1372,53 @@ select,
     grid-column: span 9 / span 9;
   }
 
+  .xl\:flex {
+    display: flex;
+  }
+
+  .xl\:contents {
+    display: contents;
+  }
+
+  .xl\:hidden {
+    display: none;
+  }
+
   .xl\:h-screen {
     height: 100vh;
   }
 
+  .xl\:h-full {
+    height: 100%;
+  }
+
+  .xl\:w-full {
+    width: 100%;
+  }
+
   .xl\:flex-col {
     flex-direction: column;
+  }
+
+  .xl\:gap-8 {
+    gap: 2rem;
+  }
+
+  .xl\:rounded-lg {
+    border-radius: 0.5rem;
+  }
+
+  .xl\:p-4 {
+    padding: 1rem;
+  }
+
+  .dark .xl\:dark\:bg-\[\#212121\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(33 33 33 / var(--tw-bg-opacity));
+  }
+
+  .dark .xl\:dark\:text-\[\#cfcfcf\] {
+    --tw-text-opacity: 1;
+    color: rgb(207 207 207 / var(--tw-text-opacity));
   }
 }

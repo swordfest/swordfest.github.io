@@ -1014,6 +1014,10 @@ select,
   fill: ;
 }
 
+.fill-\[\#8b8b8b\] {
+  fill: #8b8b8b;
+}
+
 .stroke-\[\#303030\] {
   stroke: #303030;
 }
@@ -1216,6 +1220,14 @@ select,
 .active\:bg-\[\#303030\]:active {
   --tw-bg-opacity: 1;
   background-color: rgb(48 48 48 / var(--tw-bg-opacity));
+}
+
+.active\:fill-\[\]:active {
+  fill: ;
+}
+
+.active\:fill-\[\#303030\]:active {
+  fill: #303030;
 }
 
 .dark .dark\:contents {

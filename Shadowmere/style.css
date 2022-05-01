@@ -967,6 +967,10 @@ select,
   fill: #fff;
 }
 
+.fill-\[\] {
+  fill: ;
+}
+
 .p-4 {
   padding: 1rem;
 }
@@ -1202,6 +1206,10 @@ select,
 
 .dark .dark\:fill-\[\#303030\] {
   fill: #303030;
+}
+
+.dark .dark\:fill-\[\] {
+  fill: ;
 }
 
 .dark .dark\:font-medium {

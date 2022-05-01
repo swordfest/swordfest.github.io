@@ -827,6 +827,10 @@ select,
   height: 0.5rem;
 }
 
+.h-16 {
+  height: 4rem;
+}
+
 .w-fit {
   width: -webkit-fit-content;
   width: -moz-fit-content;

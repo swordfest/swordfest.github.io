@@ -9,10 +9,44 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script> -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KQ4KMVJEXY"></script>
+    <script src="https://cdn.websitepolicies.io/lib/cookieconsent/1.0.3/cookieconsent.min.js" defer=""></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.websitepolicies.io/lib/cookieconsent/1.0.3/cookieconsent.min.css">
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-KQ4KMVJEXY');
+    </script>
+    <script>
+        window.addEventListener("load", function() {
+            window.wpcc.init({
+                "border": "thin",
+                "corners": "small",
+                "colors": {
+                    "popup": {
+                        "background": "#f6f6f6",
+                        "text": "#000000",
+                        "border": "#555555"
+                    },
+                    "button": {
+                        "background": "#555555",
+                        "text": "#ffffff"
+                    }
+                },
+                "position": "bottom"
+            })
+        });
+    </script>
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.store('serverList', {
@@ -64,10 +98,13 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
             return String.fromCodePoint(...codePoints);
         }
 
-        window.addEventListener('load', (event) => {
-            console.log('page is fully loaded');
-            twemoji.parse(document.body);
-        });
+
+
+        // window.addEventListener('load', (event) => {
+        //     console.log('page is fully loaded');
+        //     twemoji.parse(document.body);
+        //     // twemoji.parse('country-selection ');
+        // });
     </script>
     <title>Shadowmere</title>
 </head>
@@ -176,7 +213,14 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
             </div>
         </div>
     </nav>
-    <main class="wrapper container mx-auto w-full h-auto xl:h-screen grid grid-cols-12 grid-flow-row mt-24 py-8 gap-[30px] px-4">
+    <main class="wrapper container mx-auto w-full h-auto xl:h-screen grid grid-cols-12 grid-flow-row mt-24 py-8 gap-[30px] px-4" x-data="
+    {proxies: null}
+    " x-init="
+    proxies = await(await fetch('https://cors-anywhere.herokuapp.com/https://shadowmere.akiel.dev/api/proxies/?format=json')).json()
+    console.log(proxies)
+    ">
+
+
         <div class="sidebar col-span-12 xl:col-span-3 w-full h-full bg-white dark:bg-[#212121] dark:text-[#cfcfcf] shadow-lg flex flex-col-reverse xl:flex-col gap-8 p-4 rounded-lg ">
             <div class="online-vpns-filter flex flex-col gap-4">
                 <div class="w-full h-6 flex items-center font-semibold gap-2">
@@ -215,94 +259,13 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
 
                 </div>
                 <select name="countries" id="countries-selection" class="rounded-md border-gray-300 mx-2 text-[#303030] dark:text-[#cfcfcf] dark:border-0 dark:bg-[#303030] outline-none dark:font-medium cursor-pointer">
-                    <template x-for="item in Object.values($store.serverList.servers)">
-                        <option class="flex" value="country" x-text="getFlagEmoji(item.country)+ ' ' +item.countryName"></option>
+                    <template x-for="item in proxies.results">
+                        <option id="opcion" class="flex" value="country" x-text="getFlagEmoji(item.location_country_code) + ' '+ item.location"></option>
                     </template>
                 </select>
-                <div class="mx-2" x-data="{
-                    multiple: false,
-                    id: 1,
-                    options: $store.serverList.servers,
-                    options3: [],
-                    options2: [
-                        { id: 1, countryName: 'Caleb Porzio' },
-                        { id: 2, countryName: 'Jason Beggs' },
-                        { id: 3, countryName: 'Tweedle Dee' },
-                        { id: 4, countryName: 'Tweedle Dum' },
-                    ],
-                    init() {
-                        this.$nextTick(() => {
-                            let choices = new Choices(this.$refs.select)
-                
-                            let refreshChoices = () => {
-                                let selection = this.multiple ? this.id : [this.id]
-                
-                                choices.clearStore()
-                                choices.setChoices(this.options2.map(({id, countryName}) => ({id, countryName, selected: selection.includes(id),})))
-                            }
-                
-                            refreshChoices()
-                
-                            this.$refs.select.addEventListener('change', () => {
-                                this.id = choices.getValue(true)
-                            })
-                
-                            this.$watch('id', () => refreshChoices())
-                            this.$watch('options2', () => refreshChoices())
-                        })
-                    }
-                }" class="w-56 rounded-lg">
-                    <select x-ref="select" :multiple="multiple" class="rounded-lg"></select>
-                    <template x-for="a in $store.serverList.servers">
-                        <div x-text="a.countryName"></div>
-                        
-                    </template>
-                    <template x-for="b in options">
-                        <div x-text="b.countryName"></div>
-                    </template>
-                </div>
 
-                <!-- <div x-data="{
-                multiple: false,
-                value: 1,
-                options: [
-                    { value: 1, label: 'Caleb Porzio' },
-                    { value: 2, label: 'Jason Beggs' },
-                    { value: 3, label: 'Tweedle Dee' },
-                    { value: 4, label: 'Tweedle Dum' },
-                ],
-                init() {
-                    this.$nextTick(() => {
-                        let choices = new Choices(this.$refs.select)
-            
-                        let refreshChoices = () => {
-                            let selection = this.multiple ? this.value : [this.value]
-            
-                            choices.clearStore()
-                            choices.setChoices(this.options.map(({ value, label }) => ({value, label, selected: selection.includes(value),})))
-                        }
-            
-                        refreshChoices()
-            
-                        this.$refs.select.addEventListener('change', () => {
-                            this.value = choices.getValue(true)
-                        })
-            
-                        this.$watch('value', () => refreshChoices())
-                        this.$watch('options', () => refreshChoices())
-                    })
-                },
-                getFlagEmoji(countryCode) {
-                    const codePoints = countryCode
-                        .toUpperCase()
-                        .split('')
-                        .map(char => 127397 + char.charCodeAt());
-                    return String.fromCodePoint(...codePoints);
-                }
-            }" class="w-56 rounded-lg">
-                    <select x-ref="select" :multiple="multiple" class="rounded-lg"></select>
-                    <img src="https://twemoji.maxcdn.com/v/latest/72x72/2764.png" alt="\u2764\uFE0F" class="emoji" draggable="false">
-            </div> -->
+
+
 
             </div>
 
@@ -310,13 +273,13 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
 
         <div id="cuerpo" class="lista-servers-vpns col-span-12 xl:col-span-9 w-full h-full flex flex-col gap-4">
 
-            <template x-for="item in $store.serverList.servers">
+            <template x-for="proxy in Object.values(proxies.results)" :key="proxy.id">
             
             <div class="item-server-vpn w-full h-20 sm:h-24 bg-white dark:bg-[#212121] dark:text-[#cfcfcf] rounded-lg flex items-center justify-between px-4 md:px-8 py-2 shadow-lg">
                 <div class="data-country-ip gap-2 md:gap-4 flex items-center">
-                    <div class="country-flag w-6 h-6 " x-text="getFlagEmoji(item.country)"> </div>
-                    <span class="country-flag w-12 h-6 flex items-center justify-center bg-[#303030] dark:bg-[#cfcfcf] px-2 text-[#cfcfcf] dark:text-[#303030] font-medium text-xs sm:text-sm rounded">100%</span>
-                    <span class="font-semibold text-sm sm:text-base" x-text="item.numeroip"></span>
+                    <div class="country-flag w-6 h-6 " x-text="getFlagEmoji(proxy.location_country_code)"> </div>
+                    <span class="w-12 h-6 flex items-center justify-center bg-[#303030] dark:bg-[#cfcfcf] px-2 text-[#cfcfcf] dark:text-[#303030] font-medium text-xs sm:text-sm rounded">100%</span>
+                    <span class="font-semibold text-sm sm:text-base" x-text="proxy.ip_address"></span>
                 </div>
                 <div class="data-operations gap-4 flex flex-row-reverse">
                     <div class="opt-copiar w-4 h-4 sm:w-10 sm:h-10 rounded-md flex items-center justify-center cursor-pointer  hover:bg-[#EBEBEB] dark:hover:bg-[#1B1B1B] active:bg-[#D7D7D7] dark:active:bg-[#111111] transition-colors transition-transform active:scale-[95%]">

@@ -21,4 +21,7 @@
         font-family: "Twemoji";
         font-size: 24px;
     }
+    html {
+        -webkit-tap-highlight-color: transparent;
+    }
 }

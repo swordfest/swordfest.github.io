@@ -1,8 +1,37 @@
-const template_item_vpn = document.createElement('template');
-var cuerpo = document.getElementById('cuerpo');
+window.dataLayer = window.dataLayer || [];
 
-template_item_vpn.innerHTML = "";
+function gtag() {
+    dataLayer.push(arguments);
+}
 
-// var cuerpo = document.querySelector('.cuerpo');
+gtag('js', new Date());
 
-cuerpo.appendChild(template_item_vpn.content);
+gtag('config', 'G-KQ4KMVJEXY');
+
+window.addEventListener("load", function() {
+    window.wpcc.init({
+        "border": "thin",
+        "corners": "small",
+        "colors": {
+            "popup": {
+                "background": "#f6f6f6",
+                "text": "#000000",
+                "border": "#cfcfcf"
+
+            },
+            "button": {
+                "background": "#303030",
+                "text": "#ffffff"
+            }
+        },
+        "position": "bottom"
+    })
+});
+
+function getFlagEmoji(countryCode) {
+    const codePoints = countryCode
+        .toUpperCase()
+        .split('')
+        .map(char => 127397 + char.charCodeAt());
+    return String.fromCodePoint(...codePoints);
+}

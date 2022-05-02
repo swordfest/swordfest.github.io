@@ -25,9 +25,9 @@ module.exports = {
                 '2xl': '1536px',
                 // => @media (min-width: 1536px) { ... }
             },
-        },
-        fontFamily: {
-            twemoji: ['Twemoji'],
+            fontFamily: {
+                twemoji: ["Twemoji", "sans-serif"],
+            },
         },
     },
     plugins: [

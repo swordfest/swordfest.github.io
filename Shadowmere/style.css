@@ -594,13 +594,7 @@ select {
   outline: 1px auto -webkit-focus-ring-color;
 }
 
-@font-face {
-  font-family: "Twemoji";
-
-  src: url("./fonts/twemoji.woff2") format("woff2");
-}
-
-[x-cloak] {
+x-cloak {
   display: none
 }
 
@@ -610,13 +604,30 @@ body {
   transition-duration: 150ms;
 }
 
-select,
-    .country-flag {
-  display: flex;
-  align-items: center;
-  font-family: "Twemoji";
-  font-size: 24px;
-}
+/* .country-flag {
+        display: flex;
+        align-items: center;
+        font-family: "Twemoji";
+        font-size: 24px;
+    } */
+
+/* select:before {
+        content: ' ';
+        font-family: "Twemoji";
+        font-size: 24px;
+    } */
+
+/* .country-flag-2 {
+        content: ' ';
+        display: flex;
+        align-items: center;
+        font-family: "Twemoji";
+        font-size: 24px;
+    } */
+
+/* .country-flag {
+        font-size: 16px;
+    } */
 
 html {
   -webkit-tap-highlight-color: transparent;
@@ -838,6 +849,10 @@ html {
   height: 3px;
 }
 
+.h-60 {
+  height: 15rem;
+}
+
 .h-px {
   height: 1px;
 }
@@ -947,8 +962,8 @@ html {
   gap: 2rem;
 }
 
-.gap-14 {
-  gap: 3.5rem;
+.overflow-y-scroll {
+  overflow-y: scroll;
 }
 
 .rounded-lg {
@@ -967,37 +982,22 @@ html {
   border-radius: 9999px;
 }
 
-.rounded-t-xl {
-  border-top-left-radius: 0.75rem;
-  border-top-right-radius: 0.75rem;
-}
-
 .rounded-t-2xl {
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
-}
-
-.border {
-  border-width: 1px;
 }
 
 .border-0 {
   border-width: 0px;
 }
 
+.border {
+  border-width: 1px;
+}
+
 .border-gray-300 {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
-}
-
-.border-black {
-  --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity));
-}
-
-.border-\[black\] {
-  --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
 .border-\[\#303030\] {
@@ -1081,6 +1081,10 @@ html {
   padding-left: 1rem;
 }
 
+.font-twemoji {
+  font-family: Twemoji, sans-serif;
+}
+
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
@@ -1094,6 +1098,16 @@ html {
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .font-medium {
@@ -1162,6 +1176,14 @@ html {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+@font-face {
+  font-family: "Twemoji";
+
+  src: url("./fonts/twemoji.woff2") format("woff2");
+
+  size-adjust: 120%;
+}
+
 .before\:absolute::before {
   content: var(--tw-content);
   position: absolute;
@@ -1199,6 +1221,11 @@ html {
 
 .before\:content-\[\'A\'\]::before {
   --tw-content: 'A';
+  content: var(--tw-content);
+}
+
+.before\:content-\[\'getFlagEmoji\(item\.location_country_code\)\'\]::before {
+  --tw-content: 'getFlagEmoji(item.location country code)';
   content: var(--tw-content);
 }
 
@@ -1263,10 +1290,6 @@ html {
 
 .dark .dark\:border-0 {
   border-width: 0px;
-}
-
-.dark .dark\:border {
-  border-width: 1px;
 }
 
 .dark .dark\:border-\[\#cfcfcf\] {

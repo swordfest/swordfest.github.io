@@ -35,3 +35,19 @@ function getFlagEmoji(countryCode) {
         .map(char => 127397 + char.charCodeAt());
     return String.fromCodePoint(...codePoints);
 }
+
+document.addEventListener('alpine:init', () => {
+    Alpine.store('comps', {
+        home: false,
+        last: false,
+        serversonline: false,
+        countries: false,
+        marker: false,
+        shadownav: false,
+        modal: false,
+
+        // toggle() {
+        //     this.on = !this.on
+        // }
+    })
+})

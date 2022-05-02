@@ -2,11 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @layer base {
-    @font-face {
-        font-family: "Twemoji";
-        src: url("./fonts/twemoji.woff2") format("woff2");
-    }
-    [x-cloak] {
+    x-cloak {
         display: none
     }
     body {
@@ -14,14 +10,34 @@
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         transition-duration: 150ms;
     }
-    select,
-    .country-flag {
+    /* .country-flag {
         display: flex;
         align-items: center;
         font-family: "Twemoji";
         font-size: 24px;
-    }
+    } */
+    /* select:before {
+        content: ' ';
+        font-family: "Twemoji";
+        font-size: 24px;
+    } */
+    /* .country-flag-2 {
+        content: ' ';
+        display: flex;
+        align-items: center;
+        font-family: "Twemoji";
+        font-size: 24px;
+    } */
+    /* .country-flag {
+        font-size: 16px;
+    } */
     html {
         -webkit-tap-highlight-color: transparent;
     }
+}
+
+@font-face {
+    font-family: "Twemoji";
+    src: url("./fonts/twemoji.woff2") format("woff2");
+    size-adjust: 120%;
 }

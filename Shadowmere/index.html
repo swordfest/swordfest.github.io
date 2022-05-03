@@ -171,8 +171,10 @@ console.log(proxies)
             </button>
         </div>
     </nav>
-    <div class="panel-bottom fixed w-full h-60 rounded-t-2xl bg-white dark:bg-[#212121] -bottom-60 transition-transform ease-in-out duration-150 right-0 z-10 lg:hidden flex flex-col items-center justify-between" :class="$store.comps.modal && '-translate-y-[304px] shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.05)]'"
-        x-transition.duration.150ms>
+    <!-- <div class="panel-bottom fixed w-full h-60 rounded-t-2xl bg-white dark:bg-[#212121] -bottom-60 transition-transform ease-in-out duration-150 right-0 z-10 lg:hidden flex flex-col items-center justify-between" :class="$store.comps.modal && '-translate-y-[304px] shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.05)]'"
+        x-transition.duration.150ms> -->
+    <div class="panel-bottom fixed w-full h-60 rounded-t-2xl bg-white dark:bg-[#212121] bottom-14 transition-transform ease-in-out duration-150 right-0 z-10 lg:hidden flex flex-col items-center justify-between" x-show="$store.comps.modal" x-on:click.outside="$store.comps.modal = false"
+        x-transition:enter="translate-y-60" x-transition:leave="translate-y-60">
         <div class="w-full h-auto flex flex-col items-center py-4">
             <div class="w-full h-auto flex flex-col items-center justify-between gap-4 py-4">
                 <div class=" w-full text-[#303030] dark:text-[#cfcfcf] font-medium gap-4 flex flex-col items-center justify-center" :class="!$store.comps.serversonline && 'hidden'">

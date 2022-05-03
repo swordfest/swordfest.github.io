@@ -23,18 +23,42 @@
                 <button class="tab-config flex items-center justify-center w-full h-full font-bold text-[#303030]" :class="{ 'active': tab === 'config' }" @click.prevent="tab = 'config'">Config</button>
             </div>
             <div class="content-wrapper w-full h-full p-4">
-                <div class="content-coinset flex flex-col gap-4" x-show="tab === 'coinset'">
-                    <div class="w-full text-center font-bold">Coin Clock LT</div>
-                    <div class="coin-slot flex items-center gap-4">
-                        <button class="switcher w-16 h-10 flex border-[1.5px] p-[6px] border-[#AAAAAA] rounded-lg transition-colors" x-cloak x-on:click="switcha1 = !switcha1" :class="!switcha1 ? 'bg-[#D7D7D7]' : 'bg-[#2D91D3]'">
-                            <!-- <div class="switch-node flex w-full h-full p-[6px] rounded-md" :class="switcha && 'justify-end bg-[#2D91D3]'"> -->
+                <div class="content-coinset h-full flex flex-col gap-4 justify-between" x-show="tab === 'coinset'">
+
+                    <div class="flex flex-col gap-4">
+                        <div class="w-full text-center font-bold">Coin Clock LT</div>
+                        <div class="coin-slot flex items-center gap-4">
+                            <button class="switcher w-16 h-10 flex border-[1.5px] p-[6px] border-[#AAAAAA] rounded-lg transition-colors" x-cloak x-on:click="switcha1 = !switcha1" :class="!switcha1 ? 'bg-[#D7D7D7]' : 'bg-[#2D91D3]'">
                                 <div class="switch-node w-4 h-full bg-white rounded-md transition-transform ease-in shadow-black" :class="!switcha1 ? 'border' : 'translate-x-5'"></div>
-                            <!-- </div> -->
-                        </button>
-                        <input class="w-full h-10 rounded-lg p-2 border-[1.5px] outline-2 focus:outline-[#AAAAAA] border-[#AAAAAA] focus-within:bg-white focus-within:placeholder:text-transparent bg-[#F5F5F5]" type="text" placeholder="%COIN1N%">
+                            </button>
+                            <input class="w-full h-10 rounded-lg p-2 border-[1.5px] outline-2 focus:outline-[#AAAAAA] border-[#AAAAAA] focus-within:bg-white focus-within:placeholder:text-transparent bg-[#F5F5F5]" type="text" placeholder="%COIN1N%">
+                        </div>
+
+                        <div class="coin-slot flex items-center gap-4">
+                            <button class="switcher w-16 h-10 flex border-[1.5px] p-[6px] border-[#AAAAAA] rounded-lg transition-colors" x-cloak x-on:click="switcha2 = !switcha2" :class="!switcha2 ? 'bg-[#D7D7D7]' : 'bg-[#2D91D3]'">
+                                <div class="switch-node w-4 h-full bg-white rounded-md transition-transform ease-in shadow-black" :class="!switcha2 ? 'border' : 'translate-x-5'"></div>
+                            </button>
+                            <input class="w-full h-10 rounded-lg p-2 border-[1.5px] outline-2 focus:outline-[#AAAAAA] border-[#AAAAAA] focus-within:bg-white focus-within:placeholder:text-transparent bg-[#F5F5F5]" type="text" placeholder="%COIN2N%">
+                        </div>
+
+                        <div class="coin-slot flex items-center gap-4">
+                            <button class="switcher w-16 h-10 flex border-[1.5px] p-[6px] border-[#AAAAAA] rounded-lg transition-colors" x-cloak x-on:click="switcha3 = !switcha3" :class="!switcha3 ? 'bg-[#D7D7D7]' : 'bg-[#2D91D3]'">
+                                <div class="switch-node w-4 h-full bg-white rounded-md transition-transform ease-in shadow-black" :class="!switcha3 ? 'border' : 'translate-x-5'"></div>
+                            </button>
+                            <input class="w-full h-10 rounded-lg p-2 border-[1.5px] outline-2 focus:outline-[#AAAAAA] border-[#AAAAAA] focus-within:bg-white focus-within:placeholder:text-transparent bg-[#F5F5F5]" type="text" placeholder="%COIN3N%">
+                        </div>
+
+                        <div class="coin-slot flex items-center gap-4">
+                            <button class="switcher w-16 h-10 flex border-[1.5px] p-[6px] border-[#AAAAAA] rounded-lg transition-colors" x-cloak x-on:click="switcha4 = !switcha4" :class="!switcha4 ? 'bg-[#D7D7D7]' : 'bg-[#2D91D3]'">
+                                <div class="switch-node w-4 h-full bg-white rounded-md transition-transform ease-in shadow-black" :class="!switcha4 ? 'border' : 'translate-x-5'"></div>
+                            </button>
+                            <input class="w-full h-10 rounded-lg p-2 border-[1.5px] outline-2 focus:outline-[#AAAAAA] border-[#AAAAAA] focus-within:bg-white focus-within:placeholder:text-transparent bg-[#F5F5F5]" type="text" placeholder="%COIN4N%">
+                        </div>
+
                     </div>
-
-
+                    <button class="button-fork w-full h-12 flex items-center justify-center rounded-md bg-[#2DD364] hover:bg-[#05AB3C] active:bg-[#23C95A] text-white transition-colors">  
+                        <span class="font-medium">Apply</span>
+                    </button>
 
                 </div>
                 <div class="content-config" x-show="tab === 'config'">bbb</div>

@@ -1,311 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>COIN-CLOCK</title>
-    <style lang="postcss" scoped>
-        body {
-            background-color: whitesmoke;
-            font-family: Roboto, sans-serif;
-            font-weight: lighter;
-            color: #636363;
-        }
-        
-        .banner {
-            width: 282px;
-            height: 40px;
-            margin-right: auto;
-            margin-left: auto;
-            position: relative;
-            text-align: center;
-            background-color: rgb(0, 0, 0);
-            border-radius: 6px 6px 0px 0px;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
-        }
-        
-        .nombre {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 16px;
-            font-weight: normal;
-            color: white;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-        
-        .main_frame {
-            border: 1px solid lightgray;
-            background-color: whitesmoke;
-            padding: 10px 10px;
-            margin-right: auto;
-            margin-left: auto;
-            width: 260px;
-            font-size: 1em;
-        }
-        
-        input[type="text"],
-        [type="password"],
-        select {
-            width: 213px;
-            height: 23px;
-            padding: 6px;
-            margin: 6px 0;
-            display: inline-block;
-            border: 1px solid #b1b1b1;
-            border-radius: 2px;
-            box-sizing: border-box;
-            color: #636363;
-        }
-        
-        .apply_btn {
-            width: 100%;
-            margin-top: 6px;
-        }
-        
-        .btn0 {
-            -webkit-appearance: none;
-            height: 30px;
-            width: 80px;
-            background-color: rgb(0, 157, 53);
-            color: rgb(255, 255, 255);
-            border: 1px solid;
-            border-radius: 4px;
-            font-size: 1em;
-            cursor: pointer;
-            margin-left: 179px;
-        }
-        
-        .select_area {
-            width: 282px;
-            height: 30px;
-            margin-right: auto;
-            margin-left: auto;
-            margin-top: -4px;
-        }
-        
-        .actual {
-            -webkit-appearance: none;
-            height: 30px;
-            width: 136px;
-            border: none;
-            margin-left: -3px;
-            background-color: whitesmoke;
-            border: 1px solid lightgray;
-            border-radius: 0px 0px 0px 6px;
-            font-size: 1em;
-            cursor: pointer;
-            text-align: center;
-            color: rgb(155, 155, 155);
-        }
-        
-        .btn_nxt {
-            -webkit-appearance: none;
-            height: 30px;
-            width: 136px;
-            border: none;
-            margin-left: -4px;
-            background-color: rgb(112, 112, 112);
-            border-radius: 0px 0px 6px 0px;
-            font-size: 1em;
-            cursor: pointer;
-            text-align: center;
-            color: rgb(238, 238, 238);
-        }
-        
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 40px;
-            height: 20px;
-            border: 1px solid #b1b1b1;
-        }
-        
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgb(219, 219, 219);
-            -webkit-transition: 0.4s;
-            transition: 0.4s;
-        }
-        
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 12px;
-            width: 6px;
-            left: 4px;
-            bottom: 4px;
-            background-color: rgb(255, 255, 255);
-            -webkit-transition: 0.4s;
-            transition: 0.4s;
-        }
-        
-        input:checked+.slider {
-            background-color: rgb(45, 145, 211);
-        }
-        
-        input:checked+.slider:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(26px);
-        }
-        
-        .slider_0 {
-            -webkit-appearance: none;
-            width: 98%;
-            height: 10px;
-            background: rgb(45, 145, 211);
-            outline: none;
-            opacity: 0.7;
-            -webkit-transition: .2s;
-            transition: opacity .2s;
-        }
-        
-        .slider_0::-moz-range-thumb {
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            border: 1px solid #000000;
-            background: rgb(255, 255, 255);
-            cursor: pointer;
-        }
-    </style>
-    <script type="text/javascript">
-        var row;
-        var coiname;
-
-        function tbox(row, coiname, pvalue) {
-            var checkBox = document.getElementById(row);
-            if (checkBox.checked) {
-                document.getElementById(coiname).disabled = false;
-            } else {
-                document.getElementById(coiname).disabled = true;
-            }
-        }
-
-        function openCity(evt, cityName) {
-            // Declare all variables
-            var i, tabcontent, tablinks;
-
-            // Get all elements with class="tabcontent" and hide them
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-
-            // Get all elements with class="tablinks" and remove the class "active"
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-
-            // Show the current tab, and add an "active" class to the button that opened the tab
-            document.getElementById(cityName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-    </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="alpine.js"></script>
+    <!-- <script>
+        import Alpine from 'alpinejs'
+        window.Alpine = Alpine
+        Alpine.start()
+    </script> -->
+    <title>COIN CLOCK</title>
 </head>
 
-<body onload="tbox('row1', 'coin1n'); tbox('row2', 'coin2n'); tbox('row3', 'coin3n'); tbox('row4', 'coin4n');">
-    <div class="banner">
-        <div class="nombre">COIN-CLOCK LT</div>
-    </div>
-    <form id="saveCfg" action="/set_coins">
-        <div class="main_frame">
-            <div id="coins_frame" class="tabcontent coins_frame">
-                <!--Columna 1-->
-                <div class="row1">
-                    <label class="switch">
-                <input type="checkbox" id="row1" name="row1" value="1" onclick="tbox('row1', 'coin1n');"  %ROW1% />
-                <span class="slider round"></span>
-              </label>
-                    <input id="coin1n" type="text" name="coin1n" maxlength=" " value="%COIN1N%" placeholder="CoinID" />
-                </div>
-                <!--Columna 2-->
-                <div class="row2">
-                    <label class="switch">
-                    <input type="checkbox" id="row2" name="row2" value="1" onclick="tbox('row2', 'coin2n');" %ROW2% />
-                    <span class="slider round"></span>
-                  </label>
-                    <input id="coin2n" type="text" name="coin2n" maxlength=" " value="%COIN2N%" placeholder="CoinID" />
-                </div>
-                <!--Columna 3-->
-                <div class="row3">
-                    <label class="switch">
-                    <input type="checkbox" id="row3" name="row3" value="1" onclick="tbox('row3', 'coin3n');" %ROW3% />
-                    <span class="slider round"></span>
-                  </label>
-                    <input id="coin3n" type="text" name="coin3n" maxlength=" " value="%COIN3N%" placeholder="CoinID" />
-                </div>
-                <!--Columna 4-->
-                <div class="row4">
-                    <label class="switch">
-                    <input type="checkbox" id="row4" name="row4" value="1" onclick="tbox('row4', 'coin4n');" %ROW4% />
-                    <span class="slider round"></span>
-                  </label>
-                    <input id="coin4n" type="text" name="coin4n" maxlength=" " value="%COIN4N%" placeholder="CoinID" />
-                </div>
+<body x-cloak>
+    <main class="wrapper w-full h-screen flex justify-center bg-[#eeeeee]" x-data="{tab: 'coinset', switcha1: false, switcha2: false, switcha3: false, switcha4: false}" x-init="console.log(switch))">
+        <div class="card w-[360px] h-[612px] bg-white rounded-lg shadow-lg mt-14 flex flex-col">
+            <div class="tabs w-full h-12 flex justify-between rounded-t-lg overflow-hidden">
+                <button class="tab-coinset bg-[#2D91D3] flex items-center justify-center w-full h-full font-bold text-white" :class="{ 'active': tab === 'coinset' }" @click.prevent="tab = 'coinset'">Coinset</button>
+                <button class="tab-config flex items-center justify-center w-full h-full font-bold text-[#303030]" :class="{ 'active': tab === 'config' }" @click.prevent="tab = 'config'">Config</button>
             </div>
-            <div id="setconf" class="tabcontent setconf">
-                <!--Conf WiFI-->
-                <label>Wireless Mode</label>
-                <input type="radio" name="wmodo" value="0" %MODOAP% /><label>AP</label>
-                <input type="radio" name="wmodo" value="1" %MODOSTA% /><label>STA</label>
-                <br>
-                <br>
-                <label id="ssid">Network Name</label>
-                <input id="ssid_value" type="text" name="ssid" maxlength=" " value="%SSID%" />
-                <br>
-                <label>Password</label>
-                <input id="passwd" type="password" name="passwd" maxlength=" " value="%PASSWD%" />
-                <br>
-                <br>
-                <!--Conf Backlight-->
-                <label>Backlight Mode</label>
-                <input type="radio" id="bmode" name="bmode" value="0" onclick="tbox2();" %MODOAT% /><label>Auto</label>
-                <input type="radio" name="bmode" value="1" onclick="tbox2();" %MODOMA% /><label>Manual</label>
-                <p>Backlight: <span id="brillo"></span></p>
-                <input type="range" id="rango" name="brillo" min="0" max="255" step="5" value="%BACKL%" class="slider_0" onchange="formSubmit('saveWf')" />
-                <br>
-                <br>
-            </div>
-            <!--BTN APPLY-->
-            <div class="apply_btn">
-                <input class="btn0" type="submit" value="Apply" />
+            <div class="content-wrapper w-full h-full p-4">
+                <div class="content-coinset flex flex-col gap-4" x-show="tab === 'coinset'">
+                    <div class="w-full text-center font-bold">Coin Clock LT</div>
+                    <div class="coin-slot flex items-center gap-4">
+                        <button class="switcher w-16 h-10 flex border-[1.5px] p-[6px] border-[#AAAAAA] rounded-lg transition-colors" x-cloak x-on:click="switcha1 = !switcha1" :class="!switcha1 ? 'bg-[#D7D7D7]' : 'bg-[#2D91D3]'">
+                            <!-- <div class="switch-node flex w-full h-full p-[6px] rounded-md" :class="switcha && 'justify-end bg-[#2D91D3]'"> -->
+                                <div class="switch-node w-4 h-full bg-white rounded-md transition-transform ease-in shadow-black" :class="!switcha1 ? 'border' : 'translate-x-5'"></div>
+                            <!-- </div> -->
+                        </button>
+                        <input class="w-full h-10 rounded-lg p-2 border-[1.5px] outline-2 focus:outline-[#AAAAAA] border-[#AAAAAA] focus-within:bg-white focus-within:placeholder:text-transparent bg-[#F5F5F5]" type="text" placeholder="%COIN1N%">
+                    </div>
+
+
+
+                </div>
+                <div class="content-config" x-show="tab === 'config'">bbb</div>
             </div>
         </div>
-        <div class="select_area tabs">
-            <button class="tablinks actual" onclick="openCity(event, 'coins_frame');">
-          CoinSet
-            </button>
-            <button class="tablinks btn_nxt" onclick="openCity(event, 'setconf');">
-          Config
-        </button>
-        </div>
-        <!--SELECT AREA-->
-        <!-- <div class="select_area"> -->
-        <!-- <table>
-                <tr>
-                    <td><input class="actual" onclick="location.href + '/index.html';" value="CoinSet" /></td>
-                    <td><input class="btn_nxt" onclick="location.href + '/set_config.html';" value="Config" /></td>
-                </tr>
-            </table> -->
-        <!-- <div class="tabs">
-                <button class="tablinks" onclick="location.href = '/';">CoinSet</button>
-                <button class="tablinks" onclick="location.href + '/set_config.html'">Config</button>
-            </div> -->
-        <!-- </div> -->
-    </form>
+    </main>
+
 </body>
 
 </html>

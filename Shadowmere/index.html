@@ -164,7 +164,7 @@ console.log(temp)
                 </button>
             </div>
             <div class="slider-div w-full h-[3px] px-6 flex justify-start">
-                <input type="range" name="" disabled id="rangeSld" min="1" max="4" step="1" x-transition:enter=" transition-transform ease-in-out" class="w-full appearance-none bg-transparent" x-model="$store.comps.rangeValue">
+                <input type="range" name="" disabled id="rangeSld" min="1" max="4" step="1" x-transition:enter=" transition-transform ease-in-out" class="w-full appearance-none bg-transparent accent-[#303030] dark:accent-[#cfcfcf]" x-model="$store.comps.rangeValue">
             </div>
         </div>
     </nav>
@@ -195,7 +195,7 @@ console.log(temp)
                     <hr class="w-full h-px border-[#303030] dark:border-[#cfcfcf]">
                 </div> -->
                 <template x-for="item in Object.values(proxies.results)">
-                    <button class=" w-full h-14 text-[#303030] dark:text-[#cfcfcf] font-medium gap-4 flex flex-col items-center justify-center bg-white active:bg-[#EBEBEB]" x-init="$store.comps.stringPaises = item.location">
+                    <button class=" w-full h-14 text-[#303030] dark:text-[#cfcfcf] font-medium gap-4 flex flex-col items-center justify-center  active:bg-[#EBEBEB]" x-init="$store.comps.stringPaises = item.location">
                         <div class="flex gap-2 w-full items-center justify-center">
                             <div class="font-twemoji text-xl select-none overflow-y-scroll" x-text="getFlagEmoji(item.location_country_code)"></div>
                             <div class="font-twemoji select-none" x-text="' '+ item.location"></div>

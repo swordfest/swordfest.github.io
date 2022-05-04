@@ -249,7 +249,7 @@ console.log(temp)
                 </div>
                 <select name="countries" id="countries-selection" class="font-twemoji rounded-md border-gray-300 mx-2 text-[#303030] dark:text-[#cfcfcf] dark:border-0 dark:bg-[#303030] outline-none cursor-pointer">
                     <template x-for="item in Object.values(proxies.results)">
-                        <option id="opcion" class="before:content-['getFlagEmoji(item.location_country_code)']" value="country" x-text="getFlagEmoji(item.location_country_code) + ' '+ item.location"></option>
+                        <option id="opcion" class="bandera" value="country" x-text="getFlagEmoji(item.location_country_code) + '  '+ item.location"></option>
                     </template>
                 </select>
 
@@ -262,7 +262,7 @@ console.log(temp)
 
             <template x-for="proxy in Object.values(proxies.results)" :key="proxy.id">
             
-            <div class="item-server-vpn w-full h-20 sm:h-24 bg-white dark:bg-[#212121] dark:text-[#cfcfcf] rounded-lg flex items-center justify-between px-4 md:px-8 py-2 shadow-lg">
+            <div class="item-server-vpn w-full h-20 sm:h-24 bg-white dark:bg-[#212121] dark:text-[#cfcfcf] rounded-lg flex items-center justify-between px-4 md:px-8 py-2 shadow-lg hover:cursor-pointer hover:-translate-y-[2px] dark:hover:bg-[#1b1b1b] hover:bg-[#FDFDFD] transition-all">
                 <div class="data-country-ip gap-2 md:gap-4 flex items-center">
                     <div class="font-twemoji flex items-center text-xl w-6 h-6 " x-text="getFlagEmoji(proxy.location_country_code)"> </div>
                     <span class="w-12 h-6 flex items-center justify-center bg-[#303030] dark:bg-[#cfcfcf] px-2 text-[#cfcfcf] dark:text-[#303030] font-medium text-xs sm:text-sm rounded">100%</span>

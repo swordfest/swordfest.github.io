@@ -188,8 +188,8 @@ console.log(temp)
 
     <div class="panel-bottom fixed w-full h-64 rounded-t-2xl mt-2 overflow-hidden bg-white dark:bg-[#212121] bottom-16 transition-transform ease-in-out duration-150 right-0 z-20 lg:hidden flex flex-col items-center justify-between" x-show="$store.comps.modal2"
         x-on:click.outside="$store.comps.modal2 = false, $store.comps.blackScreen = false" x-transition:enter="translate-y-64" x-transition:leave="translate-y-64">
-        <div class="w-full h-auto flex flex-col items-center mt-6 overflow-y-scroll">
-            <div class="w-full h-auto flex flex-col items-center justify-between">
+        <div class="w-full h-auto flex flex-col items-center justify-between mt-6 overflow-y-scroll snap-y">
+            <div class="w-full h-auto flex flex-col items-center justify-between ">
                 <!-- <div class=" w-full text-[#303030] dark:text-[#cfcfcf] font-medium gap-4 flex flex-col items-center justify-center" :class="!$store.comps.serversonline && 'hidden'">
                     <span>Esto es de los paises</span>
                     <hr class="w-full h-px border-[#303030] dark:border-[#cfcfcf]">

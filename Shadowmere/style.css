@@ -975,6 +975,15 @@ input[type=range]::-webkit-slider-thumb {
           user-select: none;
 }
 
+.snap-y {
+  -ms-scroll-snap-type: y var(--tw-scroll-snap-strictness);
+      scroll-snap-type: y var(--tw-scroll-snap-strictness);
+}
+
+.snap-mandatory {
+  --tw-scroll-snap-strictness: mandatory;
+}
+
 .appearance-none {
   -webkit-appearance: none;
      -moz-appearance: none;

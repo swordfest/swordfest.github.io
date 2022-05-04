@@ -21,19 +21,14 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
     <title>Shadowmere</title>
 </head>
 
-<body class="bg-[#F8F8F8] dark:bg-[#141414]" x-data="{ proxies: null, temp: '', }" x-init="
-proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json')).json()
-
-console.log($store.comps.stringPaises)
-console.log(temp)
+<body class="bg-[#F8F8F8] dark:bg-[#141414]" x-data="{ proxies: null, temp: '', atTop: true, }" x-init="
+    proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json')).json()
+    console.log($store.comps.stringPaises)
+    console.log(temp)
 ">
 
-
-
-
-
-    <nav class="w-full h-20 bg-white dark:bg-[#212121] z-30 top-0 shadow-lg fixed flex justify-center">
-        <div class="nav-wrapper container mx-auto bg-white dark:bg-[#212121] w-full h-full flex items-center justify-between px-4">
+    <nav class="w-full h-20 z-30 top-0 fixed flex justify-center" :class="{ 'bg-white dark:bg-[#212121] shadow-lg' : !atTop }" @scroll.window="atTop = (window.pageYOffset > 40) ? false : true">
+        <div class="nav-wrapper container mx-auto dark:bg-[#212121] w-full h-full flex items-center justify-between px-4">
             <svg class="fill-[#303030] dark:fill-[#cfcfcf] w-1/2 md:w-auto h-auto cursor-pointer " width="260" height="50" viewBox="0 0 260 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20.9424 4.88982L23.7489 0.941338L28.491 1.11554L34.5105 1.3478L25.607 4.46401L20.9424 4.88982Z"/>
                 <path d="M28.7812 7.19311L33.4265 4.69627L41.9235 8.00603L31.2781 9.12864L28.7812 7.19311Z"/>

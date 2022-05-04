@@ -38,6 +38,21 @@ function getFlagEmoji(countryCode) {
 
 // document.getElementById(rangeSld).disabled = true;
 
+function toastNotification() {
+    return {
+        open2: false,
+        title: "Toast Title",
+        message: "Toast message",
+        success: false,
+        openToast() {
+            this.ope2 = true
+            setTimeout(() => {
+                this.open2 = false
+            }, 5000)
+        }
+    }
+}
+
 document.addEventListener('alpine:init', () => {
     Alpine.store('comps', {
             home: false,

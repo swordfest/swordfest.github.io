@@ -51,6 +51,7 @@ document.addEventListener('alpine:init', () => {
             stringPaises: [],
             open: false,
             rangeValue: 1,
+            blackScreen: false,
 
             // toggle() {
             //     this.on = !this.on

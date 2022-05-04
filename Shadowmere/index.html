@@ -52,7 +52,7 @@ console.log(temp)
                 </svg>
             <div class="nav-content flex w-auto h-full items-center flex-row-reverse gap-6 mx-0">
 
-                <button class="mobile-menu w-6 h-6 flex items-center justify-center lg:hidden" x-on:click="$store.comps.open = ! $store.comps.open">
+                <button class="mobile-menu w-6 h-6 flex items-center justify-center lg:hidden" x-on:click="$store.comps.open = ! $store.comps.open, $store.comps.blackScreen = !$store.comps.blackScreen">
                     <svg class="icon-menu w-8 h-8 fill-[#303030] dark:fill-[#cfcfcf]" :class="$store.comps.open && 'hidden'" x-transition viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 18.667H21V16.667H3V18.667ZM3 13.667H21V11.667H3V13.667ZM3 6.66699V8.66699H21V6.66699H3Z"/>
                         </svg>
@@ -110,7 +110,7 @@ console.log(temp)
         </div>
     </nav>
 
-    <div class="menu-mobile absolute w-full h-[304px] bg-white dark:bg-[#212121] right-0 z-10 lg:hidden flex flex-col items-center justify-between transition-transform ease-in-out duration-150 top-20 rounded-b-2xl shadow-lg" x-show="$store.comps.open" x-transition:enter="-translate-y-80 "
+    <div class="menu-mobile absolute w-full h-[304px] bg-white dark:bg-[#212121] right-0 z-20 lg:hidden flex flex-col items-center justify-between transition-transform ease-in-out duration-150 top-20 rounded-b-2xl shadow-lg" x-show="$store.comps.open" x-transition:enter="-translate-y-80 "
         x-transition:leave="-translate-y-60" x-on:click.outside="$store.comps.open = false">
         <div class="w-full h-auto flex flex-col items-center gap-4 py-4 px-4">
             <div class="w-full h-auto flex flex-col items-center justify-between gap-4 py-4 px-4">
@@ -150,13 +150,14 @@ console.log(temp)
                         </svg>
                 </button>
 
-                <button class="servers-online w-8 h-10 flex flex-col items-center justify-end mb-2 " x-on:click="$store.comps.serversonline = !$store.comps.serversonline, $store.comps.modal1 = !$store.comps.modal1, $store.comps.rangeValue = 3" x-bind:="last && last= !last">
+                <button class="servers-online w-8 h-10 flex flex-col items-center justify-end mb-2 " x-on:click="$store.comps.serversonline = !$store.comps.serversonline, $store.comps.modal1 = !$store.comps.modal1, $store.comps.rangeValue = 3, $store.comps.blackScreen = !$store.comps.blackScreen"
+                    x-bind:="last && last= !last">
                     <svg class="fill-[#303030]  dark:fill-[#cfcfcf] w-6 h-6" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10.5416 8.83333C10.1983 7.85874 9.56104 7.01469 8.71771 6.41764C7.87437 5.82059 6.86654 5.49996 5.83325 5.5C3.07492 5.5 0.833252 7.74167 0.833252 10.5C0.833252 13.2583 3.07492 15.5 5.83325 15.5C6.86654 15.5 7.87437 15.1794 8.71771 14.5824C9.56104 13.9853 10.1983 13.1413 10.5416 12.1667H14.1666V15.5H17.4999V12.1667H19.1666V8.83333H10.5416ZM5.83325 12.1667C4.91658 12.1667 4.16658 11.4167 4.16658 10.5C4.16658 9.58333 4.91658 8.83333 5.83325 8.83333C6.74992 8.83333 7.49992 9.58333 7.49992 10.5C7.49992 11.4167 6.74992 12.1667 5.83325 12.1667Z"/>
                     </svg>
                 </button>
 
-                <button class="countries w-8 h-10 flex flex-col items-center justify-end mb-2 " x-on:click="$store.comps.countries = !$store.comps.countries, $store.comps.modal2 = !$store.comps.modal2, $store.comps.rangeValue = 4">
+                <button class="countries w-8 h-10 flex flex-col items-center justify-end mb-2 " x-on:click="$store.comps.countries = !$store.comps.countries, $store.comps.modal2 = !$store.comps.modal2, $store.comps.rangeValue = 4, $store.comps.blackScreen = !$store.comps.blackScreen">
                 <svg class="fill-[#303030] dark:fill-[#cfcfcf] w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M4.252 10C4.08416 10.6534 3.99949 11.3254 4 12C4 12.69 4.088 13.36 4.252 14H7.1C6.96518 12.6701 6.96518 11.3299 7.1 10H4.252ZM5.07 8H7.416C7.682 6.783 8.066 5.693 8.537 4.786C7.08518 5.48542 5.87722 6.60523 5.07 8V8ZM19.748 10H16.9C17.0348 11.3299 17.0348 12.6701 16.9 14H19.748C20.0847 12.6879 20.0847 11.3121 19.748 10ZM18.93 8C18.1228 6.60523 16.9148 5.48542 15.463 4.786C15.935 5.693 16.318 6.783 16.584 8H18.93ZM9.112 10C9.03708 10.664 8.99968 11.3318 9 12C9 12.685 9.038 13.355 9.112 14H14.888C15.0386 12.6709 15.0386 11.3291 14.888 10H9.112ZM9.47 8H14.53C14.348 7.2483 14.0855 6.51841 13.747 5.823C13.119 4.568 12.447 4 12 4C11.552 4 10.881 4.568 10.253 5.823C9.938 6.455 9.673 7.19 9.47 8ZM5.07 16C5.87722 17.3948 7.08518 18.5146 8.537 19.214C8.065 18.307 7.682 17.217 7.416 16H5.07V16ZM18.93 16H16.584C16.318 17.217 15.934 18.307 15.463 19.214C16.9148 18.5146 18.1228 17.3948 18.93 16ZM9.47 16C9.673 16.81 9.938 17.545 10.253 18.177C10.881 19.432 11.553 20 12 20C12.448 20 13.119 19.432 13.747 18.177C14.062 17.545 14.327 16.81 14.53 16H9.47V16ZM12 22C6.477 22 2 17.523 2 12C2 6.477 6.477 2 12 2C17.523 2 22 6.477 22 12C22 17.523 17.523 22 12 22Z"/>
                         </svg>
@@ -165,14 +166,11 @@ console.log(temp)
             <div class="slider-div w-full h-[3px] px-6 flex justify-start">
                 <input type="range" name="" disabled id="rangeSld" min="1" max="4" step="1" x-transition:enter=" transition-transform ease-in-out" class="w-full appearance-none bg-transparent" x-model="$store.comps.rangeValue">
             </div>
-
         </div>
-
     </nav>
 
-
-    <div class="panel-bottom fixed w-full h-60 rounded-t-2xl overflow-hidden bg-white dark:bg-[#212121] bottom-16 transition-transform ease-in-out duration-150 right-0 z-10 lg:hidden flex flex-col items-center justify-between" x-show="$store.comps.modal1"
-        x-on:click.outside="$store.comps.modal1 = false" x-transition:enter="translate-y-60" x-transition:leave="translate-y-60">
+    <div class="panel-bottom fixed w-full h-60 rounded-t-2xl overflow-hidden bg-white dark:bg-[#212121] bottom-16 transition-transform ease-in-out duration-150 right-0 z-20 lg:hidden flex flex-col items-center justify-between" x-show="$store.comps.modal1"
+        x-on:click.outside="$store.comps.modal1 = false, $store.comps.blackScreen = false" x-transition:enter="translate-y-60" x-transition:leave="translate-y-60">
         <div class="w-full h-auto flex flex-col items-center pt-2">
             <div class="w-full h-auto flex flex-col items-center justify-between">
                 <div class=" w-full text-[#303030] dark:text-[#cfcfcf] font-medium gap-4 flex flex-col items-center justify-center">
@@ -188,9 +186,9 @@ console.log(temp)
         </div>
     </div>
 
-    <div class="panel-bottom fixed w-full h-60 rounded-t-2xl overflow-hidden bg-white dark:bg-[#212121] bottom-16 transition-transform ease-in-out duration-150 right-0 z-10 lg:hidden flex flex-col items-center justify-between" x-show="$store.comps.modal2"
-        x-on:click.outside="$store.comps.modal2 = false" x-transition:enter="translate-y-60" x-transition:leave="translate-y-60">
-        <div class="w-full h-auto flex flex-col items-center pt-2">
+    <div class="panel-bottom fixed w-full h-64 rounded-t-2xl mt-2 overflow-hidden bg-white dark:bg-[#212121] bottom-16 transition-transform ease-in-out duration-150 right-0 z-20 lg:hidden flex flex-col items-center justify-between" x-show="$store.comps.modal2"
+        x-on:click.outside="$store.comps.modal2 = false, $store.comps.blackScreen = false" x-transition:enter="translate-y-64" x-transition:leave="translate-y-64">
+        <div class="w-full h-auto flex flex-col items-center mt-6 overflow-y-scroll">
             <div class="w-full h-auto flex flex-col items-center justify-between">
                 <!-- <div class=" w-full text-[#303030] dark:text-[#cfcfcf] font-medium gap-4 flex flex-col items-center justify-center" :class="!$store.comps.serversonline && 'hidden'">
                     <span>Esto es de los paises</span>
@@ -198,12 +196,17 @@ console.log(temp)
                 </div> -->
                 <template x-for="item in Object.values(proxies.results)">
                     <button class=" w-full h-14 text-[#303030] dark:text-[#cfcfcf] font-medium gap-4 flex flex-col items-center justify-center bg-white active:bg-[#EBEBEB]" x-init="$store.comps.stringPaises = item.location">
-                        <div class="font-twemoji select-none overflow-y-scroll" x-text="getFlagEmoji(item.location_country_code) + ' '+ item.location"></div>
+                        <div class="flex gap-2 w-full items-center justify-center">
+                            <div class="font-twemoji text-xl select-none overflow-y-scroll" x-text="getFlagEmoji(item.location_country_code)"></div>
+                            <div class="font-twemoji select-none" x-text="' '+ item.location"></div>
+                        </div>
                     </button>
                     </template>
             </div>
         </div>
     </div>
+
+    <div class="back-black w-full h-screen bg-black opacity-30 z-10 fixed transition-opacity" x-show="$store.comps.blackScreen"></div>
 
     <main class="wrapper container mx-auto w-full h-auto xl:h-screen grid grid-cols-12 grid-flow-row mt-20 py-6 xl:py-8 gap-[30px] px-4">
         <div class="sidebar col-span-12 xl:col-span-3 w-auto h-auto bg-white dark:bg-[#212121] dark:text-[#cfcfcf] shadow-lg xl:flex flex-col-reverse xl:flex-col gap-8 p-4 rounded-lg" :class="!$store.comps.last && 'hidden'">

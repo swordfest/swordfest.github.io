@@ -36,6 +36,8 @@ function getFlagEmoji(countryCode) {
     return String.fromCodePoint(...codePoints);
 }
 
+// document.getElementById(rangeSld).disabled = true;
+
 document.addEventListener('alpine:init', () => {
     Alpine.store('comps', {
             home: false,
@@ -44,13 +46,16 @@ document.addEventListener('alpine:init', () => {
             countries: false,
             marker: false,
             shadownav: false,
-            modal: false,
+            modal1: false,
+            modal2: false,
             stringPaises: [],
             open: false,
+            rangeValue: 1,
 
             // toggle() {
             //     this.on = !this.on
             // }
+
         })
         // Alpine.data('dropdown', () => ({
         //     countries: false,

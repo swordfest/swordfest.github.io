@@ -110,8 +110,8 @@ console.log(temp)
         </div>
     </nav>
 
-    <div class="menu-mobile absolute w-full h-[304px] bg-white dark:bg-[#212121] right-0 z-10 lg:hidden flex flex-col items-center justify-between transition-transform ease-in-out duration-150 top-20 rounded-b-2xl" x-show="$store.comps.open" x-transition:enter="-translate-y-80 "
-        x-transition:leave="-translate-y-60">
+    <div class="menu-mobile absolute w-full h-[304px] bg-white dark:bg-[#212121] right-0 z-10 lg:hidden flex flex-col items-center justify-between transition-transform ease-in-out duration-150 top-20 rounded-b-2xl shadow-lg" x-show="$store.comps.open" x-transition:enter="-translate-y-80 "
+        x-transition:leave="-translate-y-60" x-on:click.outside="$store.comps.open = false">
         <div class="w-full h-auto flex flex-col items-center gap-4 py-4 px-4">
             <div class="w-full h-auto flex flex-col items-center justify-between gap-4 py-4 px-4">
                 <button class="button-fork w-full h-12 flex items-center justify-center px-5 rounded-md bg-[#303030] hover:bg-[#444444] active:bg-[#303030] dark:bg-[#cfcfcf] dark:hover:bg-[#bfbfbf] dark:active:bg-white dark:transition-colors text-white gap-2">
@@ -135,70 +135,76 @@ console.log(temp)
 
     </div>
 
-    <nav class="sidebar-mobile-docked xl:hidden w-full h-16 bg-white fixed z-30 dark:bg-[#212121] bottom-0 flex justify-center" :class="!$store.comps.shadownav && 'shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.05)]'">
-        <div class="container mx-auto h-full px-4 flex items-center justify-between">
-
-            <button class="home w-8 h-10 flex flex-col items-center justify-start mt-3 " x-on:click="$store.comps.home = !$store.comps.home, $store.comps.marker = !$store.comps.marker" onclick="location.href='https://swordfest.github.io/Shadowmere/index.html'">
-                
+    <nav class="sidebar-mobile-docked xl:hidden w-full h-16 py-2 bg-white fixed z-30 dark:bg-[#212121] bottom-0 flex justify-center" :class="!$store.comps.shadownav && 'shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.05)]'">
+        <div class="container mx-auto h-auto flex flex-col items-center">
+            <div class="w-full h-10 px-4 flex items-center justify-between">
+                <button class="home w-8 h-10 flex flex-col items-center justify-end mb-2" x-on:click="$store.comps.home = !$store.comps.home, $store.comps.marker = !$store.comps.marker, $store.comps.rangeValue = 1" onclick="location.href='https://swordfest.github.io/Shadowmere/index.html'">
                     <svg class="fill-[#303030] active:fill-[#303030] dark:fill-[#cfcfcf] w-6 h-6" x-transition viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10.55 2.53295C10.9558 2.19098 11.4693 2.00342 12 2.00342C12.5307 2.00342 13.0442 2.19098 13.45 2.53295L20.2 8.22795C20.708 8.65495 21 9.28395 21 9.94795V19.75C21 20.2141 20.8156 20.6592 20.4874 20.9874C20.1592 21.3156 19.7141 21.5 19.25 21.5H16.25C15.7859 21.5 15.3408 21.3156 15.0126 20.9874C14.6844 20.6592 14.5 20.2141 14.5 19.75V14.75C14.5 14.551 14.421 14.3603 14.2803 14.2196C14.1397 14.079 13.9489 14 13.75 14H10.25C10.0511 14 9.86032 14.079 9.71967 14.2196C9.57902 14.3603 9.5 14.551 9.5 14.75V19.75C9.5 20.2141 9.31563 20.6592 8.98744 20.9874C8.65925 21.3156 8.21413 21.5 7.75 21.5H4.75C4.52019 21.5 4.29262 21.4547 4.0803 21.3667C3.86798 21.2788 3.67507 21.1499 3.51256 20.9874C3.35006 20.8249 3.22116 20.632 3.13321 20.4196C3.04527 20.2073 3 19.9798 3 19.75V9.94695C3 9.28395 3.292 8.65495 3.8 8.22695L10.55 2.53295V2.53295Z"/>
-                        </svg>
-                    
-                    <div class="selected-item w-4 h-[3px] mt-[2px] rounded-full bg-black dark:bg-[#cfcfcf]" :class="!$store.comps.marker && 'hidden'"></div>
-                
-                <!-- <span class="text-sm">Home</span> -->
-            </button>
-            <button class="stats w-8 h-10 flex flex-col items-center justify-start mt-3 " x-on:click="$store.comps.last = !$store.comps.last, $store.comps.shadownav = !$store.comps.shadownav">
-                <svg class="fill-[#303030] dark:fill-[#cfcfcf] w-6 h-6" viewBox="0 0 24 24" x-transition fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4.875 23.25H3.375C3.07663 23.25 2.79048 23.1315 2.5795 22.9205C2.36853 22.7095 2.25 22.4234 2.25 22.125V15.375C2.25 15.0766 2.36853 14.7905 2.5795 14.5795C2.79048 14.3685 3.07663 14.25 3.375 14.25H4.875C5.17337 14.25 5.45952 14.3685 5.6705 14.5795C5.88147 14.7905 6 15.0766 6 15.375V22.125C6 22.4234 5.88147 22.7095 5.6705 22.9205C5.45952 23.1315 5.17337 23.25 4.875 23.25V23.25ZM15.375 23.25H13.875C13.5766 23.25 13.2905 23.1315 13.0795 22.9205C12.8685 22.7095 12.75 22.4234 12.75 22.125V10.875C12.75 10.5766 12.8685 10.2905 13.0795 10.0795C13.2905 9.86853 13.5766 9.75 13.875 9.75H15.375C15.6734 9.75 15.9595 9.86853 16.1705 10.0795C16.3815 10.2905 16.5 10.5766 16.5 10.875V22.125C16.5 22.4234 16.3815 22.7095 16.1705 22.9205C15.9595 23.1315 15.6734 23.25 15.375 23.25V23.25ZM20.625 23.25H19.125C18.8266 23.25 18.5405 23.1315 18.3295 22.9205C18.1185 22.7095 18 22.4234 18 22.125V5.625C18 5.32663 18.1185 5.04048 18.3295 4.8295C18.5405 4.61853 18.8266 4.5 19.125 4.5H20.625C20.9234 4.5 21.2095 4.61853 21.4205 4.8295C21.6315 5.04048 21.75 5.32663 21.75 5.625V22.125C21.75 22.4234 21.6315 22.7095 21.4205 22.9205C21.2095 23.1315 20.9234 23.25 20.625 23.25V23.25ZM10.125 23.25H8.625C8.32663 23.25 8.04048 23.1315 7.8295 22.9205C7.61853 22.7095 7.5 22.4234 7.5 22.125V1.875C7.5 1.57663 7.61853 1.29048 7.8295 1.0795C8.04048 0.868526 8.32663 0.75 8.625 0.75H10.125C10.4234 0.75 10.7095 0.868526 10.9205 1.0795C11.1315 1.29048 11.25 1.57663 11.25 1.875V22.125C11.25 22.4234 11.1315 22.7095 10.9205 22.9205C10.7095 23.1315 10.4234 23.25 10.125 23.25V23.25Z"/>
-                    </svg>
-                    
-                <div class="selected-item w-4 h-[3px] mt-[2px] rounded-full bg-black dark:bg-[#cfcfcf]" :class="!$store.comps.last && 'hidden'" x-transition></div>
-                <!-- <span class="text-sm">Home</span> -->
-            </button>
+                    </svg>    
+                </button>
 
-            <button class="servers-online w-8 h-10 flex flex-col items-center justify-start mt-3 " x-on:click="$store.comps.serversonline = !$store.comps.serversonline, $store.comps.modal = !$store.comps.modal" x-bind:="last && last= !last">
-                <svg class="fill-[#303030]  dark:fill-[#cfcfcf] w-6 h-6" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10.5416 8.83333C10.1983 7.85874 9.56104 7.01469 8.71771 6.41764C7.87437 5.82059 6.86654 5.49996 5.83325 5.5C3.07492 5.5 0.833252 7.74167 0.833252 10.5C0.833252 13.2583 3.07492 15.5 5.83325 15.5C6.86654 15.5 7.87437 15.1794 8.71771 14.5824C9.56104 13.9853 10.1983 13.1413 10.5416 12.1667H14.1666V15.5H17.4999V12.1667H19.1666V8.83333H10.5416ZM5.83325 12.1667C4.91658 12.1667 4.16658 11.4167 4.16658 10.5C4.16658 9.58333 4.91658 8.83333 5.83325 8.83333C6.74992 8.83333 7.49992 9.58333 7.49992 10.5C7.49992 11.4167 6.74992 12.1667 5.83325 12.1667Z"/>
-                </svg>
-                <div class="selected-item w-4 h-[3px] mt-[2px] rounded-full bg-black dark:bg-[#cfcfcf]" x-bind:class="!$store.comps.serversonline && 'hidden'" x-transition></div>
-                <!-- serversonline -->
-                <!-- <div class="selected-item w-4 h-[3px] mt-[2px] rounded-full bg-black"></div> -->
-                <!-- <span class="text-sm">Home</span> -->
-            </button>
-            <!-- <button class="countries w-8 h-10 flex flex-col items-center justify-start mt-3" x-data="dropdown()" x-bind:="menuFlags"> -->
-            <button class="countries w-8 h-10 flex flex-col items-center justify-start mt-3 " x-on:click="$store.comps.countries = !$store.comps.countries, $store.comps.modal = !$store.comps.modal">
-            <svg class="fill-[#303030] dark:fill-[#cfcfcf] w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4.252 10C4.08416 10.6534 3.99949 11.3254 4 12C4 12.69 4.088 13.36 4.252 14H7.1C6.96518 12.6701 6.96518 11.3299 7.1 10H4.252ZM5.07 8H7.416C7.682 6.783 8.066 5.693 8.537 4.786C7.08518 5.48542 5.87722 6.60523 5.07 8V8ZM19.748 10H16.9C17.0348 11.3299 17.0348 12.6701 16.9 14H19.748C20.0847 12.6879 20.0847 11.3121 19.748 10ZM18.93 8C18.1228 6.60523 16.9148 5.48542 15.463 4.786C15.935 5.693 16.318 6.783 16.584 8H18.93ZM9.112 10C9.03708 10.664 8.99968 11.3318 9 12C9 12.685 9.038 13.355 9.112 14H14.888C15.0386 12.6709 15.0386 11.3291 14.888 10H9.112ZM9.47 8H14.53C14.348 7.2483 14.0855 6.51841 13.747 5.823C13.119 4.568 12.447 4 12 4C11.552 4 10.881 4.568 10.253 5.823C9.938 6.455 9.673 7.19 9.47 8ZM5.07 16C5.87722 17.3948 7.08518 18.5146 8.537 19.214C8.065 18.307 7.682 17.217 7.416 16H5.07V16ZM18.93 16H16.584C16.318 17.217 15.934 18.307 15.463 19.214C16.9148 18.5146 18.1228 17.3948 18.93 16ZM9.47 16C9.673 16.81 9.938 17.545 10.253 18.177C10.881 19.432 11.553 20 12 20C12.448 20 13.119 19.432 13.747 18.177C14.062 17.545 14.327 16.81 14.53 16H9.47V16ZM12 22C6.477 22 2 17.523 2 12C2 6.477 6.477 2 12 2C17.523 2 22 6.477 22 12C22 17.523 17.523 22 12 22Z"/>
+                <button class="stats w-8 h-10 flex flex-col items-center justify-end mb-2 " x-on:click="$store.comps.last = !$store.comps.last, $store.comps.shadownav = !$store.comps.shadownav, $store.comps.rangeValue = 2">
+                    <svg class="fill-[#303030] dark:fill-[#cfcfcf] w-6 h-6" viewBox="0 0 24 24" x-transition fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.875 23.25H3.375C3.07663 23.25 2.79048 23.1315 2.5795 22.9205C2.36853 22.7095 2.25 22.4234 2.25 22.125V15.375C2.25 15.0766 2.36853 14.7905 2.5795 14.5795C2.79048 14.3685 3.07663 14.25 3.375 14.25H4.875C5.17337 14.25 5.45952 14.3685 5.6705 14.5795C5.88147 14.7905 6 15.0766 6 15.375V22.125C6 22.4234 5.88147 22.7095 5.6705 22.9205C5.45952 23.1315 5.17337 23.25 4.875 23.25V23.25ZM15.375 23.25H13.875C13.5766 23.25 13.2905 23.1315 13.0795 22.9205C12.8685 22.7095 12.75 22.4234 12.75 22.125V10.875C12.75 10.5766 12.8685 10.2905 13.0795 10.0795C13.2905 9.86853 13.5766 9.75 13.875 9.75H15.375C15.6734 9.75 15.9595 9.86853 16.1705 10.0795C16.3815 10.2905 16.5 10.5766 16.5 10.875V22.125C16.5 22.4234 16.3815 22.7095 16.1705 22.9205C15.9595 23.1315 15.6734 23.25 15.375 23.25V23.25ZM20.625 23.25H19.125C18.8266 23.25 18.5405 23.1315 18.3295 22.9205C18.1185 22.7095 18 22.4234 18 22.125V5.625C18 5.32663 18.1185 5.04048 18.3295 4.8295C18.5405 4.61853 18.8266 4.5 19.125 4.5H20.625C20.9234 4.5 21.2095 4.61853 21.4205 4.8295C21.6315 5.04048 21.75 5.32663 21.75 5.625V22.125C21.75 22.4234 21.6315 22.7095 21.4205 22.9205C21.2095 23.1315 20.9234 23.25 20.625 23.25V23.25ZM10.125 23.25H8.625C8.32663 23.25 8.04048 23.1315 7.8295 22.9205C7.61853 22.7095 7.5 22.4234 7.5 22.125V1.875C7.5 1.57663 7.61853 1.29048 7.8295 1.0795C8.04048 0.868526 8.32663 0.75 8.625 0.75H10.125C10.4234 0.75 10.7095 0.868526 10.9205 1.0795C11.1315 1.29048 11.25 1.57663 11.25 1.875V22.125C11.25 22.4234 11.1315 22.7095 10.9205 22.9205C10.7095 23.1315 10.4234 23.25 10.125 23.25V23.25Z"/>
+                        </svg>
+                </button>
+
+                <button class="servers-online w-8 h-10 flex flex-col items-center justify-end mb-2 " x-on:click="$store.comps.serversonline = !$store.comps.serversonline, $store.comps.modal1 = !$store.comps.modal1, $store.comps.rangeValue = 3" x-bind:="last && last= !last">
+                    <svg class="fill-[#303030]  dark:fill-[#cfcfcf] w-6 h-6" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.5416 8.83333C10.1983 7.85874 9.56104 7.01469 8.71771 6.41764C7.87437 5.82059 6.86654 5.49996 5.83325 5.5C3.07492 5.5 0.833252 7.74167 0.833252 10.5C0.833252 13.2583 3.07492 15.5 5.83325 15.5C6.86654 15.5 7.87437 15.1794 8.71771 14.5824C9.56104 13.9853 10.1983 13.1413 10.5416 12.1667H14.1666V15.5H17.4999V12.1667H19.1666V8.83333H10.5416ZM5.83325 12.1667C4.91658 12.1667 4.16658 11.4167 4.16658 10.5C4.16658 9.58333 4.91658 8.83333 5.83325 8.83333C6.74992 8.83333 7.49992 9.58333 7.49992 10.5C7.49992 11.4167 6.74992 12.1667 5.83325 12.1667Z"/>
                     </svg>
-            <div class="selected-item w-4 h-[3px] mt-[2px] rounded-full bg-black dark:bg-[#cfcfcf]" x-bind:class="!$store.comps.countries && 'hidden'" x-transition></div>
-            <!-- <div class="selected-item w-4 h-[3px] mt-[2px] rounded-full bg-black"></div> -->
-            <!-- <span class="text-sm hidden">Home</span> -->
-            </button>
+                </button>
+
+                <button class="countries w-8 h-10 flex flex-col items-center justify-end mb-2 " x-on:click="$store.comps.countries = !$store.comps.countries, $store.comps.modal2 = !$store.comps.modal2, $store.comps.rangeValue = 4">
+                <svg class="fill-[#303030] dark:fill-[#cfcfcf] w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.252 10C4.08416 10.6534 3.99949 11.3254 4 12C4 12.69 4.088 13.36 4.252 14H7.1C6.96518 12.6701 6.96518 11.3299 7.1 10H4.252ZM5.07 8H7.416C7.682 6.783 8.066 5.693 8.537 4.786C7.08518 5.48542 5.87722 6.60523 5.07 8V8ZM19.748 10H16.9C17.0348 11.3299 17.0348 12.6701 16.9 14H19.748C20.0847 12.6879 20.0847 11.3121 19.748 10ZM18.93 8C18.1228 6.60523 16.9148 5.48542 15.463 4.786C15.935 5.693 16.318 6.783 16.584 8H18.93ZM9.112 10C9.03708 10.664 8.99968 11.3318 9 12C9 12.685 9.038 13.355 9.112 14H14.888C15.0386 12.6709 15.0386 11.3291 14.888 10H9.112ZM9.47 8H14.53C14.348 7.2483 14.0855 6.51841 13.747 5.823C13.119 4.568 12.447 4 12 4C11.552 4 10.881 4.568 10.253 5.823C9.938 6.455 9.673 7.19 9.47 8ZM5.07 16C5.87722 17.3948 7.08518 18.5146 8.537 19.214C8.065 18.307 7.682 17.217 7.416 16H5.07V16ZM18.93 16H16.584C16.318 17.217 15.934 18.307 15.463 19.214C16.9148 18.5146 18.1228 17.3948 18.93 16ZM9.47 16C9.673 16.81 9.938 17.545 10.253 18.177C10.881 19.432 11.553 20 12 20C12.448 20 13.119 19.432 13.747 18.177C14.062 17.545 14.327 16.81 14.53 16H9.47V16ZM12 22C6.477 22 2 17.523 2 12C2 6.477 6.477 2 12 2C17.523 2 22 6.477 22 12C22 17.523 17.523 22 12 22Z"/>
+                        </svg>
+                </button>
+            </div>
+            <div class="slider-div w-full h-[3px] px-6 flex justify-start">
+                <input type="range" name="" disabled id="rangeSld" min="1" max="4" step="1" x-transition:enter=" transition-transform ease-in-out" class="w-full appearance-none bg-transparent" x-model="$store.comps.rangeValue">
+            </div>
+
         </div>
+
     </nav>
 
-    <div class="panel-bottom fixed w-full h-60 rounded-t-2xl overflow-hidden bg-white dark:bg-[#212121] bottom-16 transition-transform ease-in-out duration-150 right-0 z-10 lg:hidden flex flex-col items-center justify-between" x-show="$store.comps.modal"
-        x-on:click.outside="$store.comps.modal = false" x-transition:enter="translate-y-60" x-transition:leave="translate-y-60">
+
+    <div class="panel-bottom fixed w-full h-60 rounded-t-2xl overflow-hidden bg-white dark:bg-[#212121] bottom-16 transition-transform ease-in-out duration-150 right-0 z-10 lg:hidden flex flex-col items-center justify-between" x-show="$store.comps.modal1"
+        x-on:click.outside="$store.comps.modal1 = false" x-transition:enter="translate-y-60" x-transition:leave="translate-y-60">
         <div class="w-full h-auto flex flex-col items-center pt-2">
             <div class="w-full h-auto flex flex-col items-center justify-between">
-                <div class=" w-full text-[#303030] dark:text-[#cfcfcf] font-medium gap-4 flex flex-col items-center justify-center" :class="!$store.comps.serversonline && 'hidden'">
-                    <span>Esto es de los paises</span>
+                <div class=" w-full text-[#303030] dark:text-[#cfcfcf] font-medium gap-4 flex flex-col items-center justify-center">
+                    <span>Esto es de los servers</span>
                     <hr class="w-full h-px border-[#303030] dark:border-[#cfcfcf]">
                 </div>
-                <template x-for="item in Object.values(proxies.results)">
-                    <button class=" w-full h-14 text-[#303030] dark:text-[#cfcfcf] font-medium gap-4 flex flex-col items-center justify-center bg-white active:bg-[#EBEBEB]"  :class="$store.comps.serversonline && 'hidden'" x-init="$store.comps.stringPaises = item.location">
-                        <div class="font-twemoji select-none overflow-y-scroll" x-text="getFlagEmoji(item.location_country_code) + ' '+ item.location"></div>
-                        <!-- <hr class="w-full h-px border-[#303030] dark:border-[#cfcfcf]"> -->
-                    </button>
-                </template>
-                <!-- <span class="dark:text-[#303030] font-medium" :class="!serversonline && 'hidden'">Fork me on GitHub</span> -->
-                <!-- <span class="dark:text-[#303030] font-medium" :class="!last && 'hidden'">Fork me on GitHub</span> -->
+                <!-- <template x-for="item in Object.values(proxies.results)">
+                <button class=" w-full h-14 text-[#303030] dark:text-[#cfcfcf] font-medium gap-4 flex flex-col items-center justify-center bg-white active:bg-[#EBEBEB]"  :class="$store.comps.serversonline && 'hidden'" x-init="$store.comps.stringPaises = item.location">
+                    <div class="font-twemoji select-none overflow-y-scroll" x-text="getFlagEmoji(item.location_country_code) + ' '+ item.location"></div>
+                </button>
+                </template> -->
             </div>
-            <!-- <span class="text-[#303030] dark:text-[#cfcfcf]" x-text="text" x-bind:class="last && 'hidden'"></span> -->
         </div>
-
     </div>
+
+    <div class="panel-bottom fixed w-full h-60 rounded-t-2xl overflow-hidden bg-white dark:bg-[#212121] bottom-16 transition-transform ease-in-out duration-150 right-0 z-10 lg:hidden flex flex-col items-center justify-between" x-show="$store.comps.modal2"
+        x-on:click.outside="$store.comps.modal2 = false" x-transition:enter="translate-y-60" x-transition:leave="translate-y-60">
+        <div class="w-full h-auto flex flex-col items-center pt-2">
+            <div class="w-full h-auto flex flex-col items-center justify-between">
+                <!-- <div class=" w-full text-[#303030] dark:text-[#cfcfcf] font-medium gap-4 flex flex-col items-center justify-center" :class="!$store.comps.serversonline && 'hidden'">
+                    <span>Esto es de los paises</span>
+                    <hr class="w-full h-px border-[#303030] dark:border-[#cfcfcf]">
+                </div> -->
+                <template x-for="item in Object.values(proxies.results)">
+                    <button class=" w-full h-14 text-[#303030] dark:text-[#cfcfcf] font-medium gap-4 flex flex-col items-center justify-center bg-white active:bg-[#EBEBEB]" x-init="$store.comps.stringPaises = item.location">
+                        <div class="font-twemoji select-none overflow-y-scroll" x-text="getFlagEmoji(item.location_country_code) + ' '+ item.location"></div>
+                    </button>
+                    </template>
+            </div>
+        </div>
+    </div>
+
     <main class="wrapper container mx-auto w-full h-auto xl:h-screen grid grid-cols-12 grid-flow-row mt-20 py-6 xl:py-8 gap-[30px] px-4">
         <div class="sidebar col-span-12 xl:col-span-3 w-auto h-auto bg-white dark:bg-[#212121] dark:text-[#cfcfcf] shadow-lg xl:flex flex-col-reverse xl:flex-col gap-8 p-4 rounded-lg" :class="!$store.comps.last && 'hidden'">
             <div class="online-vpns-filter flex flex-col gap-4">

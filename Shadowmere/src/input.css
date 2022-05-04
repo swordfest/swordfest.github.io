@@ -34,6 +34,15 @@
     html {
         -webkit-tap-highlight-color: transparent;
     }
+    input[type=range]::-webkit-slider-thumb {
+        height: 3px;
+        width: 16px;
+        border-radius: 13px;
+        background: #303030;
+        cursor: pointer;
+        -webkit-appearance: none;
+        pointer-events: none;
+    }
 }
 
 @font-face {

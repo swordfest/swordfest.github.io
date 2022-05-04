@@ -38,16 +38,36 @@ function getFlagEmoji(countryCode) {
 
 document.addEventListener('alpine:init', () => {
     Alpine.store('comps', {
-        home: false,
-        last: false,
-        serversonline: false,
-        countries: false,
-        marker: false,
-        shadownav: false,
-        modal: false,
+            home: false,
+            last: false,
+            serversonline: false,
+            countries: false,
+            marker: false,
+            shadownav: false,
+            modal: false,
+            stringPaises: [],
+            open: false,
 
-        // toggle() {
-        //     this.on = !this.on
-        // }
-    })
+            // toggle() {
+            //     this.on = !this.on
+            // }
+        })
+        // Alpine.data('dropdown', () => ({
+        //     countries: false,
+        //     menuFlags: {
+        //         ['x-ref']: 'menuFlags',
+        //         ['@click']() {
+        //             this.countries = true
+        //             this.modal = true
+        //         },
+        //     },
+        //     modalx: {
+        //         ['x-show']() {
+        //             return this.modal
+        //         },
+        //         ['@click.outside']() {
+        //             this.modal = false
+        //         },
+        //     }
+        // }))
 })

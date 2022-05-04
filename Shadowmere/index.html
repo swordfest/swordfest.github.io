@@ -21,15 +21,16 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
     <title>Shadowmere</title>
 </head>
 
-<body class="bg-[#F8F8F8] dark:bg-[#141414]" x-data="{ proxies: null }" x-init="
+<body class="bg-[#F8F8F8] dark:bg-[#141414]" x-data="{ proxies: null, temp: '' }" x-init="
 proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json')).json()
-console.log(proxies)
+console.log($store.comps.stringPaises)
+console.log(temp)
 ">
 
 
 
-    <nav class="w-full h-20 bg-white dark:bg-[#212121] top-0 shadow-lg fixed flex justify-center">
-        <div class="nav-wrapper container mx-auto bg-white dark:bg-[#212121] w-full h-full flex items-center justify-between px-4" x-data="{ open: false, alx: false }">
+    <nav class="w-full h-20 bg-white dark:bg-[#212121] z-30 top-0 shadow-lg fixed flex justify-center">
+        <div class="nav-wrapper container mx-auto bg-white dark:bg-[#212121] w-full h-full flex items-center justify-between px-4">
             <svg class="fill-[#303030] dark:fill-[#cfcfcf] w-1/2 md:w-auto h-auto cursor-pointer " width="260" height="50" viewBox="0 0 260 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20.9424 4.88982L23.7489 0.941338L28.491 1.11554L34.5105 1.3478L25.607 4.46401L20.9424 4.88982Z"/>
                 <path d="M28.7812 7.19311L33.4265 4.69627L41.9235 8.00603L31.2781 9.12864L28.7812 7.19311Z"/>
@@ -51,38 +52,16 @@ console.log(proxies)
                 </svg>
             <div class="nav-content flex w-auto h-full items-center flex-row-reverse gap-6 mx-0">
 
-                <button class="mobile-menu w-6 h-6 flex items-center justify-center lg:hidden" x-on:click="open = ! open">
-                    <svg class="icon-menu fill-[#303030] dark:fill-[#cfcfcf]" :class="open && 'hidden'" x-transition  width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button class="mobile-menu w-6 h-6 flex items-center justify-center lg:hidden" x-on:click="$store.comps.open = ! $store.comps.open">
+                    <svg class="icon-menu w-8 h-8 fill-[#303030] dark:fill-[#cfcfcf]" :class="$store.comps.open && 'hidden'" x-transition viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 18.667H21V16.667H3V18.667ZM3 13.667H21V11.667H3V13.667ZM3 6.66699V8.66699H21V6.66699H3Z"/>
                         </svg>
-                        <svg class="icon-close fill-[#303030] dark:fill-[#cfcfcf]" :class="!open && 'hidden'" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="icon-close fill-[#303030] dark:fill-[#cfcfcf]" :class="!$store.comps.open && 'hidden'" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41L17.59 5Z"/>
                             </svg>
                 </button>
 
-                <div class="menu-mobile absolute w-full h-screen bg-white dark:bg-[#212121] top-24 right-0 z-20 lg:hidden flex flex-col items-center justify-between" x-show="open" x-transition.duration.150ms x-data="text: 'Made with ❤️ in Europe 🇪🇺 by Akiel'">
-                    <div class="w-full h-screen flex flex-col items-center gap-4 py-4 px-4">
-                        <div class="w-full h-auto flex flex-col items-center justify-between gap-4 py-4 px-4">
-                            <button class="button-fork w-full h-12 flex items-center justify-center px-5 rounded-md bg-[#303030] hover:bg-[#444444] active:bg-[#303030] dark:bg-[#cfcfcf] dark:hover:bg-[#bfbfbf] dark:active:bg-white dark:transition-colors text-white gap-2">
-                                <svg class="fill-white dark:fill-[#303030]" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_509_459)">
-                                <path d="M7.77656 18.6281C7.77656 18.7219 7.66875 18.7969 7.53281 18.7969C7.37812 18.8109 7.27031 18.7359 7.27031 18.6281C7.27031 18.5344 7.37813 18.4594 7.51406 18.4594C7.65469 18.4453 7.77656 18.5203 7.77656 18.6281ZM6.31875 18.4172C6.28594 18.5109 6.37969 18.6187 6.52031 18.6469C6.64219 18.6937 6.78281 18.6469 6.81094 18.5531C6.83906 18.4594 6.75 18.3516 6.60938 18.3094C6.4875 18.2766 6.35156 18.3234 6.31875 18.4172ZM8.39062 18.3375C8.25469 18.3703 8.16094 18.4594 8.175 18.5672C8.18906 18.6609 8.31094 18.7219 8.45156 18.6891C8.5875 18.6563 8.68125 18.5672 8.66719 18.4734C8.65312 18.3844 8.52656 18.3234 8.39062 18.3375ZM11.475 0.375C4.97344 0.375 0 5.31094 0 11.8125C0 17.0109 3.27188 21.4594 7.94531 23.025C8.54531 23.1328 8.75625 22.7625 8.75625 22.4578C8.75625 22.1672 8.74219 20.5641 8.74219 19.5797C8.74219 19.5797 5.46094 20.2828 4.77188 18.1828C4.77188 18.1828 4.2375 16.8187 3.46875 16.4672C3.46875 16.4672 2.39531 15.7312 3.54375 15.7453C3.54375 15.7453 4.71094 15.8391 5.35312 16.9547C6.37969 18.7641 8.1 18.2438 8.77031 17.9344C8.87813 17.1844 9.18281 16.6641 9.52031 16.3547C6.9 16.0641 4.25625 15.6844 4.25625 11.175C4.25625 9.88594 4.6125 9.23906 5.3625 8.41406C5.24063 8.10938 4.84219 6.85312 5.48438 5.23125C6.46406 4.92656 8.71875 6.49688 8.71875 6.49688C9.65625 6.23438 10.6641 6.09844 11.6625 6.09844C12.6609 6.09844 13.6688 6.23438 14.6063 6.49688C14.6063 6.49688 16.8609 4.92187 17.8406 5.23125C18.4828 6.85781 18.0844 8.10938 17.9625 8.41406C18.7125 9.24375 19.1719 9.89062 19.1719 11.175C19.1719 15.6984 16.4109 16.0594 13.7906 16.3547C14.2219 16.725 14.5875 17.4281 14.5875 18.5297C14.5875 20.1094 14.5734 22.0641 14.5734 22.4484C14.5734 22.7531 14.7891 23.1234 15.3844 23.0156C20.0719 21.4594 23.25 17.0109 23.25 11.8125C23.25 5.31094 17.9766 0.375 11.475 0.375ZM4.55625 16.5422C4.49531 16.5891 4.50938 16.6969 4.58906 16.7859C4.66406 16.8609 4.77187 16.8938 4.83281 16.8328C4.89375 16.7859 4.87969 16.6781 4.8 16.5891C4.725 16.5141 4.61719 16.4812 4.55625 16.5422ZM4.05 16.1625C4.01719 16.2234 4.06406 16.2984 4.15781 16.3453C4.23281 16.3922 4.32656 16.3781 4.35938 16.3125C4.39219 16.2516 4.34531 16.1766 4.25156 16.1297C4.15781 16.1016 4.08281 16.1156 4.05 16.1625ZM5.56875 17.8312C5.49375 17.8922 5.52187 18.0328 5.62969 18.1219C5.7375 18.2297 5.87344 18.2438 5.93437 18.1688C5.99531 18.1078 5.96719 17.9672 5.87344 17.8781C5.77031 17.7703 5.62969 17.7562 5.56875 17.8312ZM5.03438 17.1422C4.95938 17.1891 4.95938 17.3109 5.03438 17.4188C5.10938 17.5266 5.23594 17.5734 5.29688 17.5266C5.37188 17.4656 5.37188 17.3438 5.29688 17.2359C5.23125 17.1281 5.10938 17.0813 5.03438 17.1422Z"/>
-                                </g>
-                                <defs>
-                                <clipPath id="clip0_509_459">
-                                <rect width="23.25" height="24"/>
-                                </clipPath>
-                                </defs>
-                                </svg>
-                                <span class="dark:text-[#303030] font-medium">Fork me on GitHub</span>
-                            </button>
-                            <button class="text-base dark:text-[#cfcfcf] font-medium w-full h-12 flex items-center justify-center px-5 rounded-md bg-[#EBEBEB] hover:bg-[#D7D7D7] dark:bg-[#1B1B1B] dark:hover:bg-[#111111] cursor-pointer transition-colors transition-transform active:scale-[99%]">Why Shadowmere?</button>
-                            <button class="text-base dark:text-[#cfcfcf] font-medium w-full h-12 flex items-center justify-center px-5 rounded-md bg-[#EBEBEB] hover:bg-[#D7D7D7] dark:bg-[#1B1B1B] dark:hover:bg-[#111111] cursor-pointer transition-colors transition-transform active:scale-[99%]">About</button>
-                        </div>
-                        <span class="text-[#303030] dark:text-[#cfcfcf]" x-text="text"></span>
-                    </div>
 
-                </div>
 
                 <button class="button-fork w-auto h-12 hidden lg:flex items-center justify-center px-5 rounded-md bg-[#303030] hover:bg-[#444444] active:bg-[#303030] dark:bg-[#cfcfcf] dark:hover:bg-[#bfbfbf] dark:active:bg-white dark:transition-colors text-white" onclick="location.href='https://github.com/jadolg/shadowmere'"><span class="gap-2 flex">
                     <svg class="fill-white dark:fill-[#303030]" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -130,7 +109,33 @@ console.log(proxies)
             </div>
         </div>
     </nav>
-    <nav class="sidebar-mobile-docked xl:hidden w-full h-16 bg-white fixed z-30 dark:bg-[#212121] bottom-0 flex justify-center" :class="!shadownav && 'shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.05)]'">
+
+    <div class="menu-mobile absolute w-full h-[304px] bg-white dark:bg-[#212121] right-0 z-10 lg:hidden flex flex-col items-center justify-between transition-transform ease-in-out duration-150 top-20 rounded-b-2xl" x-show="$store.comps.open" x-transition:enter="-translate-y-80 "
+        x-transition:leave="-translate-y-60">
+        <div class="w-full h-auto flex flex-col items-center gap-4 py-4 px-4">
+            <div class="w-full h-auto flex flex-col items-center justify-between gap-4 py-4 px-4">
+                <button class="button-fork w-full h-12 flex items-center justify-center px-5 rounded-md bg-[#303030] hover:bg-[#444444] active:bg-[#303030] dark:bg-[#cfcfcf] dark:hover:bg-[#bfbfbf] dark:active:bg-white dark:transition-colors text-white gap-2">
+                                <svg class="fill-white dark:fill-[#303030]" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_509_459)">
+                                <path d="M7.77656 18.6281C7.77656 18.7219 7.66875 18.7969 7.53281 18.7969C7.37812 18.8109 7.27031 18.7359 7.27031 18.6281C7.27031 18.5344 7.37813 18.4594 7.51406 18.4594C7.65469 18.4453 7.77656 18.5203 7.77656 18.6281ZM6.31875 18.4172C6.28594 18.5109 6.37969 18.6187 6.52031 18.6469C6.64219 18.6937 6.78281 18.6469 6.81094 18.5531C6.83906 18.4594 6.75 18.3516 6.60938 18.3094C6.4875 18.2766 6.35156 18.3234 6.31875 18.4172ZM8.39062 18.3375C8.25469 18.3703 8.16094 18.4594 8.175 18.5672C8.18906 18.6609 8.31094 18.7219 8.45156 18.6891C8.5875 18.6563 8.68125 18.5672 8.66719 18.4734C8.65312 18.3844 8.52656 18.3234 8.39062 18.3375ZM11.475 0.375C4.97344 0.375 0 5.31094 0 11.8125C0 17.0109 3.27188 21.4594 7.94531 23.025C8.54531 23.1328 8.75625 22.7625 8.75625 22.4578C8.75625 22.1672 8.74219 20.5641 8.74219 19.5797C8.74219 19.5797 5.46094 20.2828 4.77188 18.1828C4.77188 18.1828 4.2375 16.8187 3.46875 16.4672C3.46875 16.4672 2.39531 15.7312 3.54375 15.7453C3.54375 15.7453 4.71094 15.8391 5.35312 16.9547C6.37969 18.7641 8.1 18.2438 8.77031 17.9344C8.87813 17.1844 9.18281 16.6641 9.52031 16.3547C6.9 16.0641 4.25625 15.6844 4.25625 11.175C4.25625 9.88594 4.6125 9.23906 5.3625 8.41406C5.24063 8.10938 4.84219 6.85312 5.48438 5.23125C6.46406 4.92656 8.71875 6.49688 8.71875 6.49688C9.65625 6.23438 10.6641 6.09844 11.6625 6.09844C12.6609 6.09844 13.6688 6.23438 14.6063 6.49688C14.6063 6.49688 16.8609 4.92187 17.8406 5.23125C18.4828 6.85781 18.0844 8.10938 17.9625 8.41406C18.7125 9.24375 19.1719 9.89062 19.1719 11.175C19.1719 15.6984 16.4109 16.0594 13.7906 16.3547C14.2219 16.725 14.5875 17.4281 14.5875 18.5297C14.5875 20.1094 14.5734 22.0641 14.5734 22.4484C14.5734 22.7531 14.7891 23.1234 15.3844 23.0156C20.0719 21.4594 23.25 17.0109 23.25 11.8125C23.25 5.31094 17.9766 0.375 11.475 0.375ZM4.55625 16.5422C4.49531 16.5891 4.50938 16.6969 4.58906 16.7859C4.66406 16.8609 4.77187 16.8938 4.83281 16.8328C4.89375 16.7859 4.87969 16.6781 4.8 16.5891C4.725 16.5141 4.61719 16.4812 4.55625 16.5422ZM4.05 16.1625C4.01719 16.2234 4.06406 16.2984 4.15781 16.3453C4.23281 16.3922 4.32656 16.3781 4.35938 16.3125C4.39219 16.2516 4.34531 16.1766 4.25156 16.1297C4.15781 16.1016 4.08281 16.1156 4.05 16.1625ZM5.56875 17.8312C5.49375 17.8922 5.52187 18.0328 5.62969 18.1219C5.7375 18.2297 5.87344 18.2438 5.93437 18.1688C5.99531 18.1078 5.96719 17.9672 5.87344 17.8781C5.77031 17.7703 5.62969 17.7562 5.56875 17.8312ZM5.03438 17.1422C4.95938 17.1891 4.95938 17.3109 5.03438 17.4188C5.10938 17.5266 5.23594 17.5734 5.29688 17.5266C5.37188 17.4656 5.37188 17.3438 5.29688 17.2359C5.23125 17.1281 5.10938 17.0813 5.03438 17.1422Z"/>
+                                </g>
+                                <defs>
+                                <clipPath id="clip0_509_459">
+                                <rect width="23.25" height="24"/>
+                                </clipPath>
+                                </defs>
+                                </svg>
+                                <span class="dark:text-[#303030] font-medium">Fork me on GitHub</span>
+                            </button>
+                <button class="text-base dark:text-[#cfcfcf] font-medium w-full h-12 flex items-center justify-center px-5 rounded-md bg-[#EBEBEB] hover:bg-[#D7D7D7] dark:bg-[#1B1B1B] dark:hover:bg-[#111111] cursor-pointer transition-colors transition-transform active:scale-[99%]">Why Shadowmere?</button>
+                <button class="text-base dark:text-[#cfcfcf] font-medium w-full h-12 flex items-center justify-center px-5 rounded-md bg-[#EBEBEB] hover:bg-[#D7D7D7] dark:bg-[#1B1B1B] dark:hover:bg-[#111111] cursor-pointer transition-colors transition-transform active:scale-[99%]">About</button>
+            </div>
+            <span class="font-twemoji align-baseline text-[#303030] dark:text-[#cfcfcf]">Made with ❤️ in Europe 🇪🇺 by Akiel</span>
+        </div>
+
+    </div>
+
+    <nav class="sidebar-mobile-docked xl:hidden w-full h-16 bg-white fixed z-30 dark:bg-[#212121] bottom-0 flex justify-center" :class="!$store.comps.shadownav && 'shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.05)]'">
         <div class="container mx-auto h-full px-4 flex items-center justify-between">
 
             <button class="home w-8 h-10 flex flex-col items-center justify-start mt-3 " x-on:click="$store.comps.home = !$store.comps.home, $store.comps.marker = !$store.comps.marker" onclick="location.href='https://swordfest.github.io/Shadowmere/index.html'">
@@ -161,31 +166,31 @@ console.log(proxies)
                 <!-- <div class="selected-item w-4 h-[3px] mt-[2px] rounded-full bg-black"></div> -->
                 <!-- <span class="text-sm">Home</span> -->
             </button>
+            <!-- <button class="countries w-8 h-10 flex flex-col items-center justify-start mt-3" x-data="dropdown()" x-bind:="menuFlags"> -->
             <button class="countries w-8 h-10 flex flex-col items-center justify-start mt-3 " x-on:click="$store.comps.countries = !$store.comps.countries, $store.comps.modal = !$store.comps.modal">
-                <svg class="fill-[#303030] dark:fill-[#cfcfcf] w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="fill-[#303030] dark:fill-[#cfcfcf] w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4.252 10C4.08416 10.6534 3.99949 11.3254 4 12C4 12.69 4.088 13.36 4.252 14H7.1C6.96518 12.6701 6.96518 11.3299 7.1 10H4.252ZM5.07 8H7.416C7.682 6.783 8.066 5.693 8.537 4.786C7.08518 5.48542 5.87722 6.60523 5.07 8V8ZM19.748 10H16.9C17.0348 11.3299 17.0348 12.6701 16.9 14H19.748C20.0847 12.6879 20.0847 11.3121 19.748 10ZM18.93 8C18.1228 6.60523 16.9148 5.48542 15.463 4.786C15.935 5.693 16.318 6.783 16.584 8H18.93ZM9.112 10C9.03708 10.664 8.99968 11.3318 9 12C9 12.685 9.038 13.355 9.112 14H14.888C15.0386 12.6709 15.0386 11.3291 14.888 10H9.112ZM9.47 8H14.53C14.348 7.2483 14.0855 6.51841 13.747 5.823C13.119 4.568 12.447 4 12 4C11.552 4 10.881 4.568 10.253 5.823C9.938 6.455 9.673 7.19 9.47 8ZM5.07 16C5.87722 17.3948 7.08518 18.5146 8.537 19.214C8.065 18.307 7.682 17.217 7.416 16H5.07V16ZM18.93 16H16.584C16.318 17.217 15.934 18.307 15.463 19.214C16.9148 18.5146 18.1228 17.3948 18.93 16ZM9.47 16C9.673 16.81 9.938 17.545 10.253 18.177C10.881 19.432 11.553 20 12 20C12.448 20 13.119 19.432 13.747 18.177C14.062 17.545 14.327 16.81 14.53 16H9.47V16ZM12 22C6.477 22 2 17.523 2 12C2 6.477 6.477 2 12 2C17.523 2 22 6.477 22 12C22 17.523 17.523 22 12 22Z"/>
                     </svg>
-                <div class="selected-item w-4 h-[3px] mt-[2px] rounded-full bg-black dark:bg-[#cfcfcf]" x-bind:class="!$store.comps.countries && 'hidden'" x-transition></div>
-                <!-- <div class="selected-item w-4 h-[3px] mt-[2px] rounded-full bg-black"></div> -->
-                <!-- <span class="text-sm hidden">Home</span> -->
+            <div class="selected-item w-4 h-[3px] mt-[2px] rounded-full bg-black dark:bg-[#cfcfcf]" x-bind:class="!$store.comps.countries && 'hidden'" x-transition></div>
+            <!-- <div class="selected-item w-4 h-[3px] mt-[2px] rounded-full bg-black"></div> -->
+            <!-- <span class="text-sm hidden">Home</span> -->
             </button>
         </div>
     </nav>
-    <!-- <div class="panel-bottom fixed w-full h-60 rounded-t-2xl bg-white dark:bg-[#212121] -bottom-60 transition-transform ease-in-out duration-150 right-0 z-10 lg:hidden flex flex-col items-center justify-between" :class="$store.comps.modal && '-translate-y-[304px] shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.05)]'"
-        x-transition.duration.150ms> -->
-    <div class="panel-bottom fixed w-full h-60 rounded-t-2xl bg-white dark:bg-[#212121] bottom-14 transition-transform ease-in-out duration-150 right-0 z-10 lg:hidden flex flex-col items-center justify-between" x-show="$store.comps.modal" x-on:click.outside="$store.comps.modal = false"
-        x-transition:enter="translate-y-60" x-transition:leave="translate-y-60">
-        <div class="w-full h-auto flex flex-col items-center py-4">
-            <div class="w-full h-auto flex flex-col items-center justify-between gap-4 py-4">
+
+    <div class="panel-bottom fixed w-full h-60 rounded-t-2xl overflow-hidden bg-white dark:bg-[#212121] bottom-16 transition-transform ease-in-out duration-150 right-0 z-10 lg:hidden flex flex-col items-center justify-between" x-show="$store.comps.modal"
+        x-on:click.outside="$store.comps.modal = false" x-transition:enter="translate-y-60" x-transition:leave="translate-y-60">
+        <div class="w-full h-auto flex flex-col items-center pt-2">
+            <div class="w-full h-auto flex flex-col items-center justify-between">
                 <div class=" w-full text-[#303030] dark:text-[#cfcfcf] font-medium gap-4 flex flex-col items-center justify-center" :class="!$store.comps.serversonline && 'hidden'">
                     <span>Esto es de los paises</span>
                     <hr class="w-full h-px border-[#303030] dark:border-[#cfcfcf]">
                 </div>
                 <template x-for="item in Object.values(proxies.results)">
-                    <!-- <div class=" w-full text-[#303030] dark:text-[#cfcfcf] font-medium gap-4 flex flex-col items-center justify-center" :class="!$store.comps.serversonline && 'hidden'"> -->
-                        <div class="overflow-y-scroll" x-text="getFlagEmoji(item.location_country_code) + ' '+ item.location"></div>
-                        <hr class="w-full h-px border-[#303030] dark:border-[#cfcfcf]">
-                    <!-- </div> -->
+                    <button class=" w-full h-14 text-[#303030] dark:text-[#cfcfcf] font-medium gap-4 flex flex-col items-center justify-center bg-white active:bg-[#EBEBEB]"  :class="$store.comps.serversonline && 'hidden'" x-init="$store.comps.stringPaises = item.location">
+                        <div class="font-twemoji select-none overflow-y-scroll" x-text="getFlagEmoji(item.location_country_code) + ' '+ item.location"></div>
+                        <!-- <hr class="w-full h-px border-[#303030] dark:border-[#cfcfcf]"> -->
+                    </button>
                 </template>
                 <!-- <span class="dark:text-[#303030] font-medium" :class="!serversonline && 'hidden'">Fork me on GitHub</span> -->
                 <!-- <span class="dark:text-[#303030] font-medium" :class="!last && 'hidden'">Fork me on GitHub</span> -->

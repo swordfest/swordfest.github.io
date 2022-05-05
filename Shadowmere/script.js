@@ -68,6 +68,7 @@ document.addEventListener('alpine:init', () => {
             rangeValue: 1,
             blackScreen: false,
 
+
             // toggle() {
             //     this.on = !this.on
             // }

@@ -55,41 +55,26 @@ function toastNotification() {
 
 document.addEventListener('alpine:init', () => {
     Alpine.store('comps', {
-            home: false,
-            last: false,
-            serversonline: false,
-            countries: false,
-            marker: false,
-            shadownav: false,
-            modal1: false,
-            modal2: false,
-            stringPaises: [],
-            open: false,
-            rangeValue: 1,
-            blackScreen: false,
-
-
-            // toggle() {
-            //     this.on = !this.on
-            // }
-
-        })
-        // Alpine.data('dropdown', () => ({
-        //     countries: false,
-        //     menuFlags: {
-        //         ['x-ref']: 'menuFlags',
-        //         ['@click']() {
-        //             this.countries = true
-        //             this.modal = true
-        //         },
-        //     },
-        //     modalx: {
-        //         ['x-show']() {
-        //             return this.modal
-        //         },
-        //         ['@click.outside']() {
-        //             this.modal = false
-        //         },
-        //     }
-        // }))
+        home: false,
+        last: false,
+        serversonline: false,
+        countries: false,
+        marker: false,
+        shadownav: false,
+        modal1: false,
+        modal2: false,
+        stringPaises: [],
+        open: false,
+        rangeValue: 1,
+        blackScreen: false,
+        loader2: true,
+        darkMode: false,
+        isDarkLoader: false,
+    })
 })
+
+function copyToClickBoard(content, flagSuccess) {
+    // flagSuccess = false;
+    navigator.clipboard.writeText(content);
+
+}

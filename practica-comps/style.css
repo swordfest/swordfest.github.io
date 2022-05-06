@@ -616,3 +616,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-scale-y: 8.25;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
+
+.active\:before\:opacity-10:active::before {
+  content: var(--tw-content);
+  opacity: 0.1;
+}
+
+.active\:before\:opacity-5:active::before {
+  content: var(--tw-content);
+  opacity: 0.05;
+}

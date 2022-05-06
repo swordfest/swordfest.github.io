@@ -68,7 +68,6 @@ document.addEventListener('alpine:init', () => {
         rangeValue: 1,
         blackScreen: false,
         loader2: true,
-        darkMode: false,
         isDarkLoader: false,
     })
 })

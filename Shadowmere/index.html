@@ -267,7 +267,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
 
             <template x-for="proxy in Object.values(proxies.results)" :key="proxy.id">
             
-            <div class="item-server-vpn w-full h-20 sm:h-24 bg-white dark:bg-[#212121] dark:text-[#cfcfcf] rounded-lg flex items-center justify-between px-4 md:px-8 py-2 shadow-lg hover:cursor-pointer hover:-translate-y-[2px] dark:hover:bg-[#1b1b1b] hover:bg-[#FDFDFD] transition-all">
+            <div class="item-server-vpn w-full h-20 sm:h-24 bg-white dark:bg-[#212121] dark:text-[#cfcfcf] rounded-lg flex items-center justify-between px-4 md:px-8 py-2 shadow-lg hover:cursor-pointer hover:-translate-y-[2px] dark:hover:bg-[#303030] hover:bg-[#FDFDFD] transition-all">
                 <div class="data-country-ip gap-2 md:gap-4 flex items-center">
                     <div class="font-twemoji select-none flex items-center text-xl w-6 h-6 " x-text="getFlagEmoji(proxy.location_country_code)"> </div>
                     <span class="w-12 h-6 flex items-center justify-center select-none bg-[#303030] dark:bg-[#cfcfcf] px-2 text-[#cfcfcf] dark:text-[#303030] font-medium text-xs sm:text-sm rounded">100%</span>
@@ -304,15 +304,15 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
             </div>
             </template>
 
-            <div x-show="open" class="w-96 p-4 rounded h-32 fixed bottom-4 right-4 transform-gpu transition-transform duration-400 ease" x-class="success ? 'bg-green-500' : 'bg-red-500'" x-transition:enter-start="translate-y-full" x-transition:enter-end="translate-y-0"
-                x-transition:leave-start="translate-y-0" x-transition:leave-end="translate-y-full">
+            <!-- <div x-show="toast" class="w-96 p-4 rounded-lg h-32 fixed bottom-4 bg-[#303030] dark:bg-[#cfcfcf] right-4 transform-gpu transition-transform duration-400 ease" x-data="toast: true" x-on:click="" x-class="success ? 'bg-green-500' : 'bg-red-500'" x-transition:enter-start="translate-y-full"
+                x-transition:enter-end="translate-y-0" x-transition:leave-start="translate-y-0" x-transition:leave-end="translate-y-full">
                 <p class="text-white"><strong x-text="title"></strong></p>
                 <p class="mt-2 text-sm text-white" x-text="message"></p>
-            </div>
+            </div> -->
             <!-- <div class="col-span-12 w-full h-10 country-flag"></div> -->
     </main>
-    <div x-show="open2" class="w-96 p-4 rounded h-32 fixed bottom-4 right-4 transform-gpu transition-transform duration-400 ease" x-class="success ? 'bg-green-500' : 'bg-red-500'" x-transition:enter-start="translate-y-full" x-transition:enter-end="translate-y-0"
-        x-transition:leave-start="translate-y-0" x-transition:leave-end="translate-y-full">
+    <div x-show="toast" class="w-96 p-4 rounded h-32 fixed bottom-4 bg-[#303030] dark:bg-[#cfcfcf] right-4 transform-gpu transition-transform duration-400 ease" x-data="toast: true" x-class="success ? 'bg-green-500' : 'bg-red-500'" x-transition:enter-start="translate-y-full"
+        x-transition:enter-end="translate-y-0" x-transition:leave-start="translate-y-0" x-transition:leave-end="translate-y-full">
         <p class="text-white"><strong x-text="title"></strong></p>
         <p class="mt-2 text-sm text-white" x-text="message"></p>
     </div>

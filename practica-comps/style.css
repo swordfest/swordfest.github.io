@@ -535,6 +535,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 100vh;
 }
 
+.h-14 {
+  height: 3.5rem;
+}
+
+.h-24 {
+  height: 6rem;
+}
+
 .w-36 {
   width: 9rem;
 }
@@ -563,6 +571,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 8rem;
 }
 
+.w-24 {
+  width: 6rem;
+}
+
+.w-40 {
+  width: 10rem;
+}
+
 .select-none {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -584,6 +600,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-10 {
+  gap: 2.5rem;
 }
 
 .overflow-hidden {
@@ -613,6 +633,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
 
+.bg-red-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+}
+
+.bg-blue-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+}
+
 .p-56 {
   padding: 14rem;
 }
@@ -632,6 +662,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .ease-linear {
   transition-timing-function: linear;
+}
+
+.ease-in-out {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .before\:absolute::before {
@@ -719,6 +753,161 @@ Ensure the default browser behavior of the `hidden` attribute.
   right: 75%;
 }
 
+.before\:top-1\/4::before {
+  content: var(--tw-content);
+  top: 25%;
+}
+
+.before\:top-2\/4::before {
+  content: var(--tw-content);
+  top: 50%;
+}
+
+.before\:top-3\/4::before {
+  content: var(--tw-content);
+  top: 75%;
+}
+
+.before\:top-4::before {
+  content: var(--tw-content);
+  top: 1rem;
+}
+
+.before\:top-2::before {
+  content: var(--tw-content);
+  top: 0.5rem;
+}
+
+.before\:top-2\/3::before {
+  content: var(--tw-content);
+  top: 66.666667%;
+}
+
+.before\:-top-2\/3::before {
+  content: var(--tw-content);
+  top: -66.666667%;
+}
+
+.before\:-top-1\/3::before {
+  content: var(--tw-content);
+  top: -33.333333%;
+}
+
+.before\:bottom-1\/3::before {
+  content: var(--tw-content);
+  bottom: 33.333333%;
+}
+
+.before\:-bottom-1\/3::before {
+  content: var(--tw-content);
+  bottom: -33.333333%;
+}
+
+.before\:-bottom-2\/3::before {
+  content: var(--tw-content);
+  bottom: -66.666667%;
+}
+
+.before\:-bottom-2\/4::before {
+  content: var(--tw-content);
+  bottom: -50%;
+}
+
+.before\:right-1\/4::before {
+  content: var(--tw-content);
+  right: 25%;
+}
+
+.before\:bottom-2\/4::before {
+  content: var(--tw-content);
+  bottom: 50%;
+}
+
+.before\:-right-3\/4::before {
+  content: var(--tw-content);
+  right: -75%;
+}
+
+.before\:-right-1\/4::before {
+  content: var(--tw-content);
+  right: -25%;
+}
+
+.before\:right-\[\]::before {
+  content: var(--tw-content);
+  right: ;
+}
+
+.before\:right-\[20\%\]::before {
+  content: var(--tw-content);
+  right: 20%;
+}
+
+.before\:right-\[10\%\]::before {
+  content: var(--tw-content);
+  right: 10%;
+}
+
+.before\:right-\[0\%\]::before {
+  content: var(--tw-content);
+  right: 0%;
+}
+
+.before\:right-\[50\%\]::before {
+  content: var(--tw-content);
+  right: 50%;
+}
+
+.before\:right-\[40\%\]::before {
+  content: var(--tw-content);
+  right: 40%;
+}
+
+.before\:right-\[45\%\]::before {
+  content: var(--tw-content);
+  right: 45%;
+}
+
+.before\:right-\[48\%\]::before {
+  content: var(--tw-content);
+  right: 48%;
+}
+
+.before\:right-\[42\%\]::before {
+  content: var(--tw-content);
+  right: 42%;
+}
+
+.before\:right-\[43\%\]::before {
+  content: var(--tw-content);
+  right: 43%;
+}
+
+.before\:bottom-\[0\%\]::before {
+  content: var(--tw-content);
+  bottom: 0%;
+}
+
+.before\:bottom-\[-10\%\]::before {
+  content: var(--tw-content);
+  bottom: -10%;
+}
+
+.before\:bottom-\[-20\%\]::before {
+  content: var(--tw-content);
+  bottom: -20%;
+}
+
+.before\:bottom-\[-50\%\]::before {
+  content: var(--tw-content);
+  bottom: -50%;
+}
+
+.before\:mt-2::before {
+  content: var(--tw-content);
+  margin-top: 0.5rem;
+}
+
 .before\:h-6::before {
   content: var(--tw-content);
   height: 1.5rem;
@@ -747,6 +936,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
+.before\:pt-2::before {
+  content: var(--tw-content);
+  padding-top: 0.5rem;
+}
+
 .before\:opacity-20::before {
   content: var(--tw-content);
   opacity: 0.2;
@@ -764,6 +958,46 @@ Ensure the default browser behavior of the `hidden` attribute.
   transition-duration: 150ms;
 }
 
+.before\:duration-1000::before {
+  content: var(--tw-content);
+  transition-duration: 1000ms;
+}
+
+.before\:duration-500::before {
+  content: var(--tw-content);
+  transition-duration: 500ms;
+}
+
+.before\:duration-300::before {
+  content: var(--tw-content);
+  transition-duration: 300ms;
+}
+
+.before\:duration-200::before {
+  content: var(--tw-content);
+  transition-duration: 200ms;
+}
+
+.before\:duration-\[200\]::before {
+  content: var(--tw-content);
+  transition-duration: 200;
+}
+
+.before\:duration-\[250\]::before {
+  content: var(--tw-content);
+  transition-duration: 250;
+}
+
+.before\:duration-\[250ms\]::before {
+  content: var(--tw-content);
+  transition-duration: 250ms;
+}
+
+.before\:duration-\[350ms\]::before {
+  content: var(--tw-content);
+  transition-duration: 350ms;
+}
+
 .hover\:before\:scale-\[8\.25\]:hover::before {
   content: var(--tw-content);
   --tw-scale-x: 8.25;
@@ -775,6 +1009,41 @@ Ensure the default browser behavior of the `hidden` attribute.
   content: var(--tw-content);
   --tw-scale-x: 20.25;
   --tw-scale-y: 20.25;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hover\:before\:scale-\[40\]:hover::before {
+  content: var(--tw-content);
+  --tw-scale-x: 40;
+  --tw-scale-y: 40;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hover\:before\:scale-\[35\]:hover::before {
+  content: var(--tw-content);
+  --tw-scale-x: 35;
+  --tw-scale-y: 35;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hover\:before\:scale-\[30\]:hover::before {
+  content: var(--tw-content);
+  --tw-scale-x: 30;
+  --tw-scale-y: 30;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hover\:before\:scale-\[20\]:hover::before {
+  content: var(--tw-content);
+  --tw-scale-x: 20;
+  --tw-scale-y: 20;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hover\:before\:scale-\[15\]:hover::before {
+  content: var(--tw-content);
+  --tw-scale-x: 15;
+  --tw-scale-y: 15;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 

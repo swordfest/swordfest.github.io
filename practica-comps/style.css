@@ -468,6 +468,40 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-sepia:  ;
 }
 
+.container {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
 .absolute {
   position: absolute;
 }
@@ -480,6 +514,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   z-index: 10;
 }
 
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .flex {
   display: flex;
 }
@@ -488,8 +527,40 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 2.5rem;
 }
 
+.h-96 {
+  height: 24rem;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
 .w-36 {
   width: 9rem;
+}
+
+.w-\[\] {
+  width: ;
+}
+
+.w-\[360\] {
+  width: 360;
+}
+
+.w-\[360x\] {
+  width: 360x;
+}
+
+.w-\[360px\] {
+  width: 360px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.w-32 {
+  width: 8rem;
 }
 
 .select-none {
@@ -497,6 +568,10 @@ Ensure the default browser behavior of the `hidden` attribute.
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+
+.flex-col {
+  flex-direction: column;
 }
 
 .items-center {
@@ -515,6 +590,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   overflow: hidden;
 }
 
+.overflow-visible {
+  overflow: visible;
+}
+
 .rounded-lg {
   border-radius: 0.5rem;
 }
@@ -527,6 +606,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-green-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(21 128 61 / var(--tw-bg-opacity));
+}
+
+.bg-slate-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
 
 .p-56 {
@@ -563,6 +647,76 @@ Ensure the default browser behavior of the `hidden` attribute.
 .before\:top-10::before {
   content: var(--tw-content);
   top: 2.5rem;
+}
+
+.before\:top-20::before {
+  content: var(--tw-content);
+  top: 5rem;
+}
+
+.before\:right-24::before {
+  content: var(--tw-content);
+  right: 6rem;
+}
+
+.before\:right-32::before {
+  content: var(--tw-content);
+  right: 8rem;
+}
+
+.before\:right-40::before {
+  content: var(--tw-content);
+  right: 10rem;
+}
+
+.before\:right-4::before {
+  content: var(--tw-content);
+  right: 1rem;
+}
+
+.before\:right-44::before {
+  content: var(--tw-content);
+  right: 11rem;
+}
+
+.before\:right-\[44\]::before {
+  content: var(--tw-content);
+  right: 44;
+}
+
+.before\:right-\[17\]::before {
+  content: var(--tw-content);
+  right: 17;
+}
+
+.before\:right-\[178\]::before {
+  content: var(--tw-content);
+  right: 178;
+}
+
+.before\:right-\[168\]::before {
+  content: var(--tw-content);
+  right: 168;
+}
+
+.before\:right-\[168px\]::before {
+  content: var(--tw-content);
+  right: 168px;
+}
+
+.before\:right-1\/2::before {
+  content: var(--tw-content);
+  right: 50%;
+}
+
+.before\:right-2\/4::before {
+  content: var(--tw-content);
+  right: 50%;
+}
+
+.before\:right-3\/4::before {
+  content: var(--tw-content);
+  right: 75%;
 }
 
 .before\:h-6::before {
@@ -614,6 +768,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   content: var(--tw-content);
   --tw-scale-x: 8.25;
   --tw-scale-y: 8.25;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hover\:before\:scale-\[20\.25\]:hover::before {
+  content: var(--tw-content);
+  --tw-scale-x: 20.25;
+  --tw-scale-y: 20.25;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 

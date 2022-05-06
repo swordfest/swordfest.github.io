@@ -1214,6 +1214,18 @@ input[type=range]::-webkit-slider-thumb {
   fill: #fff;
 }
 
+.fill-\[\] {
+  fill: ;
+}
+
+.fill-transparent {
+  fill: transparent;
+}
+
+.stroke-\[\#303030\] {
+  stroke: #303030;
+}
+
 .p-4 {
   padding: 1rem;
 }
@@ -1545,6 +1557,18 @@ input[type=range]::-webkit-slider-thumb {
 
 .dark .dark\:fill-\[\#303030\] {
   fill: #303030;
+}
+
+.dark .dark\:fill-\[\] {
+  fill: ;
+}
+
+.dark .dark\:fill-\[\#\] {
+  fill: #;
+}
+
+.dark .dark\:stroke-\[\#cfcfcf\] {
+  stroke: #cfcfcf;
 }
 
 .dark .dark\:font-medium {

@@ -66,9 +66,13 @@ document.addEventListener('alpine:init', () => {
         stringPaises: [],
         open: false,
         rangeValue: 1,
-        blackScreen: false,
-        loader2: true,
         isDarkLoader: false,
+        menu: '',
+        qr_code: false,
+        notTouchBgServers: false,
+        notTouchBgCountries: false,
+        notTouchBgMenuMobile: false,
+        notTouchBgQR: false,
     })
 })
 

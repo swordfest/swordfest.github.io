@@ -6,39 +6,97 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <title>Components</title>
+
+    <script>
+        function getPos(e) {
+            x = e.clientX;
+            y = e.clientY;
+            cursor = "translate-x-[" + x + "px]" + " " + "translate-y-[" + y + "px]";
+            // cursor = "right-[" + x + "px]" + " " + "bottom-[" + y + "px]";
+            // cursor = 'before:right-[' + x + 'px]' + ' ' + 'before:bottom-[' + y + 'px]';
+            // document.getElementById("displayArea").innerHTML = cursor
+            return cursor;
+        }
+
+
+
+        // function stopTracking() {
+        //     // document.getElementById("displayArea").innerHTML = "";
+        //     cursor = "";
+        // }
+    </script>
 </head>
 
 <body>
-    <div class="container h-screen mx-auto bg-slate-200 flex items-center justify-center">
+    <div class="container h-screen mx-auto bg-slate-200 flex flex-col items-center justify-center" x-data="{ shown: false, text: '' }">
+
+
+
+
+
         <div class="w-[360px] h-96 flex flex-col items-center justify-center gap-10">
-            <button class="
+            <div id="focusArea" class="w-full h-24">
+                <p>Mouse Over This Text And Get The Cursor Position!</p>
+            </div>
+            <!-- <p id="displayArea" class="w-full h-14 bg-slate-500" x-text="text"></p> -->
+            <!-- <div class="button-wrapper w-auto h-auto p-2 flex items-center justify-center bg-slate-500" :class="shown && 'text'" x-on:mouseover="shown = true, text = getPos($event), console.log(getPos($event))" x-on:mouseout="shown = false, text = ''"> -->
+            <!-- <div class="a" x-bind:class=""></div> -->
+            <button id="focusArea" x-on:mouseover="text = getPos($event), console.log(getPos($event))" x-on:mouseout="shown = false, text = ''" class="
         button-1 
         relative 
-        overflow-hidden 
+        overflow-visible 
         w-40 h-14 
         rounded-lg 
         flex items-center justify-center 
         font-semibold bg-blue-700
-        before:contents-[''] 
-        before:absolute
-        before:bg-black
         text-white
-        before:opacity-20
-        before:rounded-full
-        before:w-6 
-        before:h-6
-        before:right-[43%]
-        before:bottom-[-50%]
-        before:scale-100
-        hover:before:scale-[20]
-        active:before:opacity-5
         select-none
-        before:transition-all
-        before:duration-[350ms]
         ease-in-out
         duration-500
-        "><span class="absolute z-10">Button</span></button>
+        shrink-0
+        ">
+        <div class="w-6 h-6 bg-black opacity-20 absolute"  x-bind:class="text"></div>
+        <span class="absolute z-10">Button</span>
+    
+    </button>
+            <!-- </div> -->
+            <!-- before:right-[43%]
+                hover:before:scale-[20]
+                :class="shown && text"
+                before:transition-all
+        before:bottom-[-50%] -->
+
+            <!-- onmousemove="getPos(event)" onmouseout="stopTracking()" -->
+
+            <button class="
+            button-1 
+            relative 
+            overflow-hidden 
+            w-40 h-14 
+            rounded-lg 
+            flex items-center justify-center 
+            font-semibold bg-blue-700
+            before:contents-[''] 
+            before:absolute
+            before:bg-black
+            text-white
+            before:opacity-20
+            before:rounded-full
+            before:w-6 
+            before:h-6
+            before:scale-100
+            hover:before:scale-[20]
+            active:before:opacity-5
+            select-none
+            before:transition-all
+            before:duration-[350ms]
+            ease-in-out
+            duration-500
+            shrink-0
+        "><span class="absolute z-10">Button Prueba 2</span></button>
 
             <button class="
         button-1 
@@ -66,6 +124,7 @@
         before:duration-[250ms]
         ease-in-out
         duration-500
+        shrink-0
         "><span class="absolute z-10">Button</span></button>
 
             <button class="
@@ -94,6 +153,7 @@
         before:duration-[250ms]
         ease-in-out
         duration-500
+        shrink-0
         "><span class="absolute z-10">Button</span></button>
         </div>
     </div>

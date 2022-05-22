@@ -1,0 +1,5 @@
+{
+    "liveServer.settings.port": 5502,
+    "prettier.jsxBracketSameLine": true,
+    "prettier.endOfLine": "lf"
+}

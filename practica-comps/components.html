@@ -12,12 +12,15 @@
 
     <script>
         function getPos(e) {
-            x = e.clientX;
-            y = e.clientY;
+            rect = e.target.getBoundingClientRect();
+            x = e.clientX - rect.left;
+            y = e.clientY - rect.top;
             cursor = "translate-x-[" + x + "px]" + " " + "translate-y-[" + y + "px]";
             // cursor = "right-[" + x + "px]" + " " + "bottom-[" + y + "px]";
             // cursor = 'before:right-[' + x + 'px]' + ' ' + 'before:bottom-[' + y + 'px]';
             // document.getElementById("displayArea").innerHTML = cursor
+            // cursor = 'right' + '-[' + x + 'px]';
+            console.log(cursor);
             return cursor;
         }
 
@@ -38,16 +41,16 @@
 
 
         <div class="w-[360px] h-96 flex flex-col items-center justify-center gap-10">
-            <div id="focusArea" class="w-full h-24">
+            <div class="w-full h-24">
                 <p>Mouse Over This Text And Get The Cursor Position!</p>
             </div>
             <!-- <p id="displayArea" class="w-full h-14 bg-slate-500" x-text="text"></p> -->
             <!-- <div class="button-wrapper w-auto h-auto p-2 flex items-center justify-center bg-slate-500" :class="shown && 'text'" x-on:mouseover="shown = true, text = getPos($event), console.log(getPos($event))" x-on:mouseout="shown = false, text = ''"> -->
             <!-- <div class="a" x-bind:class=""></div> -->
-            <button id="focusArea" x-on:mouseover="text = getPos($event), console.log(getPos($event))" x-on:mouseout="shown = false, text = ''" class="
+            <button x-cloak="" id="focusArea" x-on:mouseover="text = getPos($event), console.log(typeof(getPos($event)))" x-on:mouseout="text = ''" class="
         button-1 
         relative 
-        overflow-visible 
+        overflow-hidden 
         w-40 h-14 
         rounded-lg 
         flex items-center justify-center 
@@ -58,10 +61,28 @@
         duration-500
         shrink-0
         ">
-        <div class="w-6 h-6 bg-black opacity-20 absolute"  x-bind:class="text"></div>
-        <span class="absolute z-10">Button</span>
+        <!-- <div class="w-6 h-6 bg-black opacity-20 translate-x-[291px]"></div> -->
+        <!-- <div class="w-6 h-6 bg-black opacity-20 absolute"  x-bind:class="text"></div> -->
+        <div id="circle" class=" w-2 h-2 bg-black absolute z-[5]" ></div>
+        <!-- <span class="">Button</span> -->
+        Button
     
     </button>
+
+            <script>
+                document.addEventListener('mousemove', function(e) {
+                    let body = document.querySelector('focusArea');
+                    let circle = document.getElementById('circle');
+                    let rect = e.target.getBoundingClientRect();
+                    // let left = e.offsetX;
+                    // let top = e.offsetY;
+                    let left = e.clientX - rect.left;
+                    let top = e.clientY - rect.top;
+                    circle.style.left = (left - 6) + 'px';
+                    circle.style.top = (top - 2) + 'px';
+
+                });
+            </script>
             <!-- </div> -->
             <!-- before:right-[43%]
                 hover:before:scale-[20]

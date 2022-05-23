@@ -58,19 +58,36 @@ if (typeof $exe_i18n == "undefined")
 // });
 
 window.addEventListener("load", (event) => {
+
+	// const splash = document.createElement("div");
+	// splash.classList.add("splash");
+	// document.body.insertBefore(splash, document.body.firstChild);
+
 	const nav = document.getElementById("siteNav");
 	// const iDevice = document.getElementsByTagName("a");
 	const contenido = nav.getElementsByTagName("a");
 	const node = document.getElementById("nodeTitle");
+	const nodeDecoration = document.getElementById("nodeDecoration");
 	var r = document.querySelector(":root");
-  const topPagination = document.getElementById("topPagination");
-  const header = document.getElementById("header");
+	const topPagination = document.getElementById("topPagination");
+	const header = document.getElementById("header");
+	const mainWrapper = document.getElementById("main-wrapper");
+	// const arregloBotonesNav = topPagination.getElementsByTagName("a");
+	const botonesNext = document.querySelectorAll(".next");
+	const mediaSM = window.matchMedia("max-width: 360px");
+	// mediaSM.addEventListener(arrowId());
 
+	
+
+	// console.log(botonesNext);
+	//ejemplo para inyectar estas lineas dentro de un div usando el insertBefore y el insertAfter de conjunto con el firstChild y lastChild (o el appendChild)
 	var inicioContainer = '<div class="container">';
 	var finalContainer = "</div>";
 
-  header.appendChild(topPagination);
-  nav.style.setProperty("padding-bottom","none", "important");
+	mainWrapper.insertBefore(topPagination, mainWrapper.firstChild);
+	topPagination.insertBefore(nodeDecoration, topPagination.firstChild);
+
+	nav.style.setProperty("padding-bottom", "none", "important");
 
 	// r.style.setProperty("display", "inherit");
 
@@ -89,10 +106,22 @@ window.addEventListener("load", (event) => {
 
 		if (c === node.innerHTML) {
 			var cont = getComputedStyle(contenido[i], ":before").content;
-			console.log(cont);
+			// console.log(cont);
 			r.style.setProperty("--nodeVar", cont);
 		}
 	}
+
+	// function arrowId (mediaQ) {
+	// 	for (let i = 0; i < botonesNext.length; i++) {
+	// 		if (mediaQ.matches) {
+	// 			// botonesNext[i].firstChild.innerHTML = "";
+	// 			var arrow = document.querySelector(":root");
+	// 			arrow.style.setProperty("--arrowFlow", "\f105");
+
+	// 		}
+	// 		console.log(mediaSM.matches);
+	// 	}
+	// }
 });
 
 var $exe = {

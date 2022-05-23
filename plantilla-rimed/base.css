@@ -208,7 +208,7 @@ base style sheet for all themes
 
 #headerContent:before {
 	content: " ";
-	background: url("/images/mined-white.svg") no-repeat;
+	background: url("./images/mined-white.svg") no-repeat;
 	background-size: contain;
 	width: 72px;
 	height: 72px;

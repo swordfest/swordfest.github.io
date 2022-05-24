@@ -36,6 +36,8 @@ base style sheet for all themes
 		url("./webfonts/fa-light-300.woff2") format("woff2");
 }
 
+[x-cloak] { display: none !important; }
+
 #content {
 	display: grid;
 	grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -219,7 +221,7 @@ base style sheet for all themes
 
 #topPagination {
 	top: 20px !important;
-	position: static !important;
+	/* position: inherit !important; */
 	background-color: #1b468f;
 	margin-bottom: 30px;
 	padding-right: 24px;

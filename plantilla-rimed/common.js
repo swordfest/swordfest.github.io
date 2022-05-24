@@ -77,6 +77,16 @@ window.addEventListener("load", (event) => {
 	const mediaSM = window.matchMedia("max-width: 360px");
 	// mediaSM.addEventListener(arrowId());
 
+	const alpine = document.createElement("script");
+	alpine.type = "text/javascript";
+	alpine.src = "alpine.js";
+
+	document.head.appendChild(alpine);
+	document.html.setAttribute("x-cloak", "");
+
+
+	//<script type="text/javascript" src="exe_jquery.js"></script>
+
 	
 
 	// console.log(botonesNext);

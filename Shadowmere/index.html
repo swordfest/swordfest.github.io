@@ -56,6 +56,7 @@
                 <path d="M245.871 36.3035H241.651C240.858 36.3035 240.296 35.9938 239.929 35.3938L235.632 28.4646C235.458 28.1936 235.264 28.0001 235.051 27.8646C234.838 27.7291 234.528 27.671 234.103 27.671H232.516V36.2842H227.832V13.6965H234.935C236.522 13.6965 237.858 13.8513 238.98 14.1804C240.103 14.5094 241.032 14.9546 241.748 15.5546C242.464 16.1353 242.987 16.8321 243.316 17.6256C243.645 18.4385 243.819 19.3095 243.819 20.2773C243.819 21.0322 243.703 21.729 243.49 22.4064C243.277 23.0838 242.967 23.6838 242.561 24.2451C242.154 24.8064 241.651 25.2903 241.071 25.7161C240.471 26.142 239.812 26.4904 239.038 26.742C239.348 26.9162 239.619 27.1097 239.89 27.342C240.142 27.5743 240.374 27.8452 240.587 28.1743L245.871 36.3035ZM234.916 24.4C235.67 24.4 236.329 24.3032 236.87 24.1097C237.412 23.9161 237.877 23.6451 238.225 23.3161C238.574 22.987 238.845 22.5806 239 22.1161C239.174 21.6515 239.251 21.1676 239.251 20.6257C239.251 19.5612 238.903 18.7289 238.187 18.1289C237.47 17.5288 236.387 17.2385 234.935 17.2385H232.496V24.4H234.916V24.4Z"  />
                 <path d="M250.303 17.3546V23.1612H257.852V26.7033H250.303V32.6453H260V36.3035H245.6V13.6965H260V17.3546H250.303Z"/>
                 </svg>
+
             <div class="nav-content flex w-auto h-full items-center flex-row-reverse gap-6 mx-0">
 
                 <button class="mobile-menu w-6 h-6 flex items-center justify-center lg:hidden" x-on:click="$store.comps.open = ! $store.comps.open, $store.comps.notTouchBgMenuMobile = true">
@@ -66,8 +67,6 @@
                         <path d="M17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41L17.59 5Z"/>
                     </svg>                
                 </button>
-
-
 
                 <button class="button-fork w-auto h-12 hidden lg:flex items-center justify-center px-5 rounded-md bg-[#303030] hover:bg-[#444444] active:bg-[#303030] dark:bg-[#cfcfcf] dark:hover:bg-[#bfbfbf] dark:active:bg-white dark:transition-colors text-white" onclick="location.href='https://github.com/jadolg/shadowmere'"><span class="gap-2 flex">
                     <svg class="fill-white dark:fill-[#303030]" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -108,13 +107,19 @@
                     @change="darkMode = !darkMode"> -->
                 <div class="menu hidden lg:flex flex-row-reverse gap-2 items-center">
                     <button class="text- dark:text-[#cfcfcf] font-medium w-auto h-12 flex items-center justify-center px-5 rounded-md hover:bg-[#EBEBEB] active:bg-[#D7D7D7] dark:hover:bg-[#1B1B1B] dark:active:bg-[#111111] cursor-pointer transition-colors transition-transform active:scale-[99%]"
-                        x-on:click="$store.comps.menu = 'aaa'">Why Shadowmere?</button>
+                        x-on:click="$store.comps.why = true, $store.comps.about = false, $store.comps.listaHome = false">
+                        Why Shadowmere?
+                    </button>
+
                     <button class="text-base dark:text-[#cfcfcf] font-medium w-auto h-12 flex items-center justify-center px-5 rounded-md hover:bg-[#EBEBEB] active:bg-[#D7D7D7] dark:hover:bg-[#1B1B1B] dark:active:bg-[#111111] cursor-pointer transition-colors transition-transform active:scale-[99%]"
                         onclick="location.href='https://shadowsocks.org/en/download/clients.html'">VPN Clients</button>
+
+                    <!-- $store.comps.menu = 'about' -->
                     <button class="text-base dark:text-[#cfcfcf] font-medium w-auto h-12 flex items-center justify-center px-5 rounded-md hover:bg-[#EBEBEB] active:bg-[#D7D7D7] dark:hover:bg-[#1B1B1B] dark:active:bg-[#111111] cursor-pointer transition-colors transition-transform active:scale-[99%]"
-                        x-on:click="$store.comps.menu = 'about'">About</button>
+                        x-on:click="$store.comps.about = true, $store.comps.listaHome = false, $store.comps.why = false">About</button> 
+                    
                     <button class="text-base dark:text-[#cfcfcf] font-medium w-auto h-12 flex items-center justify-center px-5 rounded-md hover:bg-[#EBEBEB] active:bg-[#D7D7D7] dark:hover:bg-[#1B1B1B] dark:active:bg-[#111111] cursor-pointer transition-colors transition-transform active:scale-[99%]"
-                        x-on:click="$store.comps.menu = 'servers'">Home</button>
+                        x-on:click="$store.comps.listaHome = true, $store.comps.about = false, $store.comps.why = false">Home</button>
                 </div>
             </div>
         </div>
@@ -176,7 +181,7 @@
                 </button>
             </div>
             <div class="slider-div w-full h-[3px] px-6 flex justify-start">
-                <input type="range" name="" disabled id="rangeSld" min="1" max="4" step="1" x-transition:enter=" transition-transform ease-in-out" class="w-full appearance-none bg-transparent accent-[#303030] dark:accent-[#cfcfcf]" x-model="$store.comps.rangeValue">
+                <input title="none" type="range" name="" disabled id="rangeSld" min="1" max="4" step="1" x-transition:enter=" transition-transform ease-in-out" class="w-full appearance-none bg-transparent accent-[#303030] dark:accent-[#cfcfcf]" x-model="$store.comps.rangeValue">
             </div>
         </div>
     </nav>
@@ -228,8 +233,11 @@
     <!-- <div class="back-black w-full h-screen bg-black opacity-30 z-10 fixed transition-opacity" x-show="$store.comps.blackScreen"></div> -->
     <!-- <div class="back-black w-full h-screen bg-black opacity-30 z-10 fixed transition-opacity"></div> -->
 
-    <main class="wrapper container mx-auto w-full h-auto xl:h-screen grid grid-cols-12 grid-flow-row mt-20 py-6 xl:py-8 gap-[30px] px-4 pb-4">
-        <div class="sidebar col-span-12 xl:col-span-3 w-auto h-full mb-4 bg-white dark:bg-[#212121] dark:text-[#cfcfcf] shadow-lg xl:flex flex-col-reverse xl:flex-col gap-8 p-4 rounded-lg" :class="!$store.comps.last && 'hidden'">
+
+    <!-- Este es el container general -->
+    <main class="wrapper container mx-auto w-full h-full xl:h-full grid grid-cols-12 auto-rows-auto mt-20 py-6 xl:py-8 gap-[30px] px-4 pb-4">
+
+        <div class="sidebar col-span-12 xl:col-span-3 w-auto h-screen mb-4 bg-white dark:bg-[#212121] dark:text-[#cfcfcf] shadow-lg xl:flex flex-col-reverse xl:flex-col gap-8 p-4 rounded-lg" :class="!$store.comps.last && 'hidden'">
             <div class="online-vpns-filter flex flex-col gap-4">
                 <div class="w-full h-6 flex items-center font-semibold gap-2">
                     <svg class="fill-[#303030] dark:fill-[#cfcfcf]" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -267,18 +275,19 @@
                         </svg> Countries
 
                 </div>
-                <select name="countries" id="countries-selection" class="font-twemoji rounded-md border-gray-300 mx-2 text-[#303030] dark:text-[#cfcfcf] dark:border-0 dark:bg-[#303030] outline-none cursor-pointer">
+                <select title="Countries" name="countries" id="countries-selection" class="font-twemoji rounded-md border-gray-300 mx-2 text-[#303030] dark:text-[#cfcfcf] dark:border-0 dark:bg-[#303030] outline-none cursor-pointer">
+                    <option id="opcion" class="bandera" value="country" x-text="getFlagEmoji('UN') + '  Worldwide'"></option>
                     <template x-for="item in Object.values(proxies.results)">
                         <option id="opcion" class="bandera" value="country" x-text="getFlagEmoji(item.location_country_code) + '  '+ item.location"></option>
                     </template>
-    </select>
+                </select>
 
             </div>
         </div>
 
 
 
-        <div id="cuerpo" class="lista-servers-vpns col-span-12 xl:col-span-9 w-full h-full flex flex-col gap-4" x-show="$store.comps.menu == 'servers'">
+        <div id="cuerpo" class="lista-servers-vpns col-span-12 xl:col-span-9 w-full h-full flex flex-col gap-4" x-show="$store.comps.listaHome">
 
             <template x-for="proxy in Object.values(proxies.results)" :key="proxy.id">
             
@@ -288,7 +297,7 @@
             ">
                 <div class="data-country-ip gap-2 md:gap-4 flex items-center">
                     <div class="font-twemoji select-none flex items-center text-xl w-6 h-6 " x-text="getFlagEmoji(proxy.location_country_code)"> </div>
-                    <span class="w-12 h-6 flex items-center justify-center select-none bg-[#303030] dark:bg-[#cfcfcf] px-2 text-[#cfcfcf] dark:text-[#303030] font-medium text-xs sm:text-sm rounded">100%</span>
+                    <span class="w-12 h-6 flex items-center justify-center select-none bg-[#303030] dark:bg-[#cfcfcf] px-2 text-[#cfcfcf] dark:text-[#303030] font-medium text-xs sm:text-sm rounded" x-text="getPercentage(proxy.times_check_succeeded, proxy.times_checked).toString() + '%'"></span>
                     <span class="font-semibold text-sm sm:text-base select-none" x-text="proxy.ip_address"></span>
                 </div>
 
@@ -323,7 +332,6 @@
                                 </defs>
                                 </svg>
                     </div>
-                    
 
                     <a x-bind:href="'https://shadowmere.akiel.dev/' + proxy.id + '/config'">
                     <div class="opt-descargar w-4 h-4 sm:w-10 sm:h-10 rounded-md flex items-center justify-center cursor-pointer hover:bg-[#EBEBEB] dark:hover:bg-[#1B1B1B] active:bg-[#D7D7D7] dark:active:bg-[#111111] transition-colors transition-transform active:scale-[95%]">
@@ -336,9 +344,40 @@
             </div>
             </template>
 
-            
+        </div>
 
-            <div id="cuerpo" class="lista-servers-vpns col-span-12 xl:col-span-9 w-full h-full flex flex-col gap-4 bg-white dark:bg-[#212121] dark:text-[#cfcfcf] rounded-lg shrink-0 items-center" x-show="$store.comps.menu == 'aaa'">Whyyyyyyyyyy</div>
+        <div class="contenido-about col-span-12 xl:col-span-9 w-full h-fit bg-white dark:bg-[#212121] dark:text-[#cfcfcf] rounded-lg shadow-lg flex flex-col gap-6 p-8 mb-40" x-show="$store.comps.about">
+
+            <h1 class="text-2xl font-bold">About Us</h1>
+            <!-- Aqui va el contenido del About -->
+            <p>Shadowmere. A list of Shadowsocks proxies</p>
+            <h2 class="font-bold">Disclaimer.</h2>
+            <p>This website is only a list of tunnels collected all around internet. We do NOT provide or maintain any of these tunnels. <span class="bg-red-600">Use them at your own risk.</span></p>
+            <h2 class="font-bold">How do I use this?</h2>
+            <p>Go give <a href="https://www.shadowsocks.org" class="text-[#579eff] font-bold after:content-['\f08e'] after:font-awesome">Shadowsocks</a> a quick look for information. Here is a list of clients for several platforms, but my favorite is Outline for any platform and shadowsocks for Android</p>
+            
+        </div>
+
+        <div class="contenido-about col-span-12 xl:col-span-9 w-full h-fit bg-white dark:bg-[#212121] dark:text-[#cfcfcf] rounded-lg shadow-lg flex flex-col gap-6 p-8 mb-40" x-show="$store.comps.why">
+
+            <h1 class="text-2xl font-bold">Why Shadowmere?</h1>
+            <!-- Aqui va el contenido del About -->
+            <p>Shadowmere is an enduring character in the Elder Scrolls series since her first appearance in The Elder Scrolls IV: Oblivion's Dark Brotherhood questline.</p>
+            <img src="	https://images.uesp.net/thumb/b/be/SR-creature-Shadowmere.jpg/600px-SR-creature-Shadowmere.jpg" alt="" srcset="" class="w-40 h-auto rounded-lg">
+
+            <p class="text-justify">Awarded to the player character after completing the purification of the Cheydinhal Sanctuary by Black Hand mentor Lucien Lachance, Shadowmere, in The Elder Scrolls IV: Oblivion, is an indestructible heroic character who represents the fastest and most powerful horse in the game.
+            Hallmarked by purple-highlighted black skin and burning red eyes, Shadowmere is an iconic character that has captured the imaginations of players, and developers, even 300 game-years later in The Elder Scrolls V: Skyrim. In Skyrim, Shadowmere is again awarded to the player character for success, this time by Astrid. When the player is granted the ability to summon the late Lucien Lachance as a Spectral Assassin and does so in Shadowmere's presence, Lachance's spectre will greet her as an 'old friend'.
+            In ES V, however, Shadowmere is no longer absolutely indestructible. <br>
+            <br>
+            While surely vastly harder to kill than typical bought horses in the game, it can be killed in steep falls and by concentrated frost or fire attacks by Ancient-ranked dragons, especially when it cannot manoeuvre out of close quarters when being attacked by said Ancient dragon. Shadowmere can also be killed by Mehrunes' Razor. In Oblivion, Shadowmere could be knocked unconscious by intensive attacks. 
+            Then, players could store or retrieve objects from it just like a container. In Skyrim, once Shadowmere is finally killed, arrows that have been fired into the horse over the time it has been with the Dragonborn can be recovered.
+            Shadowmere apparently reincarnates between eras, potentially changing subspecies of horse, and genders.</p>
+
+            <!-- Aqui va el contenido del About -->
+            
+        </div>
+
+            <!-- <div id="cuerpo" class="lista-servers-vpns col-span-12 xl:col-span-9 w-full h-full flex flex-col gap-4 bg-white dark:bg-[#212121] dark:text-[#cfcfcf] rounded-lg shrink-0 items-center" x-show="$store.comps.menu == 'aaa'">Whyyyyyyyyyy</div> -->
 
             <!-- <div x-show="toast" class="w-96 p-4 rounded-lg h-32 fixed bottom-4 bg-[#303030] dark:bg-[#cfcfcf] right-4 transform-gpu transition-transform duration-400 ease" x-data="toast: true" x-on:click="" x-class="success ? 'bg-green-500' : 'bg-red-500'" x-transition:enter-start="translate-y-full"
                 x-transition:enter-end="translate-y-0" x-transition:leave-start="translate-y-0" x-transition:leave-end="translate-y-full">
@@ -347,11 +386,11 @@
             </div> -->
             <!-- <div class="col-span-12 w-full h-10 country-flag"></div> -->
     </main>
-    <div x-show="toast" class="w-96 p-4 rounded h-32 fixed bottom-4 bg-[#303030] dark:bg-[#cfcfcf] right-4 transform-gpu transition-transform duration-400 ease" x-data="toast: true" x-class="success ? 'bg-green-500' : 'bg-red-500'" x-transition:enter-start="translate-y-full"
+    <!-- <div x-show="toast" class="w-96 p-4 rounded h-32 fixed bottom-4 bg-[#303030] dark:bg-[#cfcfcf] right-4 transform-gpu transition-transform duration-400 ease" x-data="toast: true" x-class="success ? 'bg-green-500' : 'bg-red-500'" x-transition:enter-start="translate-y-full"
         x-transition:enter-end="translate-y-0" x-transition:leave-start="translate-y-0" x-transition:leave-end="translate-y-full">
         <p class="text-white"><strong x-text="title"></strong></p>
         <p class="mt-2 text-sm text-white" x-text="message"></p>
-    </div>
+    </div> -->
 </body>
 
 </html>

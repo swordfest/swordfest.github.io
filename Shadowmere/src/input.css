@@ -50,3 +50,13 @@
     src: url("./fonts/twemoji.woff2") format("woff2");
     size-adjust: 120%;
 }
+
+@font-face {
+	font-family: "FontAwesome";
+	src: url("./fonts/fa-regular-400.eot") format("eot"),
+		url("./fonts/fa-regular-400.svg") format("svg"),
+		url("./fonts/fa-regular-400.ttf") format("truetype"),
+		url("./fonts/fa-regular-400.woff") format("woff"),
+		url("./fonts/fa-regular-400.woff2") format("woff2");
+        font-weight: 400;
+}

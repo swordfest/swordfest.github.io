@@ -294,7 +294,8 @@
             <div class="item-server-vpn w-full h-20 sm:h-24 bg-white dark:bg-[#212121] dark:text-[#cfcfcf] rounded-lg shrink-0 flex items-center justify-between px-4 md:px-8 py-2 shadow-lg hover:cursor-pointer hover:-translate-y-[2px] dark:hover:bg-[#303030] hover:bg-[#FDFDFD] transition-all" x-data="{timeCopy: false}" x-init="
             $store.comps.idQrServer = 'https://shadowmere.akiel.dev/' + proxy.id + '/qr',
             console.log($store.comps.idQrServer)
-            ">
+            " x-on:click="navigator.clipboard.writeText(proxy.url), timeCopy = true">
+            
                 <div class="data-country-ip gap-2 md:gap-4 flex items-center">
                     <div class="font-twemoji select-none flex items-center text-xl w-6 h-6 " x-text="getFlagEmoji(proxy.location_country_code)"> </div>
                     <span class="w-12 h-6 flex items-center justify-center select-none bg-[#303030] dark:bg-[#cfcfcf] px-2 text-[#cfcfcf] dark:text-[#303030] font-medium text-xs sm:text-sm rounded" x-text="getPercentage(proxy.times_check_succeeded, proxy.times_checked).toString() + '%'"></span>
@@ -343,6 +344,8 @@
                 </div>
             </div>
             </template>
+
+            <div class="buttonPages"></div>
 
         </div>
 

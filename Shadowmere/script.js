@@ -35,8 +35,8 @@ function getFlagEmoji(countryCode) {
 	return String.fromCodePoint(...codePoints);
 }
 
-function getPercentage(portion, total){  
-  return (Math.trunc((portion*100)/total));
+function getPercentage(portion, total) {
+	return Math.trunc((portion * 100) / total);
 }
 
 // document.getElementById(rangeSld).disabled = true;
@@ -58,7 +58,7 @@ function getPercentage(portion, total){
 
 document.addEventListener("alpine:init", () => {
 	Alpine.store("comps", {
-    proxies: null,
+		proxies: null,
 		home: false,
 		last: false,
 		serversonline: false,
@@ -78,25 +78,17 @@ document.addEventListener("alpine:init", () => {
 		notTouchBgMenuMobile: false,
 		notTouchBgQR: false,
 		idQrServer: null,
-    //opciones menu navbar
-    about: false,
-    listaHome: true,
-    why: false,
-    // search: async (pageCounter) => {
-    //   return await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json(),
-    
-    //   // if (response.status !== 200) {
-    //   //   throw new Error('Cannot fetch data. Response status is not 200.')
-    //   // }
-    // }
+		//opciones menu navbar
+		about: false,
+		listaHome: true,
+		why: false,
 	});
-  // Search("response", {
-    
-  // });
+	// Search("response", {
+
+	// });
 });
 
 function copyToClickBoard(content, flagSuccess) {
-	// flagSuccess = false;
 	navigator.clipboard.writeText(content);
 }
 
@@ -114,4 +106,66 @@ function copyToClickBoard(content, flagSuccess) {
 //     arreglo.push(proxy.results.location_country_code);
 //   }
 //   return [...new Set(arreglo)];
+// }
+
+// function refreshApi (varApi, pageCounter) {
+//   varApi = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json();
+// }
+
+// const getApiUrl = (pageCounter) => {
+// 	const url = "https://shadowmere.akiel.dev/api/proxies/?format=json&page=" + pageCounter.toString();
+// 	return url;
+// };
+
+// const search = async (pageCounter) => {
+// 	const response = await fetch(getApiUrl(pageCounter));
+
+// 	if (response.status !== 200) {
+// 		throw new Error("Cannot fetch data. Response status is not 200.");
+// 	}
+
+// 	const data = await response.json();
+// 	console.log(response);
+// 	return data;
+// };
+
+const totalServersPages = (totalServers, entriesLimit) => {
+	if (totalServers % entriesLimit == 0) {
+		return Math.trunc(totalServers / entriesLimit);
+	} else {
+		return Math.trunc(totalServers / entriesLimit) + 1;
+	}
+};
+
+// const updateUI = () => {
+//   console.log(data)
+// }
+
+// const GoToPreviousPage = (count) => {
+// 	return count > 1 ? count - 1 : count;
+// };
+
+const GoToNextPage = (count) => {
+  count++;
+}
+
+// function TotalServerPages(totalServers, entriesLimit){
+//   if ((totalServers % entriesLimit) == 0) {
+//     return (Math.trunc(totalServers / entriesLimit));
+//   }
+//   else {
+//     return (Math.trunc(totalServers / entriesLimit)+1);
+//   }
+// }
+
+// function GoToNextPage(count, totalServersPages){
+//   if (count < totalServersPages){
+//     count++;
+//   }
+// }
+
+// function GoToPreviousPage(count){
+//   if (count > 1){
+//     count--;
+//   }
 // }

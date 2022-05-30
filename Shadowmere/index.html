@@ -21,15 +21,11 @@
 </head>
 
 <!-- $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=')).json() -->
+<!-- $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json() -->
 
-<body class="bg-[#F8F8F8] dark:bg-[#141414]" x-data="{pageCounter: 1, arregloDupli: [], arregloNoDupli: null, temp: '', atTop: true, loader: true }" x-init="
+<body class="bg-[#F8F8F8] dark:bg-[#141414]" x-data="{pageCounter: 1, count: 1, arregloDupli: [], arregloNoDupli: null, temp: '', atTop: true, loader: true }" x-init="
     
-    $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json()
-    
-    arregloNoDupli = arregloDupli.filter((element, index) => {
-        return arregloDupli.indexOf(element) === index;
-    })
-    
+    $store.comps.proxies = $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json()
     console.log($store.comps.proxies)
 
     $store.comps.menu = 'servers'
@@ -46,7 +42,7 @@
 
     <nav class="w-full h-20 z-50 top-0 fixed flex justify-center bg-white dark:bg-[#212121] transition-transform shadow-lg">
         <div class="nav-wrapper container mx-auto dark:bg-[#212121] w-full h-full flex items-center justify-between px-4">
-            <svg class="fill-[#303030] dark:fill-[#cfcfcf] w-[200px] h-auto cursor-pointer" x-on:click="$store.comps.menu= 'servers'" width="260" height="50" viewBox="0 0 260 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="fill-[#303030] dark:fill-[#cfcfcf] w-[200px] h-auto cursor-pointer" x-on:click="$store.comps.menu= 'servers', pageCounter = 1, $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json(), count = 1" width="260" height="50" viewBox="0 0 260 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20.9424 4.88982L23.7489 0.941338L28.491 1.11554L34.5105 1.3478L25.607 4.46401L20.9424 4.88982Z"/>
                 <path d="M28.7812 7.19311L33.4265 4.69627L41.9235 8.00603L31.2781 9.12864L28.7812 7.19311Z"/>
                 <path d="M35.8459 12.7868L40.9945 12.361L48.1366 19.7934L39.4073 16.2514L35.8459 12.7868Z"/>
@@ -298,12 +294,20 @@
 
         <div id="cuerpo" class="lista-servers-vpns col-span-12 xl:col-span-9 w-full h-full flex flex-col gap-4" x-show="$store.comps.listaHome">
 
+            <div class="buttonPages w-full h-14 flex items-center justify-between">
+                <button class="button-previous w-40 h-12 bg-[#212121] hover:bg-[#303030] dark:hover:bg-[#303030] dark:bg-[#212121] text-[#cfcfcf] transition-colors font-bold px-8 rounded-lg shadow-xl" type="button" x-on:click="pageCounter = 1, $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json(), count = 1">First</button>
+                <button class="button-previous w-40 h-12 bg-[#212121] hover:bg-[#303030] dark:hover:bg-[#303030] dark:bg-[#212121] text-[#cfcfcf] transition-colors font-bold px-8 rounded-lg shadow-xl" type="button" x-on:click="pageCounter > 1 ? pageCounter-- : pageCounter, $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json(), count = pageCounter">Previous</button>
+                <span class="dark:text-[#cfcfcf]" x-text="count.toString() + ' of ' + totalServersPages($store.comps.proxies.count, 20).toString()"></span>
+                <button class="button-next w-40 h-12 bg-[#212121] hover:bg-[#303030] dark:hover:bg-[#303030] dark:bg-[#212121] text-[#cfcfcf] transition-colors font-bold px-8 rounded-lg shadow-xl" type="button" x-on:click="pageCounter++, $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json(), count = pageCounter">Next</button>
+                <button class="button-next w-40 h-12 bg-[#212121] hover:bg-[#303030] dark:hover:bg-[#303030] dark:bg-[#212121] text-[#cfcfcf] transition-colors font-bold px-8 rounded-lg shadow-xl" type="button" x-on:click="pageCounter = totalServersPages($store.comps.proxies.count, 20), $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json(), count = totalServersPages($store.comps.proxies.count, 20)">End</button>
+            </div>
+
             <template x-for="proxy in Object.values($store.comps.proxies.results)" :key="proxy.id">
             
-            <div class="item-server-vpn w-full h-20 sm:h-24 bg-white dark:bg-[#212121] dark:text-[#cfcfcf] rounded-lg shrink-0 flex items-center justify-between px-4 md:px-8 py-2 shadow-lg hover:cursor-pointer hover:-translate-y-[2px] active:translate-y-[1px] dark:hover:bg-[#303030] hover:bg-[#FDFDFD] transition-all" x-data="{timeCopy: false}" x-init="
+            <div class="item-server-vpn w-full h-20 sm:h-24 bg-white dark:bg-[#212121] dark:text-[#cfcfcf] rounded-lg shrink-0 flex items-center justify-between px-4 md:px-8 py-2 shadow-lg hover:cursor-pointer hover:-translate-y-[2px] dark:hover:bg-[#303030] hover:bg-[#FDFDFD] transition-all" x-data="{timeCopy: false}" x-init="
             $store.comps.idQrServer = 'https://shadowmere.akiel.dev/' + proxy.id + '/qr',
             
-            " x-on:click="navigator.clipboard.writeText(proxy.url), timeCopy = true" >
+            ">
             
                 <div class="data-country-ip gap-2 md:gap-4 flex items-center">
                     <div class="font-twemoji select-none flex items-center text-xl w-6 h-6 " x-text="getFlagEmoji(proxy.location_country_code)"> </div>
@@ -357,9 +361,12 @@
             </div>
             </template>
 
-            <div class="buttonPages w-full h-14 flex items-center gap-4">
-                <button class="button-previous w-40 h-12 bg-[#212121] hover:bg-[#303030] dark:hover:bg-[#303030] dark:bg-[#212121] text-[#cfcfcf] transition-colors font-bold px-8 rounded-lg shadow-xl" type="button" x-show="$store.comps.proxies.previous != null" x-on:click="pageCounter--, $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json()">Previous</button>
-                <button class="button-next w-40 h-12 bg-[#212121] hover:bg-[#303030] dark:hover:bg-[#303030] dark:bg-[#212121] text-[#cfcfcf] transition-colors font-bold px-8 rounded-lg shadow-xl" type="button" x-show="$store.comps.proxies.next != null" x-on:click="pageCounter++, $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json()">Next</button>
+            <div class="buttonPages w-full h-14 flex items-center justify-between">
+                <button class="button-previous w-40 h-12 bg-[#212121] hover:bg-[#303030] dark:hover:bg-[#303030] dark:bg-[#212121] text-[#cfcfcf] transition-colors font-bold px-8 rounded-lg shadow-xl" type="button" x-on:click="pageCounter = 1, $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json(), count = 1">First</button>
+                <button class="button-previous w-40 h-12 bg-[#212121] hover:bg-[#303030] dark:hover:bg-[#303030] dark:bg-[#212121] text-[#cfcfcf] transition-colors font-bold px-8 rounded-lg shadow-xl" type="button" x-on:click="pageCounter > 1 ? pageCounter-- : pageCounter, $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json(), count = pageCounter">Previous</button>
+                <span class="dark:text-[#cfcfcf]" x-text="count.toString() + ' of ' + totalServersPages($store.comps.proxies.count, 20).toString()"></span>
+                <button class="button-next w-40 h-12 bg-[#212121] hover:bg-[#303030] dark:hover:bg-[#303030] dark:bg-[#212121] text-[#cfcfcf] transition-colors font-bold px-8 rounded-lg shadow-xl" type="button" x-on:click="pageCounter++, $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json(), count = pageCounter">Next</button>
+                <button class="button-next w-40 h-12 bg-[#212121] hover:bg-[#303030] dark:hover:bg-[#303030] dark:bg-[#212121] text-[#cfcfcf] transition-colors font-bold px-8 rounded-lg shadow-xl" type="button" x-on:click="pageCounter = totalServersPages($store.comps.proxies.count, 20), $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json(), count = totalServersPages($store.comps.proxies.count, 20)">End</button>
             </div>
 
         </div>

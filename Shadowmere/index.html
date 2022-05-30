@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en" x-data="{ darkMode: false }" x-cloak x-init="darkMode = JSON.parse(localStorage.getItem('darkMode')); $watch('darkMode', value=> localStorage.setItem('darkMode', JSON.stringify(value)))" :class="{'dark': darkMode === true}">
+<html lang="en" x-data="{ darkMode: true }" x-cloak x-init="darkMode = JSON.parse(localStorage.getItem('darkMode')); $watch('darkMode', value=> localStorage.setItem('darkMode', JSON.stringify(value)))" :class="{'dark': darkMode === true}">
 
 <head>
     <meta charset="UTF-8">
@@ -25,7 +25,7 @@
 
 <body class="bg-[#F8F8F8] dark:bg-[#141414]" x-data="{pageCounter: 1, count: 1, arregloDupli: [], arregloNoDupli: null, temp: '', atTop: true, loader: true }" x-init="
     
-    $store.comps.proxies = $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json()
+    $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json()
     console.log($store.comps.proxies)
 
     $store.comps.menu = 'servers'

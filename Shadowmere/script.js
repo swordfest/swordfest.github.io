@@ -58,6 +58,7 @@ function getPercentage(portion, total){
 
 document.addEventListener("alpine:init", () => {
 	Alpine.store("comps", {
+    proxies: null,
 		home: false,
 		last: false,
 		serversonline: false,
@@ -81,10 +82,36 @@ document.addEventListener("alpine:init", () => {
     about: false,
     listaHome: true,
     why: false,
+    // search: async (pageCounter) => {
+    //   return await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json(),
+    
+    //   // if (response.status !== 200) {
+    //   //   throw new Error('Cannot fetch data. Response status is not 200.')
+    //   // }
+    // }
 	});
+  // Search("response", {
+    
+  // });
 });
 
 function copyToClickBoard(content, flagSuccess) {
 	// flagSuccess = false;
 	navigator.clipboard.writeText(content);
 }
+
+// const search = async (pageCounter) => {
+//   const response = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json();
+
+//   if (response.status !== 200) {
+//     throw new Error('Cannot fetch data. Response status is not 200.');
+//   }
+// }
+
+// function arrayToValuesAlone(){
+//   const arreglo = new Array();
+//   for (proxy in Object.values($store.comps.proxies.results) ) {
+//     arreglo.push(proxy.results.location_country_code);
+//   }
+//   return [...new Set(arreglo)];
+// }

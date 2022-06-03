@@ -106,6 +106,11 @@ const GoToNextPage = (count) => {
 //   return endPoint;
 // };
 
+const getApiUrl = (code) => {
+  const endPoint = 'https://restcountries.com/v3.1/alpha/' + code;
+  return endPoint;
+};
+
 // const createCache = async (limit) => {
 //   const response = new Array();
 //   for (let i = 0; i < limit; i++) {
@@ -117,6 +122,17 @@ const GoToNextPage = (count) => {
 //   const data = await response.json();
 //   return data
 // };
+
+const searchCountries = async (code) => {
+  const response = await fetch(getApiUrl(code));
+
+  if (response.status !== 200) {
+    throw new Error("Cannot fetch data. Response status is not 200.");
+  }
+
+  const data = await response.json();
+  return data
+};
 
 
 

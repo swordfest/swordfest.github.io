@@ -83,51 +83,11 @@ document.addEventListener("alpine:init", () => {
 		listaHome: true,
 		why: false,
 	});
-	// Search("response", {
-
-	// });
 });
 
 function copyToClickBoard(content, flagSuccess) {
 	navigator.clipboard.writeText(content);
 }
-
-// const search = async (pageCounter) => {
-//   const response = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json();
-
-//   if (response.status !== 200) {
-//     throw new Error('Cannot fetch data. Response status is not 200.');
-//   }
-// }
-
-// function arrayToValuesAlone(){
-//   const arreglo = new Array();
-//   for (proxy in Object.values($store.comps.proxies.results) ) {
-//     arreglo.push(proxy.results.location_country_code);
-//   }
-//   return [...new Set(arreglo)];
-// }
-
-// function refreshApi (varApi, pageCounter) {
-//   varApi = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json();
-// }
-
-// const getApiUrl = (pageCounter) => {
-// 	const url = "https://shadowmere.akiel.dev/api/proxies/?format=json&page=" + pageCounter.toString();
-// 	return url;
-// };
-
-// const search = async (pageCounter) => {
-// 	const response = await fetch(getApiUrl(pageCounter));
-
-// 	if (response.status !== 200) {
-// 		throw new Error("Cannot fetch data. Response status is not 200.");
-// 	}
-
-// 	const data = await response.json();
-// 	console.log(response);
-// 	return data;
-// };
 
 const totalServersPages = (totalServers, entriesLimit) => {
 	if (totalServers % entriesLimit == 0) {
@@ -137,35 +97,27 @@ const totalServersPages = (totalServers, entriesLimit) => {
 	}
 };
 
-// const updateUI = () => {
-//   console.log(data)
-// }
-
-// const GoToPreviousPage = (count) => {
-// 	return count > 1 ? count - 1 : count;
-// };
-
 const GoToNextPage = (count) => {
   count++;
 }
 
-// function TotalServerPages(totalServers, entriesLimit){
-//   if ((totalServers % entriesLimit) == 0) {
-//     return (Math.trunc(totalServers / entriesLimit));
-//   }
-//   else {
-//     return (Math.trunc(totalServers / entriesLimit)+1);
-//   }
-// }
+const getApiUrl = (counter) => {
+  const endPoint = 'https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + counter.toString();
+  return endPoint;
+};
 
-// function GoToNextPage(count, totalServersPages){
-//   if (count < totalServersPages){
-//     count++;
-//   }
-// }
+const createCache = async (limit) => {
+  const response = new Array();
+  for (let i = 0; i < limit; i++) {
+    response[i] = await fetch(getApiUrl(i));
+  }
+  if (response.status !== 200) {
+    throw new Error("Cannot fetch data. Response status is not 200.");
+  }
+  const data = await response.json();
+  return data
+};
 
-// function GoToPreviousPage(count){
-//   if (count > 1){
-//     count--;
-//   }
-// }
+
+
+console.log(Promise.all(createCache(5)));

@@ -26,11 +26,11 @@
         arregloNoDupli.fill({countryCode: prox.location_country_code, countryName: searchCountries(prox.location_country_code).name.common})
     } -->
 
-<body class="bg-[#F8F8F8] dark:bg-[#141414]" x-data="{arregloTest: null, pageCounter: 1, count: 1, arregloDupli: [], arregloNoDupli: null, temp: '', atTop: true, loader: true }" x-init="
+<body class=" overflow-y-scroll bg-[#F8F8F8] dark:bg-[#141414]" x-data="{arregloTest: null, pageCounter: 1, count: 1, arregloDupli: [], arregloNoDupli: null, temp: '', atTop: true, loader: true }" x-init="
     
     $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json()
-    
-    
+
+    console.log(arregloNoDupli)
     
     $store.comps.menu = 'servers'
     
@@ -238,11 +238,12 @@
         </div>
     </div>
 
-    <div class="modal-qr w-full fixed z-[150] left-0 top-0 h-screen bg-black bg-opacity-[0.7] flex items-center justify-center" x-on:click.outside="$store.comps.qr_code = false, $store.comps.notTouchBgQR = false" x-show="$store.comps.qr_code">
-        <div class=" w-[328px] h-[328px] sm:w-[360px] sm:h-[360px] bg-white rounded-lg">
+    <div class="modal-qr w-full overflow-auto fixed z-[150] left-0 top-0 h-screen bg-black bg-opacity-[0.7] flex flex-col items-center justify-center gap-4" x-on:click.outside="$store.comps.qr_code = false, $store.comps.notTouchBgQR = false" x-show="$store.comps.qr_code">
+        <div class=" w-[328px] h-auto sm:w-[360px] bg-white rounded-lg">
             <!-- x-on:click.outside="$store.comps.qr_code = false, $store.comps.notTouchBgQR = false" -->
             <img class="rounded-lg" alt="QR Code for server address" x-ref="image">
         </div>
+        <h1 class="dark:text-white">Click or tap anywhere on the screen to close it</h1>
     </div>
     
     
@@ -254,7 +255,7 @@
     <!-- Este es el container general -->
     <main class="wrapper container mx-auto w-full h-full xl:h-full grid grid-cols-12 auto-rows-auto mb-16 2xl:mb-0 mt-20 py-6 xl:py-8 gap-[30px] px-4 pb-4">
 
-        <div class="sidebar col-span-12 xl:col-span-3 w-auto h-auto 2xl:h-screen mb-4 bg-white dark:bg-[#212121] dark:text-[#cfcfcf] shadow-lg xl:flex flex-col-reverse xl:flex-col gap-8 p-4 rounded-lg" :class="!$store.comps.last && 'hidden'">
+        <div class="sidebar col-span-12 xl:col-span-3 w-auto h-auto 2xl:h-fit mb-4 bg-white dark:bg-[#212121] dark:text-[#cfcfcf] shadow-lg xl:flex flex-col-reverse xl:flex-col gap-8 p-4 rounded-lg" :class="!$store.comps.last && 'hidden'">
             <div class="online-vpns-filter flex flex-col gap-4">
                 <div class="w-full h-6 flex items-center font-semibold gap-2">
                     <svg class="fill-[#303030] dark:fill-[#cfcfcf]" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -333,6 +334,7 @@
             
             <div class="item-server-vpn w-full h-20 sm:h-24 bg-white dark:bg-[#212121] dark:text-[#cfcfcf] rounded-lg shrink-0 flex items-center justify-between px-4 md:px-8 py-2 shadow-lg hover:cursor-pointer hover:-translate-y-[2px] dark:hover:bg-[#303030] hover:bg-[#FDFDFD] transition-all" x-data="{timeCopy: false}" x-init="
                        
+            
             
             ">
             

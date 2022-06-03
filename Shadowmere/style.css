@@ -1195,6 +1195,10 @@ input[type=range]::-webkit-slider-thumb {
   gap: 2rem;
 }
 
+.overflow-auto {
+  overflow: auto;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
@@ -1852,6 +1856,11 @@ input[type=range]::-webkit-slider-thumb {
   color: rgb(48 48 48 / var(--tw-text-opacity));
 }
 
+.dark .dark\:text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
 .dark .dark\:accent-\[\#cfcfcf\] {
   accent-color: #cfcfcf;
 }
@@ -1905,6 +1914,10 @@ input[type=range]::-webkit-slider-thumb {
 
   .sm\:h-\[360px\] {
     height: 360px;
+  }
+
+  .sm\:h-auto {
+    height: auto;
   }
 
   .sm\:w-10 {
@@ -2001,5 +2014,11 @@ input[type=range]::-webkit-slider-thumb {
 
   .\32xl\:h-screen {
     height: 100vh;
+  }
+
+  .\32xl\:h-fit {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
   }
 }

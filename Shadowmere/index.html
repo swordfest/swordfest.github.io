@@ -234,7 +234,12 @@
         </div>
     </div>
 
-
+    <div class="modal-qr w-full absolute z-[150] left-0 top-0 h-screen bg-black bg-opacity-[0.7] flex items-center justify-center" x-on:click.outside="$store.comps.qr_code = false, $store.comps.notTouchBgQR = false" x-show="$store.comps.qr_code">
+        <div class="w-[360px] h-[360px] bg-white rounded-lg">
+            <!-- x-on:click.outside="$store.comps.qr_code = false, $store.comps.notTouchBgQR = false" -->
+            <img class="rounded-lg" alt="QR Code for server address" x-ref="image">
+        </div>
+    </div>
     
     
     
@@ -333,12 +338,7 @@
                     
                 </div>
 
-                <div class="modal-qr w-full fixed z-[99] left-0 top-0 h-screen bg-black bg-opacity-[0.08] flex items-center justify-center" x-on:click.outside="$store.comps.qr_code = false, $store.comps.notTouchBgQR = false" x-show="$store.comps.qr_code">
-                    <div class="w-[360px] h-[360px] bg-white fixed rounded-lg">
-                        <!-- x-on:click.outside="$store.comps.qr_code = false, $store.comps.notTouchBgQR = false" -->
-                        <img class="rounded-lg" alt="QR Code for server address" x-ref="image">
-                    </div>
-                </div>
+                
 
                 <div class="data-operations gap-4 flex flex-row-reverse items-center" >
                     

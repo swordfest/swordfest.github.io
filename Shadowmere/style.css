@@ -820,6 +820,14 @@ input[type=range]::-webkit-slider-thumb {
   z-index: 99;
 }
 
+.z-\[-1\] {
+  z-index: -1;
+}
+
+.z-\[150\] {
+  z-index: 150;
+}
+
 .col-span-12 {
   grid-column: span 12 / span 12;
 }
@@ -1321,6 +1329,14 @@ input[type=range]::-webkit-slider-thumb {
 
 .bg-opacity-\[0\.08\] {
   --tw-bg-opacity: 0.08;
+}
+
+.bg-opacity-\[0\.5\] {
+  --tw-bg-opacity: 0.5;
+}
+
+.bg-opacity-\[0\.7\] {
+  --tw-bg-opacity: 0.7;
 }
 
 .fill-\[\#303030\] {

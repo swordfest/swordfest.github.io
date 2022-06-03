@@ -101,23 +101,23 @@ const GoToNextPage = (count) => {
   count++;
 }
 
-const getApiUrl = (counter) => {
-  const endPoint = 'https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + counter.toString();
-  return endPoint;
-};
+// const getApiUrl = (counter) => {
+//   const endPoint = 'https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + counter.toString();
+//   return endPoint;
+// };
 
-const createCache = async (limit) => {
-  const response = new Array();
-  for (let i = 0; i < limit; i++) {
-    response[i] = await fetch(getApiUrl(i));
-  }
-  if (response.status !== 200) {
-    throw new Error("Cannot fetch data. Response status is not 200.");
-  }
-  const data = await response.json();
-  return data
-};
+// const createCache = async (limit) => {
+//   const response = new Array();
+//   for (let i = 0; i < limit; i++) {
+//     response[i] = await fetch(getApiUrl(i));
+//   }
+//   if (response.status !== 200) {
+//     throw new Error("Cannot fetch data. Response status is not 200.");
+//   }
+//   const data = await response.json();
+//   return data
+// };
 
 
 
-console.log(Promise.all(createCache(5)));
+// console.log(Promise.all(createCache(5)));

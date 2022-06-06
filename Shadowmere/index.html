@@ -29,7 +29,7 @@
 
     <!-- countryNames = await (await fetch('https://restcountries.com/v3.1/alpha/' + code)).json() -->
 
-<body class=" overflow-y-scroll bg-[#F8F8F8] dark:bg-[#141414]" x-data="{codes: null, codeString: null, pageCounter: 1, count: 1, temp: '', atTop: true, loader: true }" x-init="
+<body class=" overflow-y-scroll bg-[#F8F8F8] dark:bg-[#141414]" x-data="{selectedCountry: null, codes: null, codeString: null, pageCounter: 1, count: 1, temp: '', atTop: true, loader: true }" x-init="
     
     $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json()
 
@@ -37,7 +37,7 @@
 
     codeString = await localArray(codes)
     
-    console.log(codeString)
+    console.log(selectedCountry)
     
     $store.comps.menu = 'servers'
     
@@ -55,7 +55,7 @@
 
     <nav class="w-full h-20 z-50 top-0 fixed flex justify-center bg-white dark:bg-[#212121] transition-transform shadow-lg">
         <div class="nav-wrapper container mx-auto dark:bg-[#212121] w-full h-full flex items-center justify-between px-4">
-            <svg class="fill-[#303030] dark:fill-[#cfcfcf] w-[200px] h-auto cursor-pointer" x-on:click="$store.comps.menu= 'servers', pageCounter = 1, $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json(), count = 1" width="260" height="50" viewBox="0 0 260 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="fill-[#303030] dark:fill-[#cfcfcf] w-[200px] h-auto cursor-pointer" x-on:click="$store.comps.menu= 'servers', pageCounter = 1, $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json(), count = 1, selectedCountry = 'UN'" width="260" height="50" viewBox="0 0 260 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20.9424 4.88982L23.7489 0.941338L28.491 1.11554L34.5105 1.3478L25.607 4.46401L20.9424 4.88982Z"/>
                 <path d="M28.7812 7.19311L33.4265 4.69627L41.9235 8.00603L31.2781 9.12864L28.7812 7.19311Z"/>
                 <path d="M35.8459 12.7868L40.9945 12.361L48.1366 19.7934L39.4073 16.2514L35.8459 12.7868Z"/>
@@ -300,18 +300,19 @@
                         </svg> Countries
 
                 </div>
-                <select title="Countries" name="countries" id="countries-selection" class="font-twemoji rounded-md border-gray-300 mx-2 text-[#303030] dark:text-[#cfcfcf] dark:border-0 dark:bg-[#303030] outline-none cursor-pointer" x-init="console.log(item.location_country_code)">
+                <!-- <select title="Countries" name="countries" id="countries-selection" class="font-twemoji rounded-md border-gray-300 mx-2 text-[#303030] dark:text-[#cfcfcf] dark:border-0 dark:bg-[#303030] outline-none cursor-pointer" x-init="console.log(item.location_country_code)">
                     <option id="opcion" class="bandera" value="UN" x-text="getFlagEmoji('UN') + '  Worldwide'"></option>
-                    <!-- x-on:change="$store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&location_country_code=' + $refs.opt.value)).json()" -->
+                    
                     <template x-for="item in Object.values($store.comps.proxies.results)">
                         <option id="opcion" class="bandera" x-ref="opt" value="US" x-text="getFlagEmoji(item.location_country_code) + '  '+ item.location"></option>
                     </template>
-                </select>
+                </select> -->
 
-                <select title="Countries" name="countries" id="countries-selection" class="font-twemoji rounded-md border-gray-300 mx-2 text-[#303030] dark:text-[#cfcfcf] dark:border-0 dark:bg-[#303030] outline-none cursor-pointer" x-init="console.log(item.location_country_code)">
-                    <option id="opcion" class="bandera" value="UN" x-text="getFlagEmoji('UN') + '  Worldwide'"></option>
+                <!-- $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&location_country_code=' + code.code)).json() -->
+                <select title="Countries" name="countries" id="countries-selection" class="font-twemoji rounded-md border-gray-300 mx-2 text-[#303030] dark:text-[#cfcfcf] dark:border-0 dark:bg-[#303030] outline-none cursor-pointer" x-model="selectedCountry" x-on:change="pageCounter = 1, selectedCountry === 'UN' ? $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json() : $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&location_country_code=' + selectedCountry + '&page=' + pageCounter.toString())).json(), count = 1" x-init="console.log(item.location_country_code)">
+                    <!-- <option id="opcion" class="bandera" x-ref="opt" value="UN" x-text="getFlagEmoji('UN') + '  Worldwide'"></option> -->
                     <template x-for="code in codeString">
-                        <option id="opcion" class="bandera" x-ref="opt" value="code" x-text="getFlagEmoji(code.code) + ' ' + code.name"></option>
+                        <option id="opcion" class="bandera" x-ref="opt" :value="code.code" x-text="getFlagEmoji(code.code) + ' ' + code.name"></option>
                     </template>
                 </select>
 
@@ -324,21 +325,21 @@
 
             <div class="buttonPagesWrapper w-full 2xl:hidden h-auto flex justify-center">
                 <div class="buttonPages w-[328px] h-14 flex items-center justify-between">
-                    <button class="button-previous w-12 h-12 bg-[#212121] hover:bg-[#303030] dark:hover:bg-[#303030] dark:bg-[#212121] text-[#cfcfcf] transition-colors flex items-center justify-center shrink-0 font-bold font-awesome rounded-lg shadow-xl" type="button" x-on:click="pageCounter = 1, $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json(), count = 1">
+                    <button class="button-previous w-12 h-12 bg-[#212121] hover:bg-[#303030] dark:hover:bg-[#303030] dark:bg-[#212121] text-[#cfcfcf] transition-colors flex items-center justify-center shrink-0 font-bold font-awesome rounded-lg shadow-xl" type="button" x-on:click="pageCounter = 1, selectedCountry === 'UN' ? $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json() : $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&location_country_code=' + selectedCountry + '&page=' + pageCounter.toString())).json(), count = 1">
                         <div class="w-12 h-12 font-awesome text-xl flex items-center justify-center after:content-['\f100'] after:hover:-translate-x-[2px] after:hover:transition-all"></div>                        
                     </button>
     
-                    <button class="button-previous w-12 h-12 bg-[#212121] hover:bg-[#303030] dark:hover:bg-[#303030] dark:bg-[#212121] text-[#cfcfcf] transition-colors flex items-center justify-center shrink-0 font-bold rounded-lg shadow-xl" type="button" x-on:click="pageCounter > 1 ? pageCounter-- : pageCounter, $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json(), count = pageCounter">
+                    <button class="button-previous w-12 h-12 bg-[#212121] hover:bg-[#303030] dark:hover:bg-[#303030] dark:bg-[#212121] text-[#cfcfcf] transition-colors flex items-center justify-center shrink-0 font-bold rounded-lg shadow-xl" type="button" x-on:click="pageCounter > 1 ? pageCounter-- : pageCounter, selectedCountry === 'UN' ? $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json() : $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&location_country_code=' + selectedCountry + '&page=' + pageCounter.toString())).json(), count = pageCounter">
                         <div class="w-12 h-12 font-awesome text-xl flex items-center justify-center after:content-['\f104'] after:hover:-translate-x-[2px] after:hover:transition-all"></div>                                                
                     </button>
     
                     <span class="w-[90px] dark:text-[#cfcfcf] text-center font-semibold text-sm sm:text-base" x-text="count.toString() + ' of ' + totalServersPages($store.comps.proxies.count, 20).toString()"></span>
     
-                    <button class="button-next w-12 h-12 bg-[#212121] hover:bg-[#303030] dark:hover:bg-[#303030] dark:bg-[#212121] text-[#cfcfcf] transition-colors flex items-center justify-center shrink-0 font-bold rounded-lg shadow-xl" type="button" x-on:click="pageCounter++, $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json(), count = pageCounter">
+                    <button class="button-next w-12 h-12 bg-[#212121] hover:bg-[#303030] dark:hover:bg-[#303030] dark:bg-[#212121] text-[#cfcfcf] transition-colors flex items-center justify-center shrink-0 font-bold rounded-lg shadow-xl" type="button" x-on:click="pageCounter < totalServersPages($store.comps.proxies.count, 20) ? pageCounter++ : pageCounter, selectedCountry === 'UN' ? $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json() : $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&location_country_code=' + selectedCountry + '&page=' + pageCounter.toString())).json(), count = pageCounter">
                         <div class="w-12 h-12 font-awesome text-xl flex items-center justify-center after:content-['\f105'] after:hover:translate-x-[2px] after:hover:transition-all"></div>                        
                     </button>
     
-                    <button class="button-next w-12 h-12 bg-[#212121] hover:bg-[#303030] dark:hover:bg-[#303030] dark:bg-[#212121] text-[#cfcfcf] transition-colors flex items-center justify-center shrink-0 font-bold rounded-lg shadow-xl" type="button" x-on:click="pageCounter = totalServersPages($store.comps.proxies.count, 20), $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json(), count = totalServersPages($store.comps.proxies.count, 20)">
+                    <button class="button-next w-12 h-12 bg-[#212121] hover:bg-[#303030] dark:hover:bg-[#303030] dark:bg-[#212121] text-[#cfcfcf] transition-colors flex items-center justify-center shrink-0 font-bold rounded-lg shadow-xl" type="button" x-on:click="pageCounter = totalServersPages($store.comps.proxies.count, 20), selectedCountry === 'UN' ? $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json() : $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&location_country_code=' + selectedCountry + '&page=' + pageCounter.toString())).json(), count = totalServersPages($store.comps.proxies.count, 20)">
                         <div class="w-12 h-12 font-awesome text-xl flex items-center justify-center after:content-['\f101'] after:hover:translate-x-[2px] after:hover:transition-all"></div>                                               
                     </button>
                 </div>

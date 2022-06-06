@@ -1125,6 +1125,14 @@ input[type=range]::-webkit-slider-thumb {
       scroll-snap-type: y var(--tw-scroll-snap-strictness);
 }
 
+.snap-start {
+  scroll-snap-align: start;
+}
+
+.snap-center {
+  scroll-snap-align: center;
+}
+
 .appearance-none {
   -webkit-appearance: none;
      -moz-appearance: none;

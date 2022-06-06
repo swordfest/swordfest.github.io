@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
     <!-- <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script> -->
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> -->
+    <script defer src="others/alpine.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KQ4KMVJEXY"></script>
@@ -26,11 +27,17 @@
         arregloNoDupli.fill({countryCode: prox.location_country_code, countryName: searchCountries(prox.location_country_code).name.common})
     } -->
 
-<body class=" overflow-y-scroll bg-[#F8F8F8] dark:bg-[#141414]" x-data="{arregloTest: null, pageCounter: 1, count: 1, arregloDupli: [], arregloNoDupli: null, temp: '', atTop: true, loader: true }" x-init="
+    <!-- countryNames = await (await fetch('https://restcountries.com/v3.1/alpha/' + code)).json() -->
+
+<body class=" overflow-y-scroll bg-[#F8F8F8] dark:bg-[#141414]" x-data="{codes: null, codeString: null, pageCounter: 1, count: 1, temp: '', atTop: true, loader: true }" x-init="
     
     $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json()
 
-    console.log(arregloNoDupli)
+    codes = await (await fetch('https://shadowmere.akiel.dev/api/country-codes')).json()
+
+    codeString = await localArray(codes)
+    
+    console.log(codeString)
     
     $store.comps.menu = 'servers'
     
@@ -298,6 +305,13 @@
                     <!-- x-on:change="$store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&location_country_code=' + $refs.opt.value)).json()" -->
                     <template x-for="item in Object.values($store.comps.proxies.results)">
                         <option id="opcion" class="bandera" x-ref="opt" value="US" x-text="getFlagEmoji(item.location_country_code) + '  '+ item.location"></option>
+                    </template>
+                </select>
+
+                <select title="Countries" name="countries" id="countries-selection" class="font-twemoji rounded-md border-gray-300 mx-2 text-[#303030] dark:text-[#cfcfcf] dark:border-0 dark:bg-[#303030] outline-none cursor-pointer" x-init="console.log(item.location_country_code)">
+                    <option id="opcion" class="bandera" value="UN" x-text="getFlagEmoji('UN') + '  Worldwide'"></option>
+                    <template x-for="code in codeString">
+                        <option id="opcion" class="bandera" x-ref="opt" value="code" x-text="getFlagEmoji(code.code) + ' ' + code.name"></option>
                     </template>
                 </select>
 

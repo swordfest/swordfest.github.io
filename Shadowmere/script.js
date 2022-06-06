@@ -82,7 +82,6 @@ document.addEventListener("alpine:init", () => {
 		about: false,
 		listaHome: true,
 		why: false,
-    
 	});
 });
 
@@ -124,46 +123,81 @@ const getApiUrl = (code) => {
 //   return data
 // };
 
-const searchCountries = async (code) => {
-	const response = await fetch(getApiUrl(code));
+// const searchCountries = async (code) => {
+// 	const response = await fetch(getApiUrl(code));
 
-	if (response.status !== 200) {
-		throw new Error("Cannot fetch data. Response status is not 200.");
-	}
+// 	if (response.status !== 200) {
+// 		throw new Error("Cannot fetch data. Response status is not 200.");
+// 	}
 
-	const data = await response.json();
-	return data;
+// 	const data = await response.json();
+// 	return data;
+// };
+
+// const getCountry = async (code) => {
+// 	const country = await fetch("https://restcountries.com/v3.1/alpha/" + code);
+// 	let response = await country.json();
+// 	return response[0].name.common;
+// };
+
+// const generateCountryArray = async (arr) => {
+// 	var codeString = new Array();
+// 	for (i = 0; i < arr.length; i++) {
+// 		var countryNames = await getCountry(arr[i]);
+// 		codeString.push(countryNames.name.common);
+// 	}
+// 	return codeString;
+// };
+
+// const localArray = async (arr) => {
+// 	var country = new Object();
+// 	var world = { code: "UN", name: "Worldwide" };
+// 	var codeString = new Array();
+// 	codeString.push(world);
+// 	for (i = 0; i < arr.length; i++) {
+// 		var countryNames = await getCountry(arr[i]);
+// 		country = { code: arr[i], name: countryNames };
+// 		codeString.push(country);
+// 		// var countryNames = await getCountry(arr[i]);
+// 		// codeString.push(countryNames.name.common);
+// 	}
+// 	// let data = codeString.json();
+// 	return codeString;
+// };
+
+const loadFromAPI = async (limit, countryCode) => {
+	var pagesLoaded = new Array();
+
+  if(countryCode === 'UN'){
+    for (i = 1; i < limit+1; i++) {
+      var page = await (
+        await fetch(
+          "https://shadowmere.akiel.dev/api/proxies/?format=json&is_active=true&page=" +
+            i.toString()
+        )
+      ).json();
+      // pagesLoaded.push(page);
+      pagesLoaded[i] = page;
+    }
+    return pagesLoaded;
+  } else {
+    for (i = 1; i < limit+1; i++) {
+      var page = await (
+        await fetch(
+          "https://shadowmere.akiel.dev/api/proxies/?format=json&is_active=true&&location_country_code="+ countryCode + "&page=" +
+            i.toString()
+        )
+      ).json();
+      // pagesLoaded.push(page);
+      pagesLoaded[i] = page;
+    }
+    return pagesLoaded;
+  }
 };
 
-const getCountry = async (code) => {
-	const country = await fetch("https://restcountries.com/v3.1/alpha/" + code);
-	let response = await country.json();
-	return response[0].name.common;
-};
-
-const generateCountryArray = async (arr) => {
-	var codeString = new Array();
-	for (i = 0; i < arr.length; i++) {
-		var countryNames = await getCountry(arr[i]);
-		codeString.push(countryNames.name.common);
-	}
-	return codeString;
-};
-
-const localArray = async (arr) => {
-	var country = new Object();
-	var world = { code: "UN", name: "Worldwide" };
-	var codeString = new Array();
-	codeString.push(world);
-	for (i = 0; i < arr.length; i++) {
-		var countryNames = await getCountry(arr[i]);
-		country = { code: arr[i], name: countryNames };
-		codeString.push(country);
-		// var countryNames = await getCountry(arr[i]);
-		// codeString.push(countryNames.name.common);
-	}
-	// let data = codeString.json();
-	return codeString;
-};
+// const makeBuffer = (limit, pageCounter) => {
+//   var pagesLoaded = loadFromAPI(limit);
+//   if (pageCounter == )
+// };
 
 

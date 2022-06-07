@@ -34,8 +34,6 @@
     $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json()
 
     codes = await (await fetch('https://shadowmere.akiel.dev/api/country-codes')).json()
-
-    
     
     console.log(selectedCountry)
     

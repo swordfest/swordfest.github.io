@@ -296,7 +296,7 @@
                 </div>
                 
                 <select title="Countries" name="countries" id="countries-selection" class="font-twemoji rounded-md border-gray-300 mx-2 text-[#303030] dark:text-[#cfcfcf] dark:border-0 dark:bg-[#303030] outline-none cursor-pointer" x-model="selectedCountry" x-on:change="pageCounter = 1, selectedCountry === 'UN' ? $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json() : $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&location_country_code=' + selectedCountry + '&page=' + pageCounter.toString())).json(), count = 1" x-init="console.log(item.location_country_code)">
-                    <template x-for="code in codeString">
+                    <template x-for="code in codes">
                         <option id="opcion" class="bandera" x-ref="opt" :value="code.code" x-text="getFlagEmoji(code.code) + ' ' + code.name"></option>
                     </template>
                 </select>
@@ -306,7 +306,7 @@
 
 
 
-        <div id="cuerpo" class="lista-servers-vpns col-span-12 xl:col-span-9 w-full h-full flex flex-col gap-4" x-show="$store.comps.listaHome">
+        <div id="cuerpo" class="lista-servers-vpns col-span-12 xl:col-span-9 w-full h-full flex flex-col gap-4" x-data="{ showItemServer: false }" x-show="$store.comps.listaHome" x-init="showItemServer = true">
 
             <div class="buttonPagesWrapper w-full 2xl:hidden h-auto flex justify-center">
                 <div class="buttonPages w-[328px] h-14 flex items-center justify-between">
@@ -320,7 +320,7 @@
     
                     <span class="w-[90px] dark:text-[#cfcfcf] text-center font-semibold text-sm sm:text-base" x-text="count.toString() + ' of ' + totalServersPages($store.comps.proxies.count, 20).toString()"></span>
     
-                    <button class="button-next w-12 h-12 bg-[#212121] hover:bg-[#303030] dark:hover:bg-[#303030] dark:bg-[#212121] text-[#cfcfcf] transition-colors flex items-center justify-center shrink-0 font-bold rounded-lg shadow-xl" type="button" x-on:click="pageCounter < totalServersPages($store.comps.proxies.count, 20) ? pageCounter++ : pageCounter, selectedCountry === 'UN' ? $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json() : $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&location_country_code=' + selectedCountry + '&page=' + pageCounter.toString())).json(), count = pageCounter">
+                    <button class="button-next w-12 h-12 bg-[#212121] hover:bg-[#303030] dark:hover:bg-[#303030] dark:bg-[#212121] text-[#cfcfcf] transition-colors flex items-center justify-center shrink-0 font-bold rounded-lg shadow-xl" type="button" x-on:click="pageCounter < totalServersPages($store.comps.proxies.count, 20) ? pageCounter++ : pageCounter, selectedCountry === 'UN' ? $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&page=' + pageCounter.toString())).json() : $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&location_country_code=' + selectedCountry + '&page=' + pageCounter.toString())).json(), showItemServer = true, count = pageCounter">
                         <div class="w-12 h-12 font-awesome text-xl flex items-center justify-center after:content-['\f105'] after:hover:translate-x-[2px] after:hover:transition-all"></div>                        
                     </button>
     
@@ -332,11 +332,7 @@
 
             <template x-for="proxy in Object.values($store.comps.proxies.results)" :key="proxy.id">
             
-            <div class="item-server-vpn w-full h-20 sm:h-24 bg-white dark:bg-[#212121] dark:text-[#cfcfcf] rounded-lg shrink-0 flex items-center justify-between px-4 md:px-8 py-2 shadow-lg hover:cursor-pointer hover:-translate-y-[2px] dark:hover:bg-[#303030] hover:bg-[#FDFDFD] transition-all" x-data="{timeCopy: false}" x-init="
-                       
-            
-            
-            ">
+            <div class="item-server-vpn w-full h-20 sm:h-24 bg-white dark:bg-[#212121] dark:text-[#cfcfcf] rounded-lg shrink-0 flex items-center justify-between px-4 md:px-8 py-2 shadow-lg hover:cursor-pointer hover:-translate-y-[2px] dark:hover:bg-[#303030] hover:bg-[#FDFDFD] transition-all " x-show="showItemServer" x-data="{timeCopy: false}">
             
                 <div class="data-country-ip gap-2 md:gap-4 flex items-center">
                     <div class="font-twemoji select-none flex items-center text-xl w-6 h-6 cursor-pointer" x-text="getFlagEmoji(proxy.location_country_code)" x-on:click="selectedCountry = proxy.location_country_code, pageCounter = 1, $store.comps.proxies = await (await fetch('https://shadowmere.akiel.dev/api/proxies/?format=json&location_country_code=' + selectedCountry + '&page=' + pageCounter.toString())).json(), count = 1"> </div>
@@ -344,8 +340,6 @@
                     <span class="font-semibold w-28 overflow-hidden truncate text-sm sm:text-base select-none" x-text="proxy.ip_address">...</span>
                     
                 </div>
-
-                
 
                 <div class="data-operations gap-4 flex flex-row-reverse items-center" >
                     

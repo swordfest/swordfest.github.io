@@ -124,31 +124,31 @@ const getApiUrl = (code) => {
 //   return data
 // };
 
-const searchCountries = async (code) => {
-	const response = await fetch(getApiUrl(code));
+// const searchCountries = async (code) => {
+// 	const response = await fetch(getApiUrl(code));
 
-	if (response.status !== 200) {
-		throw new Error("Cannot fetch data. Response status is not 200.");
-	}
+// 	if (response.status !== 200) {
+// 		throw new Error("Cannot fetch data. Response status is not 200.");
+// 	}
 
-	const data = await response.json();
-	return data;
-};
+// 	const data = await response.json();
+// 	return data;
+// };
 
-const getCountry = async (code) => {
-	const country = await fetch("https://restcountries.com/v3.1/alpha/" + code);
-	let response = await country.json();
-	return response[0].name.common;
-};
+// const getCountry = async (code) => {
+// 	const country = await fetch("https://restcountries.com/v3.1/alpha/" + code);
+// 	let response = await country.json();
+// 	return response[0].name.common;
+// };
 
-const generateCountryArray = async (arr) => {
-	var codeString = new Array();
-	for (i = 0; i < arr.length; i++) {
-		var countryNames = await getCountry(arr[i]);
-		codeString.push(countryNames.name.common);
-	}
-	return codeString;
-};
+// const generateCountryArray = async (arr) => {
+// 	var codeString = new Array();
+// 	for (i = 0; i < arr.length; i++) {
+// 		var countryNames = await getCountry(arr[i]);
+// 		codeString.push(countryNames.name.common);
+// 	}
+// 	return codeString;
+// };
 
 const localArray = async (arr) => {
 	var country = new Object();

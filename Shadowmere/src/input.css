@@ -10,31 +10,29 @@
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         transition-duration: 150ms;
     }
-    /* .country-flag {
-        display: flex;
-        align-items: center;
-        font-family: "Twemoji";
-        font-size: 24px;
-    } */
-    /* select:before {
-        content: ' ';
-        font-family: "Twemoji";
-        font-size: 24px;
-    } */
-    /* .country-flag-2 {
-        content: ' ';
-        display: flex;
-        align-items: center;
-        font-family: "Twemoji";
-        font-size: 24px;
-    } */
-    /* .country-flag {
-        font-size: 16px;
-    } */
+   
     html {
         -webkit-tap-highlight-color: transparent;
     }
-    input[type=range]::-webkit-slider-thumb {
+    /* input[type=range]::-webkit-slider-thumb {
+        height: 3px;
+        width: 16px;
+        border-radius: 13px;
+        background: #303030;
+        cursor: pointer;
+        -webkit-appearance: none;
+        pointer-events: none;
+    } */
+    .range-dark::-webkit-slider-thumb {
+        height: 3px;
+        width: 16px;
+        border-radius: 13px;
+        background: #cfcfcf;
+        cursor: pointer;
+        -webkit-appearance: none;
+        pointer-events: none;
+    }
+    .range-light::-webkit-slider-thumb {
         height: 3px;
         width: 16px;
         border-radius: 13px;

@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+	html {
+		-webkit-tap-highlight-color: transparent;
+	}
+	.range-dark::-webkit-slider-thumb {
+		height: 3px;
+		width: 16px;
+		border-radius: 13px;
+		background: #cfcfcf;
+		cursor: pointer;
+		-webkit-appearance: none;
+		pointer-events: none;
+	}
+	.range-light::-webkit-slider-thumb {
+		height: 3px;
+		width: 16px;
+		border-radius: 13px;
+		background: #303030;
+		cursor: pointer;
+		-webkit-appearance: none;
+		pointer-events: none;
+	}
+}
+
+body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	transition-property: color;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 150ms;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
+}
+
+@font-face {
+	font-family: "Twemoji";
+	src: url("./fonts/twemoji.woff2") format("woff2");
+	size-adjust: 120%;
+}
+
+@font-face {
+	font-family: "FontAwesome";
+	src: url("./fonts/fa-regular-400.eot") format("eot"),
+		url("./fonts/fa-regular-400.svg") format("svg"),
+		url("./fonts/fa-regular-400.ttf") format("truetype"),
+		url("./fonts/fa-regular-400.woff") format("woff"),
+		url("./fonts/fa-regular-400.woff2") format("woff2");
+	font-weight: 400;
+}

@@ -1,6 +1,6 @@
 import React from "react";
 
-export function getFlagEmoji(countryCode) {
+function getFlagEmoji(countryCode) {
 	const codePoints = countryCode
 		.toUpperCase()
 		.split("")
@@ -8,8 +8,8 @@ export function getFlagEmoji(countryCode) {
 	return String.fromCodePoint(...codePoints);
 }
 
-export function getPercentage(portion, total) {
+function getPercentage(portion, total) {
 	return Math.trunc((portion * 100) / total);
 }
 
-export default getFlagEmoji;
+export default {getFlagEmoji, getPercentage};

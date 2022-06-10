@@ -24,7 +24,43 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KQ4KMVJEXY"></script>
+    <script src="https://cdn.websitepolicies.io/lib/cookieconsent/1.0.3/cookieconsent.min.js" defer=""></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.websitepolicies.io/lib/cookieconsent/1.0.3/cookieconsent.min.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <title>Shadowmere - React</title>
+    <script>
+
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag("js", new Date());
+
+      gtag("config", "G-KQ4KMVJEXY");
+
+      window.addEventListener("load", function () {
+        window.wpcc.init({
+          border: "thin",
+          corners: "small",
+          colors: {
+            popup: {
+              background: "#f6f6f6",
+              text: "#000000",
+              border: "#cfcfcf",
+            },
+            button: {
+              background: "#303030",
+              text: "#ffffff",
+            },
+          },
+          position: "bottom",
+        });
+      });
+
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

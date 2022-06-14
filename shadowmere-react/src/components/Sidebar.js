@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import '../index.css';
+import {getFlagEmoji, getPercentage, GetAPIEndPoint} from "./Functions";
 
 function Sidebar() {
 
-    // const countries = [];
+     const [countries, setCountries] = useState([]);
+	// const countries = GetAPIEndPoint('https://shadowmere.akiel.dev/api/country-codes')
+    const proxies = GetAPIEndPoint('https://shadowmere.akiel.dev/api/proxies/?format=json&is_active=true&page=1')
 
-    // componentDidMount(() => {
+    // console.log(proxies)
 
-    // });
+	useEffect(() => {
+
+		axios
+			.get('https://shadowmere.akiel.dev/api/country-codes')
+			.then((response) => {
+				// console.log(response)
+				// proxy = response.data
+				// setPosts(response.data.results)
+				setCountries(response.data);
+				// setServers(response.data.results)
+				console.log(response.data.results);
+			})
+			.catch((err) => {
+				// console.log(err)
+			});
+
+	}, []);
 
     return (
       <div className="sidebar col-span-12 xl:col-span-3 w-auto h-auto 2xl:h-fit mb-4 bg-white dark:bg-[#212121] dark:text-[#cfcfcf] shadow-lg xl:flex flex-col-reverse xl:flex-col gap-8 p-4 rounded-lg">
@@ -21,7 +41,8 @@ function Sidebar() {
                   <div className="w-full h-6 flex items-center font-semibold gap-2 pl-4">
                       <svg className="fill-[#303030] dark:fill-[#cfcfcf]" width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M11.25 4.25H0.75C0.335789 4.25 0 3.91421 0 3.5V2C0 1.58579 0.335789 1.25 0.75 1.25H11.25C11.6642 1.25 12 1.58579 12 2V3.5C12 3.91421 11.6642 4.25 11.25 4.25ZM10.125 2.1875C9.81434 2.1875 9.5625 2.43934 9.5625 2.75C9.5625 3.06066 9.81434 3.3125 10.125 3.3125C10.4357 3.3125 10.6875 3.06066 10.6875 2.75C10.6875 2.43934 10.4357 2.1875 10.125 2.1875ZM8.625 2.1875C8.31434 2.1875 8.0625 2.43934 8.0625 2.75C8.0625 3.06066 8.31434 3.3125 8.625 3.3125C8.93566 3.3125 9.1875 3.06066 9.1875 2.75C9.1875 2.43934 8.93566 2.1875 8.625 2.1875ZM11.25 8H0.75C0.335789 8 0 7.66421 0 7.25V5.75C0 5.33579 0.335789 5 0.75 5H11.25C11.6642 5 12 5.33579 12 5.75V7.25C12 7.66421 11.6642 8 11.25 8ZM10.125 5.9375C9.81434 5.9375 9.5625 6.18934 9.5625 6.5C9.5625 6.81066 9.81434 7.0625 10.125 7.0625C10.4357 7.0625 10.6875 6.81066 10.6875 6.5C10.6875 6.18934 10.4357 5.9375 10.125 5.9375ZM8.625 5.9375C8.31434 5.9375 8.0625 6.18934 8.0625 6.5C8.0625 6.81066 8.31434 7.0625 8.625 7.0625C8.93566 7.0625 9.1875 6.81066 9.1875 6.5C9.1875 6.18934 8.93566 5.9375 8.625 5.9375ZM11.25 11.75H0.75C0.335789 11.75 0 11.4142 0 11V9.5C0 9.08579 0.335789 8.75 0.75 8.75H11.25C11.6642 8.75 12 9.08579 12 9.5V11C12 11.4142 11.6642 11.75 11.25 11.75ZM10.125 9.6875C9.81434 9.6875 9.5625 9.93934 9.5625 10.25C9.5625 10.5607 9.81434 10.8125 10.125 10.8125C10.4357 10.8125 10.6875 10.5607 10.6875 10.25C10.6875 9.93934 10.4357 9.6875 10.125 9.6875ZM8.625 9.6875C8.31434 9.6875 8.0625 9.93934 8.0625 10.25C8.0625 10.5607 8.31434 10.8125 8.625 10.8125C8.93566 10.8125 9.1875 10.5607 9.1875 10.25C9.1875 9.93934 8.93566 9.6875 8.625 9.6875Z"/>
-                          </svg> <span className="font-normal"></span>
+                          {/* </svg> <span className="font-normal"></span> */}
+                          </svg> <span className="font-normal">{proxies.count}</span>
   
                   </div>
               </div>
@@ -33,7 +54,8 @@ function Sidebar() {
                           </svg> Last check
                   </div>
                   <div className="w-full h-6 flex items-center font-semibold gap-2 pl-4">
-                      <span className="font-normal"></span>
+                      {/* <span className="font-normal"></span> */}
+                      <span className="font-normal">{proxies.results[1].last_checked}</span>
                   </div>
               </div>
   
@@ -48,9 +70,11 @@ function Sidebar() {
                   </div>
                   
                   <select title="Countries" name="countries" id="countries-selection" className="form-select font-twemoji rounded-md border-gray-300 mx-2 text-[#303030] dark:text-[#cfcfcf] dark:border-0 dark:bg-[#303030] outline-none cursor-pointer">
-                      {/* <template x-for="code in codes">
-                          <option id="opcion" className="bandera" x-ref="opt" :value="code.code" x-text="getFlagEmoji(code.code) + ' ' + code.name"></option>
-                      </template> */}
+                      {
+                          countries.map(con => (
+                            <option id="opcion" className="bandera">{getFlagEmoji(con.code)} {con.name}</option>
+                          ))
+                      }
                   </select>
   
               </div>

@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-//aaaa
-
-function getFlagEmoji(countryCode) {
+export function getFlagEmoji(countryCode) {
 	const codePoints = countryCode
 		.toUpperCase()
 		.split("")
@@ -10,8 +9,26 @@ function getFlagEmoji(countryCode) {
 	return String.fromCodePoint(...codePoints);
 }
 
-function getPercentage(portion, total) {
+export function getPercentage(portion, total) {
 	return Math.trunc((portion * 100) / total);
 }
 
-export default {getFlagEmoji, getPercentage};
+export function GetAPIEndPoint (url) {
+	const [objectAPI, setObjectAPI] = useState([]);
+	
+	useEffect(() => {
+
+		axios
+			.get(url)
+			.then((response) => {
+				setObjectAPI(response.data);
+			})
+			.catch((err) => {
+				// console.log(err)
+			});
+
+	}, []);
+	return objectAPI;
+}
+
+export default {getFlagEmoji, getPercentage, GetAPIEndPoint};

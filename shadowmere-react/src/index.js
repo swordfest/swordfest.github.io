@@ -9,6 +9,7 @@ import ButtonsPagination from './components/ButtonsPagination'
 import ContentServers from './components/ContentServers'
 import ModalQR from './components/ModalQR'
 import DataFetching from './components/DataFetching'
+import LoadingIndicator from './components/LoadingIndicator'
 
 
 
@@ -24,8 +25,8 @@ root.render(
       <Sidebar/>
       <div id="cuerpo" className="lista-servers-vpns col-span-12 xl:col-span-9 w-full h-full flex flex-col gap-4">
       <ButtonsPagination/>
+      <LoadingIndicator/>
       <ContentServers/>
-      {/* <DataFetching/> */}
       <ButtonsPagination/>
       </div>
     </main>
